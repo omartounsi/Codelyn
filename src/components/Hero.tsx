@@ -3,11 +3,10 @@ export const Hero = () => {
     <div className="border-b border-dashed border-neutral-800 w-full h-72  flex flex-col justify-center pl-5  text-neutral-200">
       <a
         className="group mb-2 inline-flex items-center gap-2 px-0.5 text-sm font-medium"
-        href="/docs/tailwind-v4"
+        href="#"
       >
-        X{" "}
         <span className="underline-offset-4 group-hover:underline">
-          Sign up on []
+          Already a member?
         </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,12 +25,12 @@ export const Hero = () => {
         </svg>
       </a>
       <h1 className="text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1] text-neutral-50">
-        Welcome to []
+        Welcome to{" "}
+        <span className="font-[IBM_Plex_Mono] font-light">Codelyn_</span>
       </h1>
       <p className="max-w-2xl text-base font-light text-foreground sm:text-lg text-neutral-100">
-        A platform specifically designed to teach you the basics of the web,
-        from scratch... This collection of lessons includes the fundamentals of
-        how the web
+        From zero to your first website—right in your browser. A guided path to
+        mastering the web, with real coding and instant results.
       </p>
       {/* buttons */}
       <div className="flex gap-1 mt-2">

@@ -20,7 +20,7 @@ export const LessonPreview = () => {
     autoRaf: true,
   });
   return (
-    <div className="h-200 max-w-full grid grid-cols-12">
+    <div className="h-200 max-w-full grid grid-cols-12 border-b border-dashed border-neutral-800">
       {/* LEFT */}
       <div className="col-span-4  border-r border-dashed border-neutral-800 flex flex-col items-center">
         {/* CARD */}

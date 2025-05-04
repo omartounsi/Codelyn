@@ -4,6 +4,10 @@ import { LessonPreview } from "./components/LessonPreview";
 import { LessonsNav } from "./components/LessonsNav";
 import { Navbar } from "./components/Navbar";
 import "/src/style.css";
+import { ProgressPreview } from "./components/ProgressPreview";
+import { FAQ } from "./components/FAQ";
+import { Call } from "./components/Call";
+import { Footer } from "./components/Footer";
 
 function App() {
   const lenis = new Lenis({
@@ -17,17 +21,26 @@ function App() {
         <div className="col-span-1 border-r border-neutral-800 border-dashed">
           <div className="h-72 border-b border-dashed border-neutral-800"></div>
           <div className="h-14 border-b border-dashed border-neutral-800"></div>
+          <div className="h-200 border-b border-dashed border-neutral-800"></div>
+          <div className="h-50 border-b border-dashed border-neutral-800"></div>
+          <div className="h-400 border-b border-dashed border-neutral-800"></div>
         </div>
         {/* MAIN */}
         <div className="col-span-10">
           <Hero />
           <LessonsNav />
           <LessonPreview />
+          <ProgressPreview />
+          <FAQ />
+          <Footer />
         </div>
         {/* RIGHT */}
         <div className="col-span-1 border-l border-dashed border-neutral-800">
           <div className="h-72 border-b border-dashed border-neutral-800"></div>
           <div className="h-14 border-b border-dashed border-neutral-800"></div>
+          <div className="h-200 border-b border-dashed border-neutral-800"></div>
+          <div className="h-50 border-b border-dashed border-neutral-800"></div>
+          <div className="h-400 border-b border-dashed border-neutral-800"></div>
         </div>
       </div>
     </>
