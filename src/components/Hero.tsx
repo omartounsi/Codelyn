@@ -15,13 +15,13 @@ export const Hero = () => {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-arrow-right ml-1 h-4 w-4"
         >
           <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
+          <path d="M12 5 L19 12 L12 19"></path>
         </svg>
       </a>
       <h1 className="text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1] text-neutral-50">

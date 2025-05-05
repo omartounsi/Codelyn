@@ -8,6 +8,7 @@ import { ProgressPreview } from "./components/ProgressPreview";
 import { FAQ } from "./components/FAQ";
 import { Call } from "./components/Call";
 import { Footer } from "./components/Footer";
+import { EditorPreview } from "./components/EditorPreview";
 
 function App() {
   const lenis = new Lenis({
@@ -24,6 +25,8 @@ function App() {
           <div className="h-200 border-b border-dashed border-neutral-800"></div>
           <div className="h-50 border-b border-dashed border-neutral-800"></div>
           <div className="h-400 border-b border-dashed border-neutral-800"></div>
+          <div className="h-screen border-b border-dashed border-neutral-800"></div>
+          <div className="h-100 border-b border-dashed border-neutral-800"></div>
         </div>
         {/* MAIN */}
         <div className="col-span-10">
@@ -32,6 +35,8 @@ function App() {
           <LessonPreview />
           <ProgressPreview />
           <FAQ />
+          <EditorPreview />
+          <Call />
           <Footer />
         </div>
         {/* RIGHT */}
@@ -41,6 +46,8 @@ function App() {
           <div className="h-200 border-b border-dashed border-neutral-800"></div>
           <div className="h-50 border-b border-dashed border-neutral-800"></div>
           <div className="h-400 border-b border-dashed border-neutral-800"></div>
+          <div className="h-screen border-b border-dashed border-neutral-800"></div>
+          <div className="h-100 border-b border-dashed border-neutral-800"></div>
         </div>
       </div>
     </>

@@ -1,12 +1,14 @@
 export const Navbar = () => {
   return (
-    <div className="col-span-10 w-full h-14 border-b fixed border-dashed border-neutral-800 grid grid-cols-12 font-[Geist] backdrop-blur-md ">
+    <div className="col-span-10 w-full h-14 border-b fixed border-dashed border-neutral-800 grid grid-cols-12 font-[Geist] backdrop-blur-md z-20 bg-black/10">
       <div className=" col-span-1 border-r border-dashed border-neutral-800"></div>
       {/* Main */}
       <div className="col-span-10 text-neutral-400 h-full">
         <div className="flex items-center justify-between h-full px-6">
           <ul className="flex items-center h-full gap-8 text-sm ">
-            <li className="text-neutral-100 font-bold ">BRIGHT LOGO</li>
+            <li className="text-neutral-100 flex items-center h-full font-[IBM_Plex_Mono] font-light text-xl border-r border-dashed border-neutral-800 pr-3">
+              Codelyn_
+            </li>
             <li>
               <a href="#">Profile</a>
             </li>
