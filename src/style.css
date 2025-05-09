@@ -15,6 +15,7 @@ body::-webkit-scrollbar-thumb {
 
 .scrollbar-custom::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 .scrollbar-custom::-webkit-scrollbar-track {
@@ -22,6 +23,20 @@ body::-webkit-scrollbar-thumb {
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 9999px;
+}
+
+.scrollbar-custom2::-webkit-scrollbar {
+  height: 6px;
+  width: 100%;
+}
+
+.scrollbar-custom2::-webkit-scrollbar-track {
+  background: #2e2e2e00;
+}
+
+.scrollbar-custom2::-webkit-scrollbar-thumb {
   background-color: #ffffff; /* Tailwind gray-400 */
   border-radius: 9999px;
 }

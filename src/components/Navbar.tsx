@@ -1,3 +1,5 @@
+import { NavLink } from "react-router";
+
 export const Navbar = () => {
   return (
     <div className="col-span-10 w-full h-14 border-b fixed border-dashed border-neutral-800 grid grid-cols-12 font-[Geist] backdrop-blur-md z-20 bg-black/10">
@@ -7,22 +9,22 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-full px-6">
           <ul className="flex items-center h-full gap-8 text-sm ">
             <li className="text-neutral-100 flex items-center h-full font-[IBM_Plex_Mono] font-light text-xl border-r border-dashed border-neutral-800 pr-3">
-              Codelyn_
+              <NavLink to="/">Codelyn_</NavLink>
             </li>
             <li>
-              <a href="#">Profile</a>
-            </li>
-            <li>
-              <a>My Dashboard</a>
-            </li>
-            <li>
-              <a>Lessons</a>
+              <NavLink to="/lessons">Lessons</NavLink>
             </li>
             <li>
               <a>Projects</a>
             </li>
             <li>
-              <a>Sandbox</a>
+              <NavLink to="/sandbox">Mini Sandbox</NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+            </li>
+            <li>
+              <a>Profile</a>
             </li>
             <li>
               <a>Help</a>
