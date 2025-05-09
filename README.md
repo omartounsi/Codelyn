@@ -1,54 +1,51 @@
-# React + TypeScript + Vite
+# Codelyn
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Codelyn is an interactive web development learning platform designed to help users master the fundamentals of web development through lessons, bonus content, and hands-on projects. The platform also includes a live coding sandbox for practicing and experimenting with code in real-time.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. **Lessons**
 
-## Expanding the ESLint configuration
+- Core lessons covering HTML, CSS, JavaScript, and the DOM.
+- Progress tracking for each lesson.
+- Interactive lesson cards that expand to show detailed descriptions and progress.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. **Bonus Lessons**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Optional lessons on advanced topics such as:
+  - Version control with Git and GitHub.
+  - Command-line usage.
+  - Syntactically Awesome Stylesheets (SASS).
+  - Tailwind CSS.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. **Projects**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Hands-on projects to test and apply your skills.
+- Each project includes a title, description, and a "Start Project" button.
+- Progress tracking for project completion.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### 4. **Interactive Coding Sandbox**
+
+- A live coding environment powered by Monaco Editor.
+- Features include:
+  - Real-time HTML preview.
+  - Custom dark theme for better focus.
+  - Reset functionality to clear the editor.
+
+### 5. **Responsive Design**
+
+- Built with Tailwind CSS for a modern and responsive user interface.
+
+### 6. **Progress Tracking**
+
+- Visual progress bars for lessons and projects to track your learning journey.
+
+## Tech Stack
+
+- **Frontend**: React, TypeScript.
+- **Styling**: Tailwind CSS.
+- **Editor**: Monaco Editor for the live coding sandbox.
+- **Build Tool**: Vite for fast development and build processes.
+- **Icons**: React Icons for visual elements.
+
+## File Structure
