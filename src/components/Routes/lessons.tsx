@@ -99,9 +99,9 @@ export const Lessons = () => {
         <div className="h-136 w-full flex flex-col justify-center  border-t border-black border-dashed border-b bg-neutral-100 text-neutral-800 gap-[5%]">
           {/* PROGRESS */}
           <div className="mx-auto flex flex-col">
-            <p className="mx-auto font-[IBM_Plex_Mono]">50%</p>
+            <p className="mx-auto font-[IBM_Plex_Mono] ">3/4 Completed</p>
             <div className="relative w-100 h-2 rounded-full bg-black overflow-hidden">
-              <div className="absolute h-2 w-[50%] bg-red-400"></div>
+              <div className="absolute h-2 w-[75%] bg-red-400"></div>
             </div>
           </div>
           <div className="flex justify-evenly">
@@ -211,11 +211,17 @@ const LessonCard = ({
 type ProjectType = {
   title: string;
   description: string;
+  completed: boolean;
 };
 
 const ProjectCard = ({ project }: { project: ProjectType }) => {
   return (
-    <div className="w-70 h-110 border border-neutral-600 border-dashed rounded-sm p-10 flex flex-col justify-evenly gap-1 select-none hover:scale-105 transition-all duration-300 ease-in-out will-change-transform">
+    <div
+      className={classNames(
+        "w-70 h-110 border border-neutral-600 border-dashed rounded-sm p-10 flex flex-col justify-evenly gap-1 select-none hover:scale-105 transition-all duration-300 ease-in-out will-change-transform",
+        project.completed ? "opacity-50" : "opacity-100"
+      )}
+    >
       <h1 className="text-4xl font-bold max-w-18==23 h-[250px]">
         {project.title}
       </h1>

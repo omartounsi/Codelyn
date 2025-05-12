@@ -13,6 +13,7 @@ import { Route, Routes } from "react-router";
 import { Dashboard } from "./components/Routes/dashboard";
 import { Sandbox } from "./components/Routes/sandbox";
 import { Lessons } from "./components/Routes/lessons";
+import { MainHTML } from "./components/Routes/HTML Lessons/mainHTML";
 
 function App() {
   const lenis = new Lenis({
@@ -63,6 +64,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/sandbox" element={<Sandbox />} />
         <Route path="/lessons" element={<Lessons />} />
+        <Route path="/lessons/html" element={<MainHTML />} />
       </Routes>
     </>
   );

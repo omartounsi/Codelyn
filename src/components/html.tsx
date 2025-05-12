@@ -3,7 +3,6 @@ export const Document = `<html lang="en">
     <title>Document</title>
     <!-- This is the styling of your document -->
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
       body, html{
         color: black;
         font-family: "Geist";
@@ -27,7 +26,7 @@ export const Document = `<html lang="en">
   <body>
     <!-- This is where your code goes -->
     <div class="container">
-      <p>Hello World!</p>
+      <p>Change Me</p>
     </div>
   </body>
 </html>
