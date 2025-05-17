@@ -1,7 +1,6 @@
 import { IoCode } from "react-icons/io5";
 import { IoCheckmark } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
-import Lenis from "lenis";
 
 const chapters = [
   { id: 1, title: "What is HTML?" },
@@ -16,9 +15,6 @@ const chapters = [
 ];
 
 export const LessonPreview = () => {
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
   return (
     <div className="h-200 max-w-full grid grid-cols-12 border-b border-dashed border-neutral-800">
       {/* LEFT */}

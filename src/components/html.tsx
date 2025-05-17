@@ -11,6 +11,7 @@ export const Document = `<html lang="en">
         overflow: hidden;
         padding: 0;
         margin: 0;
+        background: white;
       }
       .container{
         height: 100%;

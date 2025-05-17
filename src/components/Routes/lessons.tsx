@@ -11,6 +11,7 @@ import { lessons, bonusLessons } from "../lessons";
 import { projects } from "../projects";
 import classNames from "classnames";
 import { useState } from "react";
+import { Link, Outlet } from "react-router";
 
 export const Lessons = () => {
   const [activeCard, setActiveCard] = useState(1);
@@ -200,9 +201,11 @@ const LessonCard = ({
 
       {/* BUTTONS? */}
       <div className="flex items-center justify-center">
-        <button className="text-neutral-700 hover:text-neutral-200 sborder-neutral-800 font-bold transition-colors">
-          Continue
-        </button>
+        <Link to="/lessons/html">
+          <button className="text-neutral-700 hover:text-neutral-200 sborder-neutral-800 font-bold transition-colors">
+            Continue
+          </button>
+        </Link>
       </div>
     </div>
   );

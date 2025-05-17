@@ -9,16 +9,38 @@ import { FAQ } from "./components/FAQ";
 import { Call } from "./components/Call";
 import { Footer } from "./components/Footer";
 import { EditorPreview } from "./components/EditorPreview";
-import { Route, Routes } from "react-router";
+import { Route, Routes, useLocation } from "react-router";
 import { Dashboard } from "./components/Routes/dashboard";
 import { Sandbox } from "./components/Routes/sandbox";
 import { Lessons } from "./components/Routes/lessons";
 import { MainHTML } from "./components/Routes/HTML Lessons/mainHTML";
+import { HTMLLesson } from "./components/Routes/HTML Lessons/HTMLLesson";
+import { useEffect, useRef } from "react";
 
 function App() {
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
+  const location = useLocation();
+  const lenisRef = useRef<Lenis | null>(null);
+
+  useEffect(() => {
+    const isHome = location.pathname === "/";
+    if (isHome && !lenisRef.current) {
+      const lenis = new Lenis({ autoRaf: true });
+      lenisRef.current = lenis;
+
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    }
+
+    if (!isHome && lenisRef.current) {
+      lenisRef.current.destroy();
+      lenisRef.current = null;
+    }
+  }, [location.pathname]);
+
   return (
     <>
       <Navbar />
@@ -61,10 +83,12 @@ function App() {
             </div>
           }
         />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/sandbox" element={<Sandbox />} />
-        <Route path="/lessons" element={<Lessons />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="sandbox" element={<Sandbox />} />
+        <Route path="lessons" element={<Lessons />} />
+        {/* HTML */}
         <Route path="/lessons/html" element={<MainHTML />} />
+        <Route path="/lessons/html/:lessonId" element={<HTMLLesson />} />
       </Routes>
     </>
   );
