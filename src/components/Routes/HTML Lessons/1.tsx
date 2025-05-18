@@ -1,3 +1,6 @@
+import { NavButtons } from "../../tools/navbuttons";
+import { CodeElement } from "../../tools/codeelement";
+
 export const HTML1 = () => {
   return (
     <>
@@ -136,6 +139,10 @@ export const HTML1 = () => {
           elements come in pairs: opening and closing. Some are self-closing
           (like &lt;img /&gt;, but well cover those later).
         </p>
+        <p className="max-w-2xl text-xl font-light text-foreground  text-neutral-100">
+          <span className="font-medium  text-neutral-50 ">Exercice :</span> Try
+          replacing the blank in the editor with a few words.
+        </p>
 
         {/* TEST */}
         <h3 className="text-2xl leading-tight font-light tracking-tighter lg:leading-[1.1] text-white opacity-60 ">
@@ -211,25 +218,13 @@ export const HTML1 = () => {
             </div>
           </div>
         </div>
+
+        <h3 className="text-xl leading-tight font-light tracking-tighter text-white opacity-60 mb-2 italic">
+          Note: you can use the side arrows to navigate betwen the lessons
+        </h3>
+        {/* NEXT / PREV */}
+        <NavButtons />
       </div>
     </>
-  );
-};
-
-type CodeElementProps = {
-  codeString: string;
-  paragraphString?: string;
-};
-
-const CodeElement = ({ codeString, paragraphString }: CodeElementProps) => {
-  return (
-    <div className="flex flex-col justify-center border p-4 border-neutral-800 rounded-lg gap-1">
-      <code className="w-full h-auto py-1 px-3 border border-neutral-800 bg-neutral-800/40">
-        {codeString}
-      </code>
-      <p className="max-w-2xl text-xl font-light text-foreground  text-neutral-100 px-3">
-        {paragraphString}
-      </p>
-    </div>
   );
 };

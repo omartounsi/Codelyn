@@ -7,8 +7,8 @@ import { IoIosGitBranch } from "react-icons/io";
 import { FiGithub } from "react-icons/fi";
 import { RiTailwindCssFill } from "react-icons/ri";
 
-import { lessons, bonusLessons } from "../lessons";
-import { projects } from "../projects";
+import { lessons, bonusLessons } from "../tools/lessons";
+import { projects } from "../tools/projects";
 import classNames from "classnames";
 import { useState } from "react";
 import { Link, Outlet } from "react-router";
@@ -63,12 +63,12 @@ export const Lessons = () => {
             Bonus I
           </h1>
           <p className="max-w-2xl text-base font-light text-foreground sm:text-lg text-neutral-100">
-            These next lessons are optional. You can choose to do them or not.
-            They are not required for the course. However, they will help you
-            understand the concepts better. You will learn versin control with
-            Git and GitHub, how to use the command line. You will also learn
-            Syntactically Awesome Style Sheets (SASS) and how to use it to style
-            your HTML.
+            These next lessons are optional, they are not required for the
+            course. However, they will help you understand the concepts better.
+            You will learn version control with Git and GitHub, how to use the
+            command line. You will also learn Syntactically Awesome Style Sheets
+            (SASS) and how to use it to style your HTML in a faster / more
+            efficient way. Or you can learn the alternative, Tailwind CSS
           </p>
         </div>
 

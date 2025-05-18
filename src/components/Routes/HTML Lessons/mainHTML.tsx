@@ -34,20 +34,6 @@ export const MainHTML = () => {
             </h1>
             {/* CHAPTERS */}
             <div className="flex flex-col gap-2 h-full">
-              {/* 1 CHAPTER */}
-              {/* <div className="border border-neutral-600 flex items-center gap-2 px-4 min-h-16 rounded-xl mt-3 hover:scale-105 transition-transform duration-300">
-                <div className="h-7 w-7 bg-white rounded-full flex items-center justify-center text-black">
-                  <IoCheckmark />
-                </div>
-                <p className="max-w-2xl  font-light text-foreground text-neutral-300">
-                  {" "}
-                  What is the Internet?
-                </p>
-                <div className="ml-auto">
-                  <BsThreeDots />
-                </div>
-              </div> */}
-
               {chapters.map((chapter) => (
                 <div
                   onClick={() => navigate(`/lessons/html/${chapter.id}`)}

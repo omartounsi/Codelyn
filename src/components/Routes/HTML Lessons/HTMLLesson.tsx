@@ -3,37 +3,9 @@ import type * as monaco from "monaco-editor";
 import { useParams } from "react-router";
 import { useEffect, useRef, useState } from "react";
 import { HTML1 } from "./1";
-
-// LESSONS
-
-const defaultHtmls = [
-  `
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Learning HTML</title>
-  </head>
-  <body>
-    <h2>Welcome to My Webpage</h2>
-    <p>My name is ____, and this is my first HTML lesson</p>
-  </body>
-</html>`,
-  // 2
-  `<!DOCTYPE html>
-<html>
-  <head>
-    <title>Learning HTML</title>
-  </head>
-  <body>
-    <h2>NUMBER2</h2>
-    <p>NUMBER2</p>
-  </body>
-</html>`,
-];
-
-for (let i = 0; i < defaultHtmls.length; i++) {
-  defaultHtmls[i] = defaultHtmls[i].trim();
-}
+import { HTML2 } from "./2";
+import { defaultHtmls } from "../../tools/defaulthtmls";
+import { HTML3 } from "./3";
 
 export const HTMLLesson = () => {
   const id = useParams();
@@ -47,10 +19,27 @@ export const HTMLLesson = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const rightPaneRef = useRef<HTMLDivElement>(null);
+
   function handleChange(value: string) {
     setHtml(value);
     console.log(html);
   }
+
+  // SCROLL TO TOP AND FOCUS ON ROUTE
+  useEffect(() => {
+    rightPaneRef.current?.scrollTo({ top: 0, behavior: "auto" });
+    rightPaneRef.current?.focus();
+  }, [id.lessonId]);
+
+  // UOADATE EDITOR ON ROUTING CHANGE
+  useEffect(() => {
+    setHtml(defaultHtmls[lessonIndex]);
+    if (editorRef.current) {
+      editorRef.current.setValue(defaultHtmls[lessonIndex]);
+    }
+  }, [lessonIndex]);
+
   //DEBOUNCE FUNCTION
   useEffect(() => {
     if (!iframeRef.current) return;
@@ -102,7 +91,7 @@ export const HTMLLesson = () => {
         <div className="row-span-11 relative">
           <iframe
             ref={iframeRef}
-            sandbox="allow-scripts"
+            sandbox=" allow-scripts"
             className={`w-full h-full absolute inset-0  ${
               activeTab === 0 ? "z-10 bg-white" : "z-0"
             }`}
@@ -226,7 +215,8 @@ export const HTMLLesson = () => {
       </div>
       {/* RIGHT */}
       <div
-        className="scrollbar-custom col-span-6 border border-dashed border-neutral-600 h-auto w-full overflow-y-scroll p-14 flex flex-col gap-10 "
+        ref={rightPaneRef}
+        className="scrollbar-custom col-span-6 border border-dashed border-neutral-600 h-auto w-full overflow-y-scroll p-14 flex flex-col gap-10 relative focus:outline-0"
         style={{
           backgroundColor: "#09090b",
           backgroundImage: `
@@ -236,7 +226,15 @@ export const HTMLLesson = () => {
           backgroundSize: "20px 20px",
         }}
       >
-        {id.lessonId === "1" ? <HTML1 /> : <>hello</>}
+        {id.lessonId === "1" ? (
+          <HTML1 />
+        ) : id.lessonId === "2" ? (
+          <HTML2 />
+        ) : id.lessonId === "3" ? (
+          <HTML3 />
+        ) : (
+          <>Not Found</>
+        )}
       </div>
     </div>
   );
