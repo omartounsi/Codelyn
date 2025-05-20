@@ -32,7 +32,7 @@ export const Navbar = () => {
           </ul>
           <div className="flex gap-2 text-[14px]">
             <button className="bg-neutral-100 text-neutral-700 h-8 px-4 py-1 rounded-full">
-              Sign Up
+              <NavLink to="/register">Sign Up</NavLink>
             </button>
             <button className=" text-neutral-400 h-8 px-2 py-1 rounded-full border-neutral-600 ">
               Log In

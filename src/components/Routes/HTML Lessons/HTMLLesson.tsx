@@ -98,7 +98,7 @@ export const HTMLLesson = () => {
           ></iframe>
 
           <div
-            className={`w-full h-full absolute inset-0  ${
+            className={`w-full h-full absolute inset-0 bg-zinc-950 ${
               activeTab === 1 ? "z-10" : "z-0"
             }`}
           >
@@ -149,7 +149,7 @@ export const HTMLLesson = () => {
                     // HTML
                     { token: "tag", foreground: "#9DC08B" },
                     { token: "keyword.control.html", foreground: "#ffffff" },
-                    { token: "attribute.name", foreground: "#ffffff" },
+                    { token: "attribute.name", foreground: "#ffde70" },
                     { token: "attribute.value", foreground: "#ffffff" },
 
                     //css

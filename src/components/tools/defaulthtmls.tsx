@@ -35,8 +35,12 @@ export const defaultHtmls = [
     <title>Learning HTML</title>
   </head>
   <body>
+    <!-- your code goes here -->
     <p>Hello, below me is a link</p>
     <a href="#" target="_blank">I'm a link</a>
+
+    <!-- add the image below this  -->
+    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfExcN4DTdnCBDZxauDDs8wBG3oT4KuQiEwg&s' alt='An image of a cat'>
   </body>
 </html>
 `,
