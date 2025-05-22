@@ -1,6 +1,12 @@
 import { NavLink } from "react-router";
+import { useAuth } from "../context/AuthContext";
 
 export const Navbar = () => {
+  const { user, isAuthenticated, logout } = useAuth();
+  const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    logout();
+  };
   return (
     <div className="col-span-10 w-full h-14 border-b fixed border-dashed border-neutral-800 grid grid-cols-12 font-[Geist] backdrop-blur-md z-20 bg-black/10">
       <div className=" col-span-1 border-r border-dashed border-neutral-800"></div>
@@ -30,14 +36,29 @@ export const Navbar = () => {
               <a>Help</a>
             </li>
           </ul>
-          <div className="flex gap-2 text-[14px]">
-            <button className="bg-neutral-100 text-neutral-700 h-8 px-4 py-1 rounded-full">
-              <NavLink to="/register">Sign Up</NavLink>
-            </button>
-            <button className=" text-neutral-400 h-8 px-2 py-1 rounded-full border-neutral-600 ">
-              Log In
-            </button>
-          </div>
+          {!isAuthenticated ? (
+            <div className="flex gap-2 text-[14px]">
+              <button className="bg-neutral-100 text-neutral-700 h-8 px-4 py-1 rounded-full">
+                <NavLink to="/register">Sign Up</NavLink>
+              </button>
+              <button className=" text-neutral-400 h-8 px-2 py-1 rounded-full border-neutral-600 ">
+                <NavLink to="/login">Login</NavLink>
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-10 text-[14px]">
+              <p>
+                Hello,{" "}
+                <span className="text-neutral-200">{user?.first_name}</span>{" "}
+              </p>
+              <button
+                className="bg-neutral-100 text-neutral-700 h-8 px-4 py-1 rounded-full cursor-pointer"
+                onClick={(e) => handleLogout(e)}
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
       {/* .... */}

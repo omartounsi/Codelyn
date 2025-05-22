@@ -11,7 +11,7 @@ import { lessons, bonusLessons } from "../tools/lessons";
 import { projects } from "../tools/projects";
 import classNames from "classnames";
 import { useState } from "react";
-import { Link, Outlet } from "react-router";
+import { Link } from "react-router-dom";
 
 export const Lessons = () => {
   const [activeCard, setActiveCard] = useState(1);
@@ -145,6 +145,7 @@ const LessonCard = ({
 }: lessonCardProps) => {
   return (
     <div
+      key={lesson.id}
       onClick={() => handleCardClick(lesson.id)}
       className={classNames(
         "border border-neutral-800 rounded-xl flex flex-col justify-center gap-6 p-10 hover:scale-105 transition-all duration-300 ease-in-out will-change-transform cursor-pointer",
@@ -220,6 +221,7 @@ type ProjectType = {
 const ProjectCard = ({ project }: { project: ProjectType }) => {
   return (
     <div
+      key={project.title}
       className={classNames(
         "w-70 h-110 border border-neutral-600 border-dashed rounded-sm p-10 flex flex-col justify-evenly gap-1 select-none hover:scale-105 transition-all duration-300 ease-in-out will-change-transform",
         project.completed ? "opacity-50" : "opacity-100"

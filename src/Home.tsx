@@ -6,8 +6,33 @@ import { FAQ } from "./components/FAQ";
 import { Call } from "./components/Call";
 import { Footer } from "./components/Footer";
 import { EditorPreview } from "./components/EditorPreview";
+// import { useEffect, useRef } from "react";
+// import Lenis from "lenis";
+// import { useLocation } from "react-router";
 
 const Home = () => {
+  // const location = useLocation();
+  // const lenisRef = useRef<Lenis | null>(null);
+
+  // useEffect(() => {
+  //   const isHome = location.pathname === "/";
+  //   if (isHome && !lenisRef.current) {
+  //     const lenis = new Lenis({ autoRaf: true });
+  //     lenisRef.current = lenis;
+
+  //     function raf(time: number) {
+  //       lenis.raf(time);
+  //       requestAnimationFrame(raf);
+  //     }
+
+  //     requestAnimationFrame(raf);
+  //   }
+
+  //   if (!isHome && lenisRef.current) {
+  //     lenisRef.current.destroy();
+  //     lenisRef.current = null;
+  //   }
+  // }, [location.pathname]);
   return (
     <div className="h-auto w-full bg-zinc-950 grid font-[Geist] grid-cols-12 text-neutral-300 pt-14 scrollbar-custom">
       {/* LEFT */}
