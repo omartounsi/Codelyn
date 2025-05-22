@@ -1,51 +1,76 @@
-# Codelyn
+# Codelyn - Interactive Web Development Learning Platform
 
-Codelyn is an interactive web development learning platform designed to help users master the fundamentals of web development through lessons, bonus content, and hands-on projects. The platform also includes a live coding sandbox for practicing and experimenting with code in real-time.
+## Overview
 
-## Features
+Codelyn is an immersive platform designed to help aspiring developers master web development through structured lessons, interactive projects, and a real-time coding environment. With a focus on hands-on learning, Codelyn provides a comprehensive path from beginner to proficient web developer.
 
-### 1. **Lessons**
+## Key Features
 
-- Core lessons covering HTML, CSS, JavaScript, and the DOM.
-- Progress tracking for each lesson.
-- Interactive lesson cards that expand to show detailed descriptions and progress.
+### 1. **User Authentication System**
 
-### 2. **Bonus Lessons**
+- Secure registration and login with JWT-based authentication
+- Persistent sessions with localStorage token management
+- Protected routes for authenticated content
+- Form validation with helpful error messages
 
-- Optional lessons on advanced topics such as:
-  - Version control with Git and GitHub.
-  - Command-line usage.
-  - Syntactically Awesome Stylesheets (SASS).
-  - Tailwind CSS.
+### 2. **Structured Learning Path**
 
-### 3. **Projects**
+- **Core Lessons**: Progressive modules covering HTML, CSS, JavaScript, and DOM manipulation
+- **Bonus Content**: Advanced topics including Git, command-line usage, SASS, and Tailwind CSS
+- **Progress Tracking**: Visual indicators showing completion status across all learning materials
 
-- Hands-on projects to test and apply your skills.
-- Each project includes a title, description, and a "Start Project" button.
-- Progress tracking for project completion.
+### 3. **Interactive Projects**
 
-### 4. **Interactive Coding Sandbox**
+- Hands-on projects that reinforce lesson concepts
+- Real-world applications to build practical skills
+- Project-specific guidance and requirements
 
-- A live coding environment powered by Monaco Editor.
-- Features include:
-  - Real-time HTML preview.
-  - Custom dark theme for better focus.
-  - Reset functionality to clear the editor.
+### 4. **Live Coding Environment**
 
-### 5. **Responsive Design**
+- Built-in code editor powered by Monaco Editor (same engine as VS Code)
+- Real-time preview of HTML, CSS, and JavaScript code
+- Custom dark theme for reduced eye strain during extended coding sessions
+- Code reset functionality for experimentation
 
-- Built with Tailwind CSS for a modern and responsive user interface.
+### 5. **Modern UI/UX**
 
-### 6. **Progress Tracking**
+- Responsive design that works across devices
+- Custom grid layouts with Tailwind CSS
+- Subtle animations and transitions for an engaging experience
+- Accessibility-focused interface elements
 
-- Visual progress bars for lessons and projects to track your learning journey.
+## Technical Architecture
 
-## Tech Stack
+### Frontend
 
-- **Frontend**: React, TypeScript.
-- **Styling**: Tailwind CSS.
-- **Editor**: Monaco Editor for the live coding sandbox.
-- **Build Tool**: Vite for fast development and build processes.
-- **Icons**: React Icons for visual elements.
+- **Framework**: React with TypeScript
+- **Routing**: React Router with protected routes
+- **State Management**: Context API for global state (authentication, user data)
+- **Styling**: Tailwind CSS with custom configurations
+- **Code Editor**: Monaco Editor integration
 
-## File Structure
+### Backend
+
+- **Server**: Node.js with Express
+- **Database**: MongoDB with Mongoose ODM
+- **Authentication**: JWT token generation and verification
+- **API**: RESTful endpoints with proper error handling
+
+### Security Features
+
+- Password hashing with bcrypt
+- Token-based authentication flow
+- Input validation and sanitization
+- Secure HTTP-only cookies option
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Set up environment variables
+4. Start the development server with `npm run dev`
+5. Visit `http://localhost:5173` in your browser
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
