@@ -57,7 +57,7 @@ const Home = () => {
         <Footer />
       </div>
       {/* RIGHT */}
-      <div className="col-span-1 border-l border-dashed border-neutral-800">
+      <div className="col-span-1 border-l border-dashed  border-neutral-800">
         <div className="h-72 border-b border-dashed border-neutral-800"></div>
         <div className="h-14 border-b border-dashed border-neutral-800"></div>
         <div className="h-200 border-b border-dashed border-neutral-800"></div>

@@ -93,105 +93,107 @@ export const Register = () => {
       }}
       className="h-screen w-full bg-zinc-950 flex flex-col items-center justify-center text-white"
     >
-      <div className="h-10 w-10 mb-3">
-        <NavLink to="/">
-          <IoReturnUpBack className="border h-10 w-10 rounded-full text-4xl  p-1.5 border-neutral-500 text-neutral-300 opacity-40 hover:scale-110 hover:opacity-100 transition-all will-change-transform" />
-        </NavLink>
-      </div>
-      <div className="h-120 w-200 grid grid-cols-3 gap-1">
-        <div className="col-span-1 w-full h-full flex items-center justify-center flex-col rounded-lg bg-white">
+      <div className="h-130 w-200 flex flex-col">
+        <div className="h-10 w-10 mb-3">
+          <NavLink to="/">
+            <IoReturnUpBack className="border h-10 w-10 rounded-full text-4xl p-1.5 border-neutral-500 text-neutral-300 opacity-40 hover:scale-110 hover:opacity-100 transition-all will-change-transform" />
+          </NavLink>
+        </div>
+        <div className="h-120 w-200 grid grid-cols-3 gap-1">
+          <div className="col-span-1 w-full h-full flex items-center justify-center flex-col rounded-lg bg-white">
+            <div
+              style={{
+                boxShadow: "1px 1px 10px rgb(0,0,0,0.5)",
+              }}
+              className="w-24 h-24 rounded-full bg-black flex items-center justify-center text-[48px] opacity-80 hover:scale-110 transition-transform will-change-transform duration-300"
+            >
+              <IoCode />
+            </div>
+          </div>
+
+          {/* RIGHT */}
           <div
             style={{
-              boxShadow: "1px 1px 10px rgb(0,0,0,0.5)",
+              backdropFilter: "blur(2px)",
             }}
-            className="w-24 h-24 rounded-full bg-black flex items-center justify-center text-[48px] opacity-80 hover:scale-110 transition-transform will-change-transform duration-300"
+            className=" col-span-2 rounded-lg flex flex-col gap-6 bg-neutral-900/20 border border-neutral-800 p-8 "
           >
-            <IoCode />
-          </div>
-        </div>
-
-        {/* RIGHT */}
-        <div
-          style={{
-            backdropFilter: "blur(2px)",
-          }}
-          className=" col-span-2 rounded-lg flex flex-col gap-6 bg-neutral-900/20 border border-neutral-800 p-8 "
-        >
-          <h1 className="text-5xl font-bold leading-tight tracking-tighter text-neutral-50">
-            Sign up
-          </h1>
-          <div className="form flex flex-col gap-2 items-start">
-            <div className="flex justify-around gap-1">
-              <input
-                onChange={(e) => setFirstName(e.target.value)}
-                type="text"
-                placeholder="First Name"
-                className="border border-neutral-800 rounded-lg h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all"
-              />
-              <input
-                onChange={(e) => setLastName(e.target.value)}
-                type="text"
-                placeholder="Last Name"
-                className="border border-neutral-800 rounded-lg h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all"
-              />
-            </div>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              type="text"
-              placeholder="Enter your address"
-              className="border border-neutral-800 rounded-lg h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all w-full"
-            />
-            <div className="relative w-full focus-within:scale-105 transition-all will-change-transform">
-              <input
-                onChange={(e) => setPassword(e.target.value)}
-                type={showPassword ? "text" : "password"}
-                value={password}
-                placeholder="Enter your Password"
-                className="border border-neutral-800 rounded-lg h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 w-full"
-              />
-              <div
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-1/2 right-4 -translate-y-1/2 text-neutral-500/50 text-xl w-6 h-6 flex items-center cursor-pointer"
-              >
-                {!showPassword ? <FaEyeSlash /> : <FaEye />}
+            <h1 className="text-5xl font-bold leading-tight tracking-tighter text-neutral-50">
+              Sign up
+            </h1>
+            <div className="form flex flex-col gap-2 items-start">
+              <div className="flex justify-around gap-1">
+                <input
+                  onChange={(e) => setFirstName(e.target.value)}
+                  type="text"
+                  placeholder="First Name"
+                  className="border border-neutral-800 rounded-lg h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all"
+                />
+                <input
+                  onChange={(e) => setLastName(e.target.value)}
+                  type="text"
+                  placeholder="Last Name"
+                  className="border border-neutral-800 rounded-lg h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all"
+                />
               </div>
-            </div>
-            <p
-              onClick={suggestPassword}
-              className="text-md text-neutral-700 font-[Quicksand] hover:underline hover:text-neutral-400 transition-all cursor-pointer w-auto"
-            >
-              Suggest password?
-            </p>
-            {error && (
-              <div className="flex items-center gap-1 text-md  h-auto w-full">
-                <p className="px-2 rounded-sm bg-neutral-200 text-neutral-900 text-nowrap">
-                  Sign up error
-                </p>
-                <div className="flex flex-col">
-                  {error.split(". ").map((err) => (
-                    <div className="text-neutral-400 italic">- {err}</div>
-                  ))}
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                placeholder="Enter your address"
+                className="border border-neutral-800 rounded-lg h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all w-full"
+              />
+              <div className="relative w-full focus-within:scale-105 transition-all will-change-transform">
+                <input
+                  onChange={(e) => setPassword(e.target.value)}
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  placeholder="Enter your Password"
+                  className="border border-neutral-800 rounded-lg h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 w-full"
+                />
+                <div
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-1/2 right-4 -translate-y-1/2 text-neutral-500/50 text-xl w-6 h-6 flex items-center cursor-pointer"
+                >
+                  {!showPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
               </div>
-            )}
-            <p
-              onClick={handleSubmit}
-              className="font-[Geist] text-lg text-neutral-800 bg-neutral-200 cursor-pointer hover:text-neutral-300 hover:bg-zinc-950/20 transition-all font-light border border-neutral-400 w-auto px-6 py-2 rounded-full mx-auto  "
-            >
-              Create Account
-            </p>
-          </div>
-          <div className="flex justify-evenly items-center">
-            <div className="h-[1px] w-[100%] bg-neutral-600"></div>
-            <p className="mx-2 font-[Quicksand] text-neutral-600">OR</p>
-            <div className="h-[1px] w-[100%] bg-neutral-600"></div>
-          </div>
-          <div className="flex justify-center gap-2 h-14">
-            <div className="border border-neutral-600 text-neutral-100 w-14 h-14 flex items-center justify-center text-3xl opacity-40 rounded-sm hover:opacity-100 transition-all cursor-pointer">
-              <FaGoogle />
+              <p
+                onClick={suggestPassword}
+                className="text-md text-neutral-700 font-[Quicksand] hover:underline hover:text-neutral-400 transition-all cursor-pointer w-auto"
+              >
+                Suggest password?
+              </p>
+              {error && (
+                <div className="flex items-center gap-1 text-md  h-auto w-full">
+                  <p className="px-2 rounded-sm bg-neutral-200 text-neutral-900 text-nowrap">
+                    Sign up error
+                  </p>
+                  <div className="flex flex-col">
+                    {error.split(". ").map((err) => (
+                      <div className="text-neutral-400 italic">- {err}</div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <p
+                onClick={handleSubmit}
+                className="font-[Geist] text-lg text-neutral-800 bg-neutral-200 cursor-pointer hover:text-neutral-300 hover:bg-zinc-950/20 transition-all font-light border border-neutral-400 w-auto px-6 py-2 rounded-full mx-auto  "
+              >
+                Create Account
+              </p>
             </div>
-            <div className="border border-neutral-600 text-neutral-100 w-14 h-14 flex items-center justify-center text-3xl opacity-40 rounded-sm hover:opacity-100 transition-all cursor-pointer">
-              <FaGithub />
+            <div className="flex justify-evenly items-center">
+              <div className="h-[1px] w-[100%] bg-neutral-600"></div>
+              <p className="mx-2 font-[Quicksand] text-neutral-600">OR</p>
+              <div className="h-[1px] w-[100%] bg-neutral-600"></div>
+            </div>
+            <div className="flex justify-center gap-2 h-14">
+              <div className="border border-neutral-600 text-neutral-100 w-14 h-14 flex items-center justify-center text-3xl opacity-40 rounded-sm hover:opacity-100 transition-all cursor-pointer">
+                <FaGoogle />
+              </div>
+              <div className="border border-neutral-600 text-neutral-100 w-14 h-14 flex items-center justify-center text-3xl opacity-40 rounded-sm hover:opacity-100 transition-all cursor-pointer">
+                <FaGithub />
+              </div>
             </div>
           </div>
         </div>

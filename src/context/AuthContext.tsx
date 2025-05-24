@@ -14,9 +14,10 @@ type User = {
   last_name: string;
   email: string;
   role: string;
+  isSubscribed: boolean;
 };
 
-type AuthConextType = {
+type AuthContextType = {
   user: User | null;
   token: string | null;
   isAuthenticated: boolean;
@@ -31,7 +32,19 @@ type AuthConextType = {
   logout: () => void;
 };
 
-const AuthContext = createContext<AuthConextType | null>(null);
+const AuthContext = createContext<AuthContextType>({
+  user: null,
+  token: null,
+  isAuthenticated: false,
+  loading: true,
+  login: async () => {
+    throw new Error("ERROR");
+  },
+  register: async () => {
+    throw new Error("ERROR");
+  },
+  logout: () => {},
+});
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -77,6 +90,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       try {
         const res = await axios.get("/auth/verify");
         setUser(res.data.user);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         setIsAuthenticated(true); //logged - user data loaded
       } catch (err) {
         console.error("Token validation failed:", err);
@@ -126,8 +140,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setToken(res.data.token);
       setUser(res.data.user);
       setIsAuthenticated(true);
-    } catch (err) {
-      throw new Error("LOGIN FAILED");
+    } catch (err: any) {
+      const message = err.response?.data?.message || "Login failed";
+      throw new Error(message);
     }
   };
 

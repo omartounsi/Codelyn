@@ -11,7 +11,6 @@ export const Sandbox = () => {
 
   function handleChange(value: string) {
     setHtml(value);
-    console.log(html);
   }
   //DEBOUNCE FUNCTION
   useEffect(() => {
@@ -169,6 +168,7 @@ export const Sandbox = () => {
         <iframe
           ref={iframeRef}
           srcDoc={Document}
+          sandbox="no-script"
           className="w-full h-full "
         ></iframe>
       </div>

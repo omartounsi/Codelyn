@@ -12,6 +12,8 @@ import { Register } from "./Register";
 import { Login } from "./Login";
 import { useAuth } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/tools/protectedroute";
+import { LoadingModal } from "./components/tools/loadingmodal";
+import { Contact } from "./components/Routes/Contact";
 
 function MainLayout() {
   return (
@@ -25,12 +27,13 @@ function MainLayout() {
 function App() {
   const { loading } = useAuth();
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <LoadingModal />;
   return (
     <>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
           <Route
             path="dashboard"
             element={
