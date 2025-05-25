@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { ResponsivePie } from "@nivo/pie";
 import axios from "axios";
-import { LoadingModal } from "../tools/loadingmodal";
 import { LoadingSpinner } from "../tools/loadingspinner";
 
 const adminTabs = [
@@ -188,7 +187,11 @@ const Overview = () => {
           <MyPie data={data} />
         </div>
       </div>
-      <div className="row-span-1 border ">Recent Activities</div>
+      <div className="row-span-1 p-6 border rounded-xl border-neutral-800 bg-zinc-950">
+        <h3 className="text-3xl font-[Geist] font-bold leading-tight tracking-tighter  text-neutral-200">
+          Recent Activities:
+        </h3>
+      </div>
       <div className="col-span-2 row-span-1 border ">Some charts</div>
       {/* NEW ACCOUNTS */}
       <div className="col-span-3 row-span-1 p-6 border rounded-xl bg-zinc-950 border-neutral-800">

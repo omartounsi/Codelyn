@@ -6,65 +6,58 @@ import { FAQ } from "./components/FAQ";
 import { Call } from "./components/Call";
 import { Footer } from "./components/Footer";
 import { EditorPreview } from "./components/EditorPreview";
-// import { useEffect, useRef } from "react";
-// import Lenis from "lenis";
-// import { useLocation } from "react-router";
 
 const Home = () => {
-  // const location = useLocation();
-  // const lenisRef = useRef<Lenis | null>(null);
-
-  // useEffect(() => {
-  //   const isHome = location.pathname === "/";
-  //   if (isHome && !lenisRef.current) {
-  //     const lenis = new Lenis({ autoRaf: true });
-  //     lenisRef.current = lenis;
-
-  //     function raf(time: number) {
-  //       lenis.raf(time);
-  //       requestAnimationFrame(raf);
-  //     }
-
-  //     requestAnimationFrame(raf);
-  //   }
-
-  //   if (!isHome && lenisRef.current) {
-  //     lenisRef.current.destroy();
-  //     lenisRef.current = null;
-  //   }
-  // }, [location.pathname]);
   return (
-    <div className="h-auto w-full bg-zinc-950 grid font-[Geist] grid-cols-12 text-neutral-300 pt-14 scrollbar-custom">
+    <div
+      // style={{
+      //   backgroundColor: "",
+      //   backgroundImage: `
+      // linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      // linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
+      //   backgroundSize: "200px 200px",
+      // }}
+      className="h-auto w-full pb-10 bg-slate-900 grid font-[Geist] grid-cols-12 text-neutral-300 pt-14 scrollbar-custom"
+    >
       {/* LEFT */}
-      <div className="col-span-1 border-r border-neutral-800 border-dashed">
-        <div className="h-72 border-b border-dashed border-neutral-800"></div>
-        <div className="h-14 border-b border-dashed border-neutral-800"></div>
-        <div className="h-200 border-b border-dashed border-neutral-800"></div>
-        <div className="h-50 border-b border-dashed border-neutral-800"></div>
-        <div className="h-400 border-b border-dashed border-neutral-800"></div>
+      <div className="col-span-1 border-r border-dashed border-neutral-800">
+        {/* <div className="border-b border-dashed h-72 border-neutral-800"></div>
+        <div className="border-b border-dashed h-14 border-neutral-800"></div>
+        <div className="border-b border-dashed h-200 border-neutral-800"></div>
+        <div className="border-b border-dashed h-50 border-neutral-800"></div>
+        <div className="border-b border-dashed h-400 border-neutral-800"></div>
         <div className="h-screen border-b border-dashed border-neutral-800"></div>
-        <div className="h-100 border-b border-dashed border-neutral-800"></div>
+        <div className="border-b border-dashed h-100 border-neutral-800"></div> */}
       </div>
       {/* MAIN */}
-      <div className="col-span-10">
-        <Hero />
-        <LessonsNav />
+      <div className="col-span-10 border-l border-r border-slate-800">
+        <div className="p-6 border-neutral-200/20">
+          <Hero />
+        </div>
+        <div className="px-6">
+          <LessonsNav />
+        </div>
         <LessonPreview />
-        <ProgressPreview />
-        <FAQ />
-        <EditorPreview />
+        <div className="p-6">{/* <EditorPreview /> */}</div>
+        <div className="p-6">
+          <ProgressPreview />
+        </div>
+        <div className="p-6 border-neutral-200/20">
+          <FAQ />
+        </div>
+
         <Call />
         <Footer />
       </div>
       {/* RIGHT */}
-      <div className="col-span-1 border-l border-dashed  border-neutral-800">
-        <div className="h-72 border-b border-dashed border-neutral-800"></div>
-        <div className="h-14 border-b border-dashed border-neutral-800"></div>
-        <div className="h-200 border-b border-dashed border-neutral-800"></div>
-        <div className="h-50 border-b border-dashed border-neutral-800"></div>
-        <div className="h-400 border-b border-dashed border-neutral-800"></div>
+      <div className="col-span-1 border-l border-dashed border-neutral-800">
+        {/* <div className="border-b border-dashed h-72 border-neutral-800"></div>
+        <div className="border-b border-dashed h-14 border-neutral-800"></div>
+        <div className="border-b border-dashed h-200 border-neutral-800"></div>
+        <div className="border-b border-dashed h-50 border-neutral-800"></div>
+        <div className="border-b border-dashed h-400 border-neutral-800"></div>
         <div className="h-screen border-b border-dashed border-neutral-800"></div>
-        <div className="h-100 border-b border-dashed border-neutral-800"></div>
+        <div className="border-b border-dashed h-100 border-neutral-800"></div> */}
       </div>
     </div>
   );

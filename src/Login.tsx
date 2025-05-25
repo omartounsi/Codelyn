@@ -161,7 +161,7 @@ export const Login = () => {
 
 const ErrorToast = () => {
   return (
-    <div className="absolute w-40 h-40 bg-zinc-900/15">
+    <div className="absolute w-40 h-40">
       <ToastContainer
         position="top-right"
         autoClose={5000}

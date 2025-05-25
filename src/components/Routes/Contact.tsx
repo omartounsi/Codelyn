@@ -61,9 +61,9 @@ export const Contact = () => {
       linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)`,
         backgroundSize: "20px 20px",
       }}
-      className="h-screen w-full bg-zinc-950 grid place-content-center text-white"
+      className="grid w-full h-screen text-white bg-zinc-950 place-content-center"
     >
-      <div className="absolute h-40 w-40 bg-zinc-900/15">
+      <div className="absolute w-40 h-40">
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -77,7 +77,7 @@ export const Contact = () => {
           theme="dark"
         />
       </div>
-      <div className="h-10 w-10 mb-3">
+      <div className="w-10 h-10 mb-3">
         <NavLink to="/">
           <IoReturnUpBack className="border h-10 w-10 rounded-full text-4xl  p-1.5 border-neutral-500 text-neutral-300 opacity-40 hover:scale-110 hover:opacity-100 transition-all will-change-transform" />
         </NavLink>
@@ -86,14 +86,14 @@ export const Contact = () => {
         style={{
           backdropFilter: "blur(2px)",
         }}
-        className="h-140 w-140 border border-neutral-800 rounded-xl flex flex-col p-8"
+        className="flex flex-col p-8 border h-140 w-140 border-neutral-800 rounded-xl"
       >
         <h1 className="text-5xl font-bold leading-tight tracking-tighter text-neutral-50">
           Contact
         </h1>
         <form
           ref={formRef}
-          className="flex flex-col w-full h-full mt-2 gap-1"
+          className="flex flex-col w-full h-full gap-1 mt-2"
           onSubmit={handleSubmit}
         >
           <input
@@ -125,7 +125,7 @@ export const Contact = () => {
               className="border border-neutral-800 rounded-lg h-12 w-full px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all"
             />
           </div>
-          <div className="relative w-full h-full focus-within:scale-105 transition-all">
+          <div className="relative w-full h-full transition-all focus-within:scale-105">
             <textarea
               onChange={(e) => setMessage(e.target.value)}
               value={message}
@@ -136,7 +136,7 @@ export const Contact = () => {
             ></textarea>
             <button
               type="submit"
-              className="h-10 w-10 mt-3 flex items-center justify-center absolute right-4 bottom-4"
+              className="absolute flex items-center justify-center w-10 h-10 mt-3 right-4 bottom-4"
             >
               <IoIosSend className="border h-10 w-10 rounded-full text-4xl p-1.5 border-neutral-500 text-neutral-300 opacity-40 hover:scale-110 hover:opacity-100 transition-all will-change-transform" />
             </button>

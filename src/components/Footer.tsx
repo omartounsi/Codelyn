@@ -5,60 +5,63 @@ import { FaLinkedin } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <div className="w-full h-100 grid grid-cols-12 border-b border-dashed border-neutral-800">
+    <div className="grid w-full grid-cols-12 gap-2 px-4 h-110">
       {/* COL 1 */}
-      <div className="col-span-3 border-r border-dashed border-neutral-800 flex flex-col px-10 py-10 ">
-        <span className="font-[IBM_Plex_Mono] font-light text-xl m">
+      <div
+        style={{}}
+        className="flex flex-col col-span-3 p-10 border h-[90%] w-full  mx-auto my-auto rounded-xl justify-evenly border-neutral-100/30"
+      >
+        <span className="font-[IBM_Plex_Mono] font-light text-4xl">
           Codelyn_
         </span>
-        <p className="text-sm font-light text-foreground  text-neutral-500 mt-4 ">
+        <p className="mt-4 text-sm font-light max-w-50 text-foreground text-neutral-300">
           A hands-on learning platform designed to teach you the fundamentals of
           web development from the ground up. Whether you're just starting out
           or brushing up on the basics, our interactive lessons, live code
           editor, and real-time feedback help you learn by doing. No
           installations, no prerequisites—just open your browser and start
-          building. Learn HTML, CSS, and JavaScript at your own pace, and gain
-          the confidence to create websites from scratch.
+          building. Get signed up today.
         </p>
       </div>
 
       {/* COL 2 */}
-      <div className="col-span-3 border-r border-dashed border-neutral-800 flex flex-col px-10 py-10 gap-3">
-        <div className="flex flex-col ">
-          <span className="font-[IBM_Plex_Mono] font-light text-xl m">
+      <div
+        style={{}}
+        className="flex flex-col col-span-3 p-10 border h-[90%] w-[96%]  mx-auto my-auto rounded-xl justify-evenly border-neutral-100/30"
+      >
+        <div className="flex flex-col">
+          <span className="font-[IBM_Plex_Mono] font-light text-3xl text-neutral-300">
             Quick Links
           </span>
-          <ul className="text-md font-light text-foreground  text-neutral-500 mt-4 flex flex-col gap-1">
-            <li className="">
+          <ul className="flex flex-col items-start gap-1 mt-4 font-light text-md text-foreground text-neutral-400">
+            <li className="hover:underline">
               <a href="#">Home</a>
             </li>
-            <li className="">
+            <li className="hover:underline">
               <a href="#">Profiles</a>
             </li>
-            <li className="">
+            <li className="hover:underline">
               <a href="#">Lessons</a>
             </li>
-            <li className="">
-              <a href="#">Sandbox</a>
-            </li>
-            <li className="">
+
+            <li className="hover:underline">
               <a href="#">Help</a>
             </li>
           </ul>
         </div>
 
-        <div className="flex flex-col">
-          <span className="font-[IBM_Plex_Mono] font-light text-xl m">
+        <div className="flex flex-col mt-4">
+          <span className="font-[IBM_Plex_Mono] font-light text-3xl">
             Legal
           </span>
-          <ul className="text-md font-light text-foreground  text-neutral-500 mt-4 flex flex-col gap-1">
-            <li className="">
+          <ul className="flex flex-col items-start gap-1 mt-4 font-light text-md text-foreground text-neutral-400">
+            <li className="hover:underline">
               <a href="#">Privacy Policy</a>
             </li>
-            <li className="">
+            <li className="hover:underline">
               <a href="#">Terms of Service</a>
             </li>
-            <li className="">
+            <li className="hover:underline">
               <a href="#">Cookie Policy</a>
             </li>
           </ul>
@@ -66,13 +69,13 @@ export const Footer = () => {
       </div>
 
       {/* COL 3 */}
-      <div className="col-span-6 border-neutral-800 flex flex-col px-10 py-4 justify-evenly">
+      <div className="flex flex-col col-span-6 px-6 border h-[90%] w-full  mx-auto my-auto rounded-xl justify-evenly border-neutral-100/30">
         {/* 1 */}
         <div className="flex flex-col gap-1">
-          <span className="font-[IBM_Plex_Mono] font-light text-xl ">
+          <span className="font-[IBM_Plex_Mono] font-light text-3xl ">
             Socials
           </span>
-          <div className="flex text-3xl gap-2">
+          <div className="flex gap-2 text-3xl">
             <FaGithubSquare />
             <FaSquareXTwitter />
             <IoLogoDiscord />
@@ -81,24 +84,24 @@ export const Footer = () => {
         </div>
         {/* 2 */}
         <div className="flex flex-col gap-1">
-          <span className="font-[IBM_Plex_Mono] font-light text-xl m">
+          <span className="font-[IBM_Plex_Mono] font-light text-3xl">
             Newsletter
           </span>
           <input
             type="text"
             placeholder=""
-            className="rounded-sm w-full px-1 border border-neutral-800 placeholder:text-sm"
+            className="w-full px-1 border rounded-sm border-slate-600 placeholder:text-sm"
           />
         </div>
         {/* 3s */}
-        <div className="flex flex-col">
-          <span className="font-[IBM_Plex_Mono] font-light text-xl m">
+        <div className="flex flex-col ">
+          <span className="font-[IBM_Plex_Mono] font-light text-3xl ">
             Contact
           </span>
-          <p className="text-sm font-light text-foreground  text-neutral-500">
+          <p className="font-light text-md text-foreground text-neutral-500">
             Email: <span className="underline">tounsiomat@gmail.com</span>
           </p>
-          <p className="text-sm font-light text-foreground  text-neutral-500">
+          <p className="font-light text-md text-foreground text-neutral-500">
             Phone: <span className="underline">+216 55 88 43 91</span>
           </p>
         </div>

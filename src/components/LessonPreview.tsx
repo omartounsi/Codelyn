@@ -16,13 +16,18 @@ const chapters = [
 
 export const LessonPreview = () => {
   return (
-    <div className="h-200 max-w-full grid grid-cols-12 border-b border-dashed border-neutral-800">
+    <div className="flex items-start justify-center max-w-full h-180 ">
       {/* LEFT */}
-      <div className="col-span-4  border-r border-dashed border-neutral-800 flex flex-col items-center">
+      <div className="flex flex-col items-center w-[28%]">
         {/* CARD */}
-        <div className="h-170 w-[80%] border border-neutral-800 mt-10 rounded-xl flex flex-col gap-8 p-10 ">
+        <div
+          style={{
+            backdropFilter: "blur(4px)",
+          }}
+          className="flex flex-col w-full gap-8 p-10 mt-10 border h-170 border-neutral-100/30 rounded-xl bg-slate-800/40 "
+        >
           {/* LOGO? */}
-          <div className="w-40 h-40 bg-neutral-900 mx-auto rounded-full grid place-content-center text-white text-5xl hover:scale-x-[-1] transition-transform duration-300">
+          <div className="w-40 h-40 bg-neutral-100 mx-auto rounded-full grid place-content-center text-neutral-800 text-5xl hover:scale-x-[-1] transition-transform duration-300">
             <IoCode />
           </div>
           {/* Title */}
@@ -41,28 +46,34 @@ export const LessonPreview = () => {
           </p>
           {/* BUTTONS? */}
           <div className="flex items-center justify-center">
-            <button className="text-neutral-700 hover:text-neutral-200 sborder-neutral-800 font-bold transition-colors">
+            <button className="font-bold transition-colors cursor-pointer text-neutral-400 font-[Quicksand] hover:text-neutral-200 sborder-neutral-800">
               Start Lesson
             </button>
           </div>
         </div>
       </div>
+      <div className="h-160 mx-5 my-auto w-[1px] border border-slate-800"></div>
       {/* RIGHT */}
-      <div className="col-span-8 flex flex-col items-center">
+      <div className="flex flex-col items-center w-[60%]">
         {/* CARD */}
-        <div className="max-h-170 w-[96%] border border-neutral-800 mt-10 rounded-xl flex flex-col p-10 overflow-y-scroll scrollbar-custom">
+        <div
+          style={{
+            backdropFilter: "blur(2px)",
+          }}
+          className="flex flex-col w-full p-10 mt-10 overflow-y-scroll border max-h-170 border-neutral-100/30 rounded-xl bg-slate-800/40 scrollbar-custom"
+        >
           {/* TITLE */}
           <h1 className="text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1] text-neutral-50">
             Chapters
           </h1>
           {/* CHAPTERS */}
-          <div className="flex flex-col gap-2 h-full">
+          <div className="flex flex-col h-full gap-2">
             {/* 1 CHAPTER */}
-            <div className="border border-neutral-600 flex items-center gap-2 px-4 min-h-16 rounded-xl mt-3 hover:scale-105 transition-transform duration-300">
-              <div className="h-7 w-7 bg-white rounded-full flex items-center justify-center text-black">
+            <div className="flex items-center gap-2 px-4 mt-3 transition-transform duration-300 border border-neutral-200/30 min-h-16 rounded-xl hover:scale-105 bg-slate-900/60">
+              <div className="flex items-center justify-center text-black bg-white rounded-full h-7 w-7">
                 <IoCheckmark />
               </div>
-              <p className="max-w-2xl  font-light text-foreground text-neutral-300">
+              <p className="max-w-2xl font-light text-foreground text-neutral-300">
                 {" "}
                 What is the Internet?
               </p>
@@ -74,12 +85,12 @@ export const LessonPreview = () => {
             {chapters.map((chapter) => (
               <div
                 key={chapter.id}
-                className="border border-neutral-900 flex items-center gap-2 px-4 min-h-16 rounded-xl hover:scale-105 transition-transform duration-300"
+                className="flex items-center gap-2 px-4 transition-transform duration-300 border border-neutral-100/50 min-h-16 rounded-xl hover:scale-105"
               >
-                <div className="h-7 w-7 border border-white rounded-full flex items-center justify-center text-black">
+                <div className="flex items-center justify-center text-white border border-white rounded-full h-7 w-7">
                   <IoCheckmark />
                 </div>
-                <p className="max-w-2xl  font-light text-foreground text-neutral-300">
+                <p className="max-w-2xl font-light text-foreground text-neutral-300">
                   {" "}
                   {chapter.title}
                 </p>
