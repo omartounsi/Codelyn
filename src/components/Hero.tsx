@@ -3,7 +3,7 @@ export const Hero = () => {
     <div
       style={{
         backdropFilter: "blur(2px)",
-        boxShadow: "10px 10px 10px rgb(31, 48, 64, 0.9)",
+        // boxShadow: "10px 10px 10px rgb(31, 48, 64, 0.9)",
         backgroundImage: `
       linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,

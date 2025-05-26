@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import { IoCode, IoReturnUpBack } from "react-icons/io5";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
+import { LoadingSpinner } from "./components/tools/loadingspinner";
 
 export const Register = () => {
   const [first_name, setFirstName] = useState("");
@@ -81,6 +82,7 @@ export const Register = () => {
 
     return { isValid: errors.length === 0, errors: errors };
   };
+
   return (
     <div
       style={{
@@ -91,16 +93,16 @@ export const Register = () => {
     `,
         backgroundSize: "20px 20px",
       }}
-      className="h-screen w-full bg-zinc-950 flex flex-col items-center justify-center text-white"
+      className="flex flex-col items-center justify-center w-full h-screen text-white bg-zinc-950"
     >
-      <div className="h-130 w-200 flex flex-col">
-        <div className="h-10 w-10 mb-3">
+      <div className="flex flex-col h-130 w-200">
+        <div className="w-10 h-10 mb-3">
           <NavLink to="/">
             <IoReturnUpBack className="border h-10 w-10 rounded-full text-4xl p-1.5 border-neutral-500 text-neutral-300 opacity-40 hover:scale-110 hover:opacity-100 transition-all will-change-transform" />
           </NavLink>
         </div>
-        <div className="h-120 w-200 grid grid-cols-3 gap-1">
-          <div className="col-span-1 w-full h-full flex items-center justify-center flex-col rounded-lg bg-white">
+        <div className="grid grid-cols-3 gap-1 h-120 w-200">
+          <div className="flex flex-col items-center justify-center w-full h-full col-span-1 bg-white rounded-lg">
             <div
               style={{
                 boxShadow: "1px 1px 10px rgb(0,0,0,0.5)",
@@ -116,12 +118,12 @@ export const Register = () => {
             style={{
               backdropFilter: "blur(2px)",
             }}
-            className=" col-span-2 rounded-lg flex flex-col gap-6 bg-neutral-900/20 border border-neutral-800 p-8 "
+            className="flex flex-col col-span-2 gap-6 p-8 border rounded-lg bg-neutral-900/20 border-neutral-800"
           >
             <h1 className="text-5xl font-bold leading-tight tracking-tighter text-neutral-50">
               Sign up
             </h1>
-            <div className="form flex flex-col gap-2 items-start">
+            <div className="flex flex-col items-start gap-2 form">
               <div className="flex justify-around gap-1">
                 <input
                   onChange={(e) => setFirstName(e.target.value)}
@@ -142,7 +144,7 @@ export const Register = () => {
                 placeholder="Enter your address"
                 className="border border-neutral-800 rounded-lg h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all w-full"
               />
-              <div className="relative w-full focus-within:scale-105 transition-all will-change-transform">
+              <div className="relative w-full transition-all focus-within:scale-105 will-change-transform">
                 <input
                   onChange={(e) => setPassword(e.target.value)}
                   type={showPassword ? "text" : "password"}
@@ -152,7 +154,7 @@ export const Register = () => {
                 />
                 <div
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute top-1/2 right-4 -translate-y-1/2 text-neutral-500/50 text-xl w-6 h-6 flex items-center cursor-pointer"
+                  className="absolute flex items-center w-6 h-6 text-xl -translate-y-1/2 cursor-pointer top-1/2 right-4 text-neutral-500/50"
                 >
                   {!showPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
@@ -163,14 +165,15 @@ export const Register = () => {
               >
                 Suggest password?
               </p>
+              <div className="mx-auto">{loading && <LoadingSpinner />}</div>
               {error && (
-                <div className="flex items-center gap-1 text-md  h-auto w-full">
+                <div className="flex items-center w-full h-auto gap-1 text-md">
                   <p className="px-2 rounded-sm bg-neutral-200 text-neutral-900 text-nowrap">
                     Sign up error
                   </p>
                   <div className="flex flex-col">
                     {error.split(". ").map((err) => (
-                      <div className="text-neutral-400 italic">- {err}</div>
+                      <div className="italic text-neutral-400">- {err}</div>
                     ))}
                   </div>
                 </div>
@@ -182,16 +185,16 @@ export const Register = () => {
                 Create Account
               </p>
             </div>
-            <div className="flex justify-evenly items-center">
+            <div className="flex items-center justify-evenly">
               <div className="h-[1px] w-[100%] bg-neutral-600"></div>
               <p className="mx-2 font-[Quicksand] text-neutral-600">OR</p>
               <div className="h-[1px] w-[100%] bg-neutral-600"></div>
             </div>
             <div className="flex justify-center gap-2 h-14">
-              <div className="border border-neutral-600 text-neutral-100 w-14 h-14 flex items-center justify-center text-3xl opacity-40 rounded-sm hover:opacity-100 transition-all cursor-pointer">
+              <div className="flex items-center justify-center text-3xl transition-all border rounded-sm cursor-pointer border-neutral-600 text-neutral-100 w-14 h-14 opacity-40 hover:opacity-100">
                 <FaGoogle />
               </div>
-              <div className="border border-neutral-600 text-neutral-100 w-14 h-14 flex items-center justify-center text-3xl opacity-40 rounded-sm hover:opacity-100 transition-all cursor-pointer">
+              <div className="flex items-center justify-center text-3xl transition-all border rounded-sm cursor-pointer border-neutral-600 text-neutral-100 w-14 h-14 opacity-40 hover:opacity-100">
                 <FaGithub />
               </div>
             </div>

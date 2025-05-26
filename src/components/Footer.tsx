@@ -9,7 +9,7 @@ export const Footer = () => {
       {/* COL 1 */}
       <div
         style={{}}
-        className="flex flex-col col-span-3 p-10 border h-[90%] w-full  mx-auto my-auto rounded-xl justify-evenly border-neutral-100/30"
+        className="flex flex-col shadow-md shadow-neutral-900 col-span-3 p-10 border h-[90%] w-full  mx-auto my-auto rounded-xl justify-evenly border-neutral-100/30"
       >
         <span className="font-[IBM_Plex_Mono] font-light text-4xl">
           Codelyn_
@@ -27,7 +27,7 @@ export const Footer = () => {
       {/* COL 2 */}
       <div
         style={{}}
-        className="flex flex-col col-span-3 p-10 border h-[90%] w-[96%]  mx-auto my-auto rounded-xl justify-evenly border-neutral-100/30"
+        className="flex shadow-md shadow-neutral-900 flex-col col-span-3 p-10 border h-[90%] w-[96%]  mx-auto my-auto rounded-xl justify-evenly border-neutral-100/30"
       >
         <div className="flex flex-col">
           <span className="font-[IBM_Plex_Mono] font-light text-3xl text-neutral-300">
@@ -69,7 +69,7 @@ export const Footer = () => {
       </div>
 
       {/* COL 3 */}
-      <div className="flex flex-col col-span-6 px-6 border h-[90%] w-full  mx-auto my-auto rounded-xl justify-evenly border-neutral-100/30">
+      <div className="flex shadow-md shadow-neutral-900 flex-col col-span-6 px-6 border h-[90%] w-full  mx-auto my-auto rounded-xl justify-evenly border-neutral-100/30">
         {/* 1 */}
         <div className="flex flex-col gap-1">
           <span className="font-[IBM_Plex_Mono] font-light text-3xl ">

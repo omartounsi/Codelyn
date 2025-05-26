@@ -17,10 +17,10 @@ const Home = () => {
       // linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
       //   backgroundSize: "200px 200px",
       // }}
-      className="h-auto w-full pb-10 bg-slate-900 grid font-[Geist] grid-cols-12 text-neutral-300 pt-14 scrollbar-custom"
+      className="h-auto w-full pb-10 bg-slate-800 grid font-[Geist] grid-cols-12 text-neutral-300 pt-14 scrollbar-custom"
     >
       {/* LEFT */}
-      <div className="col-span-1 border-r border-dashed border-neutral-800">
+      <div className="col-span-1 border-dashed border-neutral-600">
         {/* <div className="border-b border-dashed h-72 border-neutral-800"></div>
         <div className="border-b border-dashed h-14 border-neutral-800"></div>
         <div className="border-b border-dashed h-200 border-neutral-800"></div>
@@ -30,7 +30,7 @@ const Home = () => {
         <div className="border-b border-dashed h-100 border-neutral-800"></div> */}
       </div>
       {/* MAIN */}
-      <div className="col-span-10 border-l border-r border-slate-800">
+      <div className="col-span-10 border-l border-r border-slate-700">
         <div className="p-6 border-neutral-200/20">
           <Hero />
         </div>

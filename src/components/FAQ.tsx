@@ -6,7 +6,7 @@ export const FAQ = () => {
       style={{ boxShadow: "10px 10px 10px rgb(23, 36, 48, 0.9)" }}
       className="flex items-center justify-center w-full h-full p-6 border border-neutral-100/30 rounded-xl"
     >
-      <div className="flex flex-col p-10 border bg-red-400590 border-neutral-100/10 rounded-xl bg-slate-900">
+      <div className="flex flex-col p-10 border shadow-md shadow-neutral-900 border-neutral-100/10 rounded-xl bg-slate-800">
         <h1 className="my-10 font-bold tracking-tighter text-center text-7xl leading-tighter text-neutral-100/90">
           FAQ.
         </h1>
@@ -46,7 +46,6 @@ export const FAQ = () => {
               you track your progress throughout your journey.
             </p>
           </div>
-
           {/* 1 QUESTION */}
           <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-950 hover:scale-105 will-change-transform">
             <p className="flex items-center max-w-2xl text-xl font-light text-foreground text-neutral-100">

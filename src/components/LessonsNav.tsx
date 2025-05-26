@@ -70,7 +70,7 @@ export const LessonsNav = () => {
   }, []);
 
   return (
-    <div className="relative w-full my-2 overflow-hidden bg-white border rounded-full select-none h-14">
+    <div className="relative w-full my-2 overflow-hidden border rounded-full shadow-md select-none shadow-neutral-800 bg-neutral-100 h-14">
       <div className="absolute inset-y-0 left-0 z-10 w-12 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
       <div className="absolute inset-y-0 right-0 z-10 w-12 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
 
@@ -86,7 +86,7 @@ export const LessonsNav = () => {
             className={`flex items-center px-6 py-4 border rounded-full h-7 whitespace-nowrap transition-all duration-300 ${
               activeTab === index
                 ? "bg-neutral-800 text-white border-neutral-800"
-                : "text-neutral-500 hover:text-neutral-800 border-neutral-200 hover:border-neutral-400"
+                : "text-neutral-600 hover:text-neutral-800 border-neutral-200 hover:border-neutral-400"
             }`}
           >
             {topic}

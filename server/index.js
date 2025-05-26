@@ -34,7 +34,7 @@ mongoose
     console.error("Error connecting to Mongo:", err);
   });
 
-//
+//test
 app.get("/", (req, res) => {
   res.send("API is running");
 });
