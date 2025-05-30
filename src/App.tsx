@@ -2,7 +2,7 @@ import { Navbar } from "./components/Navbar";
 import "/src/style.css";
 
 import { Outlet, Route, Routes } from "react-router";
-import { Dashboard } from "./components/Routes/dashboard";
+import { Dashboard } from "./components/Routes/dashboard/dashboard";
 import { Sandbox } from "./components/Routes/sandbox";
 import { Lessons } from "./components/Routes/lessons";
 import { MainHTML } from "./components/Routes/HTML Lessons/mainHTML";

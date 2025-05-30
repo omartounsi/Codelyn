@@ -69,7 +69,7 @@ export const LessonPreview = () => {
           {/* CHAPTERS */}
           <div className="flex flex-col h-full gap-2">
             {/* 1 CHAPTER */}
-            <div className="flex items-center gap-2 px-4 mt-3 transition-transform duration-300 border border-neutral-200/30 min-h-16 rounded-xl hover:scale-105 bg-slate-900/60">
+            <div className="flex items-center gap-2 px-4 mt-3 transition-transform duration-300 border border-neutral-200/30 min-h-16 rounded-xl hover:scale-105 bg-slate-900/30">
               <div className="flex items-center justify-center text-black bg-white rounded-full h-7 w-7">
                 <IoCheckmark />
               </div>

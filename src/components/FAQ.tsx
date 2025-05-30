@@ -13,7 +13,7 @@ export const FAQ = () => {
         {/* QUESTIONS */}
         <div className="w-[80%] h-[90%] mx-auto p-4 flex flex-col gap-10">
           {/* 1 QUESTION */}
-          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-950 hover:scale-105 will-change-transform">
+          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-900/40 hover:scale-105 will-change-transform">
             <p className="flex items-center max-w-2xl text-xl font-light text-neutral-100">
               <IoIosArrowForward /> Do I need prior experience in coding?
             </p>
@@ -25,7 +25,7 @@ export const FAQ = () => {
           </div>
 
           {/* 2 QUESTION */}
-          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-950 hover:scale-105 will-change-transform">
+          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-900/40 hover:scale-105 will-change-transform">
             <p className="flex items-center max-w-2xl text-xl font-light text-foreground text-neutral-100">
               <IoIosArrowForward /> Do I need to install anything?
             </p>
@@ -36,7 +36,7 @@ export const FAQ = () => {
           </div>
 
           {/* 1 QUESTION */}
-          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-950 hover:scale-105 will-change-transform">
+          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-900/40 hover:scale-105 will-change-transform">
             <p className="flex items-center max-w-2xl text-xl font-light text-foreground text-neutral-100">
               <IoIosArrowForward /> How long does it to finish?
             </p>
@@ -47,7 +47,7 @@ export const FAQ = () => {
             </p>
           </div>
           {/* 1 QUESTION */}
-          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-950 hover:scale-105 will-change-transform">
+          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-900/40 hover:scale-105 will-change-transform">
             <p className="flex items-center max-w-2xl text-xl font-light text-foreground text-neutral-100">
               <IoIosArrowForward /> Is this platform free?
             </p>
@@ -59,7 +59,7 @@ export const FAQ = () => {
           </div>
 
           {/* 1 QUESTION */}
-          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-950 hover:scale-105 will-change-transform">
+          <div className="flex flex-col justify-center w-full h-auto gap-2 px-16 py-10 transition-all border-b border-dashed rounded-full select-none border-neutral-200/40 hover:bg-slate-900/40 hover:scale-105 will-change-transform">
             <p className="flex items-center max-w-2xl text-xl font-light text-foreground text-neutral-100">
               <IoIosArrowForward /> What will I actually build?
             </p>

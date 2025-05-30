@@ -1,73 +1,10 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../../context/AuthContext";
+import { LoadingSpinner } from "../../tools/loadingspinner";
+import { CreateUserModal } from "./createuser";
 import { ResponsivePie } from "@nivo/pie";
 import { ResponsiveBar } from "@nivo/bar";
-import axios from "axios";
-import { LoadingSpinner } from "../tools/loadingspinner";
-
-const adminTabs = [
-  { id: 1, name: "Overview" },
-  { id: 2, name: "User Management" },
-  { id: 3, name: "Course Management" },
-  { id: 4, name: "Lesson Management" },
-  { id: 5, name: "Project Management" },
-  { id: 6, name: "Code Environment" },
-  { id: 7, name: "Platform Settings" },
-  { id: 8, name: "Feedback & Reports" },
-  { id: 9, name: "Security Tools" },
-  { id: 10, name: "Content Moderation" },
-];
-
-export const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState<number>(1);
-  return (
-    <div
-      style={{
-        backgroundColor: "",
-        backgroundImage: `
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)`,
-        backgroundSize: "20px 20px",
-      }}
-      className="flex items-center justify-center w-full h-screen text-white bg-zinc-900 pt-14 "
-    >
-      <div className="w-[90%] h-[90%] border rounded-xl grid grid-cols-12 gap-1 border-neutral-800 p-2">
-        {/* SELECTOR */}
-        <div
-          style={{
-            backdropFilter: "blur(2px)",
-          }}
-          className="flex flex-col items-center col-span-2 border border-neutral-700 rounded-tl-xl rounded-bl-xl bg-zinc-950/10"
-        >
-          <h1 className="flex items-center justify-center h-14 text-3xl font-bold leading-tight tracking-tighter w-[90%] my-4 rounded-full border-neutral-700 text-neutral-200">
-            Dashboard
-          </h1>
-          <ul className="flex flex-col items-start gap-2 px-3 font-light">
-            {adminTabs.map((tab) => (
-              <li
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center w-auto px-4 py-2 rounded-full select-none  min-h-10  will-change-auto border border-transparent hover:border-neutral-800 hover:bg-neutral-900 transition-all  ${activeTab === tab.id ? "bg-neutral-200 text-neutral-900 font-medium hover:border-transparent hover:text-neutral-200" : ""}`}
-              >
-                {tab.name}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* CONTENT */}
-        <div
-          style={{
-            backdropFilter: "blur(2px)",
-          }}
-          className="col-span-10 border border-neutral-700 rounded-tr-xl rounded-br-xl"
-        >
-          {activeTab === 1 ? <Overview /> : <></>}
-        </div>
-      </div>
-    </div>
-  );
-};
 
 type DashboardStats = {
   userCount: number;
@@ -121,14 +58,16 @@ type DashboardData = {
   systemHealth: SystemHealth;
 };
 
-const Overview = () => {
+export const Overview = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(
     null
   );
   const [error, setError] = useState<string | null>(null);
+  const [isCreateOpen, setIsCreateOpen] = useState<boolean>(false);
   const { token } = useAuth();
 
+  //FETCHING
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
@@ -149,6 +88,21 @@ const Overview = () => {
     fetchDashboardData();
   }, [token]);
 
+  //REFRESH
+  const refresh = async () => {
+    try {
+      const response = await axios.get("/admin/dashboard", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setDashboardData(response.data);
+    } catch (err) {
+      console.error("error refreshing:", err);
+    }
+  };
+
+  //LOADING SPINNER
   if (loading) {
     return (
       <div className="flex items-center justify-center w-full h-full">
@@ -272,9 +226,32 @@ const Overview = () => {
         </div>
       </div>
       <div className="row-span-1 p-6 border rounded-xl border-neutral-800 bg-neutral-700/20">
-        <h3 className="text-3xl font-[Geist] font-bold leading-tight tracking-tighter  text-neutral-200">
-          Recent Activities:
+        <h3 className="text-3xl font-[Geist] font-bold leading-tight tracking-tighter text-neutral-200 mb-3">
+          Course Stats:
         </h3>
+        <div className="flex flex-col gap-2 text-sm">
+          <div className="flex justify-between">
+            <span className="text-neutral-400">Total Courses:</span>
+            <span className="text-neutral-200">
+              {dashboardData?.stats.courseCount}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-neutral-400">Total Lessons:</span>
+            <span className="text-neutral-200">
+              {dashboardData?.stats.lessonsCount}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-neutral-400">Avg. Lessons/Course:</span>
+            <span className="text-neutral-200">
+              {Math.round(
+                (dashboardData?.stats.lessonsCount || 0) /
+                  (dashboardData?.stats.courseCount || 1)
+              )}
+            </span>
+          </div>
+        </div>
       </div>
       <div className="col-span-2 row-span-1 p-6 overflow-auto border shadow-md rounded-xl border-neutral-800 bg-zinc-700/20 shadow-neutral-900">
         <div className="flex w-full h-full ">
@@ -349,20 +326,37 @@ const Overview = () => {
           ))}
         </div>
       </div>{" "}
-      <div className="p-6 border shadow-md rounded-xl bg-zinc-700/20 border-neutral-800 shadow-neutral-900">
-        <h3 className="mb-3 text-3xl font-[Geist] font-bold leading-tight tracking-tighter  text-neutral-200">
+      <div className="p-6 border shadow-md rounded-xl bg-zinc-700/20 border-neutral-800 shadow-neutral-900 ">
+        <h3 className="mb-4 text-3xl font-[Geist] font-bold leading-tight tracking-tighter  text-neutral-200">
           Quick Actions:
         </h3>
 
-        <div className="flex flex-col items-center justify-center w-full gap-1 text-neutral-400">
+        <div className="flex flex-col items-center justify-center w-full text-neutral-400">
           <button className="px-4 py-2 text-red-400 transition-colors border rounded-full cursor-pointer text-md hover:bg-neutral-100">
             Restart Services
           </button>
-          <button className="px-4 py-2 transition-colors border border-transparent rounded-full cursor-pointer text-md hover:border-neutral-700 hover:text-red-400 hover:bg-neutral-800">
+          <button className="px-4 py-2 transition-colors border border-transparent rounded-full cursor-pointer text-md hover:border-neutral-700 hover:text-neutral-200 hover:bg-neutral-800">
             Maintenance Mode
+          </button>
+          <button className="px-4 py-2 transition-colors border border-transparent rounded-full cursor-pointer text-md hover:border-neutral-700 hover:text-neutral-200 hover:bg-neutral-800">
+            Send test E-mail
+          </button>
+          <button className="px-4 py-2 transition-colors border border-transparent rounded-full cursor-pointer text-md hover:border-neutral-700 hover:text-neutral-200 hover:bg-neutral-800">
+            Create announcement
+          </button>
+          <button
+            onClick={() => setIsCreateOpen(true)}
+            className="px-4 py-2 transition-colors border border-transparent rounded-full cursor-pointer text-lime-300 text-md hover:border-neutral-700 hover:text-neutral-900 hover:bg-neutral-300"
+          >
+            Create new user
           </button>
         </div>
       </div>
+      <CreateUserModal
+        isOpen={isCreateOpen}
+        onClose={() => setIsCreateOpen(false)}
+        onUserCreated={refresh}
+      />
     </div>
   );
 };

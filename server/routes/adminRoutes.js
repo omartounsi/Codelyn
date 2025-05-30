@@ -89,6 +89,57 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
+router.post("/create-user", async (req, res) => {
+  try {
+    const { first_name, last_name, email, password, role } = req.body;
+
+    //VALIDATION
+    if (!(first_name || last_name || email || password)) {
+      return res.status(400).json({ message: "missing fields" });
+    }
+
+    //CHECK EXIST
+    const existing = await User.findOne({ email });
+    if (existing) {
+      return res.status(400).json({ message: "user already exists" });
+    }
+
+    //VALID ROLE
+    const validRoles = ["viewer", "student", "admin"];
+    if (role && !validRoles.includes(role)) {
+      return res.status(400).json({ message: "invalid role format" });
+    }
+
+    const newUser = new User({
+      first_name,
+      last_name,
+      email,
+      password,
+      role,
+    });
+
+    await newUser.save();
+
+    //FEEDBACK
+    const userResponse = {
+      _id: newUser._id,
+      first_name: newUser.first_name,
+      last_name: newUser.last_name,
+      email: newUser.email,
+      role: newUser.role,
+      createdAt: newUser.createdAt,
+    };
+    res.status(201).json({
+      success: true,
+      message: "User created",
+      user: userResponse,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: " error while creating user" });
+  }
+});
+
 //DB RESPONSE TIME
 const getDatabaseResponseTime = async () => {
   const start = Date.now();
