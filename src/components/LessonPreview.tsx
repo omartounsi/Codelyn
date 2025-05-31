@@ -3,15 +3,15 @@ import { IoCheckmark } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 
 const chapters = [
-  { id: 1, title: "What is HTML?" },
-  { id: 2, title: "Hands On" },
-  { id: 3, title: "Attributes" },
-  { id: 4, title: "Commonly used tags" },
-  { id: 5, title: "Lists" },
-  { id: 6, title: "Tables" },
+  { id: 1, title: "Introduction to HTML" },
+  { id: 2, title: "Text and Headings" },
+  { id: 3, title: "Links and Images" },
+  { id: 4, title: "Lists and Navigation" },
+  { id: 5, title: "Tables and Data" },
+  { id: 6, title: "Forms and Input" },
   { id: 7, title: "Divisions and Spans" },
-  { id: 8, title: "Semantics" },
-  { id: 100, title: "Structuring" },
+  { id: 8, title: "Semantic HTML" },
+  { id: 9, title: "HTML Structure Best Practices" },
 ];
 
 export const LessonPreview = () => {
