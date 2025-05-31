@@ -24,7 +24,16 @@ export const Navbar = () => {
             <li className="text-neutral-100 flex items-center h-full font-[IBM_Plex_Mono] font-light text-xl border-r border-dashed border-neutral-800 pr-3">
               <NavLink to="/">Codelyn_</NavLink>
             </li>
-            {user?.role === "admin" ? (
+            {!isAuthenticated ? (
+              <>
+                <li className="transition-colors cursor-pointer hover:text-neutral-200">
+                  <NavLink to="/curriculum">Curriculum</NavLink>
+                </li>
+                <li className="transition-colors cursor-pointer hover:text-neutral-200">
+                  <NavLink to="/contact">Contact</NavLink>
+                </li>
+              </>
+            ) : user?.role === "admin" ? (
               <>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
                   <NavLink to="/lessons">Lessons</NavLink>
@@ -48,10 +57,19 @@ export const Navbar = () => {
             ) : (
               <>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
-                  <a>Curriculum</a>
+                  <NavLink to="/lessons">Lessons</NavLink>
                 </li>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
-                  <NavLink to="/contact">Contact Us</NavLink>
+                  <a>Projects</a>
+                </li>
+                <li className="transition-colors cursor-pointer hover:text-neutral-200">
+                  <NavLink to="/sandbox">Mini Sandbox</NavLink>
+                </li>
+                <li className="transition-colors cursor-pointer hover:text-neutral-200">
+                  <a>Profile</a>
+                </li>
+                <li className="transition-colors cursor-pointer hover:text-neutral-200">
+                  <NavLink to="/contact">Contact</NavLink>
                 </li>
               </>
             )}
