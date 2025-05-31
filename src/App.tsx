@@ -5,6 +5,7 @@ import { Outlet, Route, Routes } from "react-router";
 import { Dashboard } from "./components/Routes/dashboard/dashboard";
 import { Sandbox } from "./components/Routes/sandbox";
 import { Lessons } from "./components/Routes/lessons";
+import { Curriculum } from "./components/Routes/Curriculum";
 import { MainHTML } from "./components/Routes/HTML Lessons/mainHTML";
 import { HTMLLesson } from "./components/Routes/HTML Lessons/HTMLLesson";
 import Home from "./Home";
@@ -34,6 +35,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/curriculum" element={<Curriculum />} />
           <Route
             path="dashboard"
             element={
@@ -42,11 +44,39 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="sandbox" element={<Sandbox />} />
-          <Route path="lessons" element={<Lessons />} />
+          <Route
+            path="sandbox"
+            element={
+              <ProtectedRoute>
+                <Sandbox />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="lessons"
+            element={
+              <ProtectedRoute>
+                <Lessons />
+              </ProtectedRoute>
+            }
+          />
           {/* HTML */}
-          <Route path="/lessons/html" element={<MainHTML />} />
-          <Route path="/lessons/html/:lessonId" element={<HTMLLesson />} />
+          <Route
+            path="/lessons/html"
+            element={
+              <ProtectedRoute>
+                <MainHTML />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/lessons/html/:lessonId"
+            element={
+              <ProtectedRoute>
+                <HTMLLesson />
+              </ProtectedRoute>
+            }
+          />
         </Route>
         {/* NO NAV */}
         <Route path="/register" element={<Register />} />
