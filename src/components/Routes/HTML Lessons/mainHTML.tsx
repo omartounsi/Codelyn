@@ -5,15 +5,15 @@ import { useEffect } from "react";
 
 export const MainHTML = () => {
   const chapters = [
-    { id: 1, title: "What is HTML?" },
-    { id: 2, title: "Hands On" },
-    { id: 3, title: "Attributes" },
-    { id: 4, title: "Commonly used tags" },
-    { id: 5, title: "Lists" },
-    { id: 6, title: "Tables" },
+    { id: 1, title: "Introduction to HTML" },
+    { id: 2, title: "Text and Headings" },
+    { id: 3, title: "Links and Images" },
+    { id: 4, title: "Lists and Navigation" },
+    { id: 5, title: "Tables and Data" },
+    { id: 6, title: "Forms and Input" },
     { id: 7, title: "Divisions and Spans" },
-    { id: 8, title: "Semantics" },
-    { id: 100, title: "Structuring" },
+    { id: 8, title: "Semantic HTML" },
+    { id: 9, title: "HTML Structure Best Practices" },
   ];
 
   useEffect(() => {
@@ -33,17 +33,17 @@ export const MainHTML = () => {
               Chapters
             </h1>
             {/* CHAPTERS */}
-            <div className="flex flex-col gap-2 h-full">
+            <div className="flex flex-col h-full gap-2">
               {chapters.map((chapter) => (
                 <div
                   onClick={() => navigate(`/lessons/html/${chapter.id}`)}
                   key={chapter.id}
-                  className="border border-neutral-900 flex items-center gap-2 px-4 min-h-16 rounded-xl hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  className="flex items-center gap-2 px-4 transition-transform duration-300 border cursor-pointer border-neutral-900 min-h-16 rounded-xl hover:scale-105"
                 >
-                  <div className="h-7 w-7 border border-white rounded-full flex items-center justify-center text-black">
+                  <div className="flex items-center justify-center text-black border border-white rounded-full h-7 w-7">
                     <IoCheckmark />
                   </div>
-                  <p className="max-w-2xl  font-light text-foreground text-neutral-300">
+                  <p className="max-w-2xl font-light text-foreground text-neutral-300">
                     {" "}
                     {chapter.title}
                   </p>
