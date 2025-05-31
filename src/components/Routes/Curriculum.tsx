@@ -1,5 +1,4 @@
-import { FaHtml5, FaJava } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io5";
+import { FaHtml5 } from "react-icons/fa";
 import { RiJavascriptLine } from "react-icons/ri";
 import { NavLink } from "react-router";
 
