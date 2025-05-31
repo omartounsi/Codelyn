@@ -5,16 +5,16 @@ export const Call = () => {
         style={{
           boxShadow: "10px 10px 15px rgb(23, 36, 48, 0.9)",
         }}
-        className="w-[80%] h-60 border border-b-0 border-neutral-500 rounded-4xl flex flex-col items-center justify-center"
+        className="w-[80%] h-60  bg-neutral-200 border-2 border-b-0 border-slate-400 rounded-4xl flex flex-col items-center justify-center"
       >
-        <h1 className="text-5xl font-bold leading-tight tracking-tighter  lg:leading-[1.1] text-neutral-50">
+        <h1 className="text-5xl font-bold leading-tight tracking-tighter  lg:leading-[1.1] text-neutral-800">
           Start your first lesson now
         </h1>
         <a
           className="group mb-2 inline-flex items-center gap-2 px-0.5 text-sm font-medium"
           href="#"
         >
-          <span className="text-lg italic underline-offset-4 group-hover:underline">
+          <span className="text-lg italic underline-offset-4 group-hover:underline text-neutral-600">
             Chapter 1: HTML Fundamentals
           </span>
           <svg
@@ -27,7 +27,7 @@ export const Call = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-4 h-4 ml-1 lucide lucide-arrow-right"
+            className="w-4 h-4 ml-1 text-neutral-600 lucide lucide-arrow-right"
           >
             <path d="M5 12h14"></path>
             <path d="M12 5 L19 12 L12 19"></path>

@@ -9,7 +9,7 @@ export const Hero = () => {
       linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
         backgroundSize: "24px 24px",
       }}
-      className="flex items-center w-full pl-5 border justify-evenly rounded-xl border-neutral-100/30 h-72 text-neutral-100"
+      className="flex items-center w-full pl-5 border justify-evenly rounded-xl border-neutral-100/30 bg-slate-700 h-72 text-neutral-100"
     >
       <div className="flex flex-col justify-center h-full ">
         <h1
@@ -35,7 +35,7 @@ export const Hero = () => {
           <button className="bg-neutral-100 text-neutral-900 text-[14px] rounded-sm px-3 py-1.5 cursor-pointer">
             Get Started
           </button>
-          <button className=" text-neutral-100 text-[14px] rounded-sm px-2 py-1 hover:bg-neutral-800 cursor-pointer transition-colors">
+          <button className=" text-neutral-100 text-[14px] rounded-sm px-2 py-1 hover:underline cursor-pointer transition-colors">
             Browse Lessons
           </button>
         </div>

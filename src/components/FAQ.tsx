@@ -3,10 +3,10 @@ import { IoIosArrowForward } from "react-icons/io";
 export const FAQ = () => {
   return (
     <div
-      style={{ boxShadow: "10px 10px 10px rgb(23, 36, 48, 0.9)" }}
+      style={{ boxShadow: "10px 10px 10px rgb(23, 36, 48, 0.4)" }}
       className="flex items-center justify-center w-full h-full p-6 border border-neutral-100/30 rounded-xl"
     >
-      <div className="flex flex-col p-10 border shadow-md shadow-neutral-900 border-neutral-100/10 rounded-xl bg-slate-800">
+      <div className="flex flex-col p-10 border shadow-md shadow-neutral-900 border-neutral-100/10 rounded-xl bg-gradient-to-tr from-slate-800 via-slate-950/80 to-slate-800">
         <h1 className="my-10 font-bold tracking-tighter text-center text-7xl leading-tighter text-neutral-100/90">
           FAQ.
         </h1>

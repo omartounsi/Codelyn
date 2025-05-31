@@ -24,7 +24,7 @@ export const LessonPreview = () => {
           style={{
             backdropFilter: "blur(4px)",
           }}
-          className="flex flex-col w-full gap-8 p-10 mt-10 border shadow-md shadow-neutral-900 h-170 border-neutral-100/30 rounded-xl bg-slate-800/40 "
+          className="flex flex-col w-full gap-8 p-10 mt-10 border shadow-md shadow-slate-900 h-170 border-neutral-100/30 rounded-xl bg-slate-700 "
         >
           {/* LOGO? */}
           <div className="w-40 h-40 bg-neutral-100 mx-auto rounded-full grid place-content-center text-neutral-800 text-5xl hover:scale-x-[-1] transition-transform duration-300">
@@ -46,21 +46,21 @@ export const LessonPreview = () => {
           </p>
           {/* BUTTONS? */}
           <div className="flex items-center justify-center">
-            <button className="font-bold transition-colors cursor-pointer text-neutral-400 font-[Quicksand] hover:text-neutral-200 sborder-neutral-800">
+            <button className="font-bold transition-colors cursor-pointer text-neutral-300 font-[Quicksand] hover:text-neutral-100 sborder-neutral-800">
               Start Lesson
             </button>
           </div>
         </div>
       </div>
-      <div className="h-160 mx-5 my-auto w-[1px] border  border-slate-800"></div>
+      <div className="h-160 mx-5 my-auto w-[1px] border  border-slate-800 "></div>
       {/* RIGHT */}
-      <div className="flex flex-col items-center w-[60%]">
+      <div className="flex flex-col items-center w-[60%] ">
         {/* CARD */}
         <div
           style={{
             backdropFilter: "blur(2px)",
           }}
-          className="flex flex-col w-full p-10 mt-10 overflow-y-scroll border shadow-md shadow-neutral-900 max-h-170 border-neutral-100/30 rounded-xl bg-slate-800/40 scrollbar-custom"
+          className="flex flex-col w-full p-10 mt-10 overflow-y-scroll border shadow-md shadow-slate-900 max-h-170 border-neutral-100/30 rounded-xl bg-slate-700 scrollbar-custom"
         >
           {/* TITLE */}
           <h1 className="text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1] text-neutral-50">

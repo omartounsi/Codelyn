@@ -13,41 +13,61 @@ import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { CiCirclePlus } from "react-icons/ci";
+import { IoCalendarOutline } from "react-icons/io5";
+
 export const Lessons = () => {
   const [activeCard, setActiveCard] = useState(1);
   const handleCardClick = (index: number) => {
     setActiveCard(index);
   };
   return (
-    <div className="h-[400vh] w-full grid bg-zinc-950 text-white  4 grid-cols-12">
+    <div className="grid w-full h-auto grid-cols-12 pb-6 text-white bg-slate-800 ">
       {/* LEFT */}
-      <div className="col-span-1 border-r border-dashed border-neutral-800">
-        <div className="w-full mt-14 border-b border-dashed border-neutral-800 h-72"></div>
-        <div className="h-160 w-full border-b border-dashed border-neutral-800 "></div>
-        <div className="h-70 w-full border-b border-dashed border-neutral-800 "></div>
-        <div className="h-160 w-full border-b border-dashed border-neutral-800 "></div>
-        <div className="h-56 w-full border-b border-dashed border-neutral-800 "></div>
-        <div className="h-136 w-full border-b border-dashed border-neutral-800 "></div>
-      </div>
+      <div className="col-span-1"></div>
 
       {/* MAIN */}
-      <div className="h-auto w-full col-span-10 flex flex-col mt-14  border-">
+      <div className="flex flex-col w-full h-auto col-span-10 p-6 border-l border-r mt-14 border-slate-700">
         {/* TITLE 1*/}
-        <div className="pl-5 border-b border-dashed border-neutral-800 flex flex-col justify-center h-72">
-          <h1 className="text-5xl font-bold leading-tight tracking-tighter  lg:leading-[1.1] text-neutral-50">
-            Welcome to{" "}
-            <span className="font-[IBM_Plex_Mono] font-light">Web101</span>
-          </h1>
-          <p className="max-w-2xl text-base font-light text-foreground sm:text-lg text-neutral-300 mt-2">
-            This section has the essentials you will need to get your started
-            with web development. You will learn the basics of HTML, CSS and
-            JavaScript. You will also learn about the DOM and how to manipulate
-            it using JavaScript.
-          </p>
+        <div
+          style={{
+            backdropFilter: "blur(2px)",
+            // boxShadow: "10px 10px 10px rgb(31, 48, 64, 0.9)",
+            backgroundImage: `
+      linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)`,
+            backgroundSize: "24px 24px",
+          }}
+          className="flex flex-row-reverse items-center w-full pl-5 border justify-evenly bg-neutral-200 rounded-xl border-slate-900 h-72 "
+        >
+          <div className="flex flex-col justify-center h-full">
+            <h1 className="w-full font-bold tracking-tighter text-center text-8xl leading-tighter text-slate-700/90">
+              Lessons
+            </h1>
+            <p className="mx-auto cursor-pointer hover:underline-offset-1 hover:underline text-neutral-600">
+              Continue last lesson?
+            </p>
+          </div>
+          <div className="flex flex-col ">
+            <p className="text-lg text-right w-120 w text-neutral-600">
+              Welcome to your learning hub. Track your progress through our
+              comprehensive web development curriculum, from HTML fundamentals
+              to advanced JavaScript concepts.
+            </p>
+            {/* buttons */}
+            <div className="flex justify-end gap-1 mt-2">
+              <button className="bg-neutral-00 text-slate-800 text-[14px] rounded-sm px-3 py-1.5 cursor-pointer">
+                Home
+              </button>
+              <button className=" text-slate-600 border border-slate-500 text-[14px] rounded-sm px-2 py-1 hover:bg-slate-700 cursor-pointer transition-colors hover:text-neutral-200">
+                Continue Lessons
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* CARDS */}
-        <div className="h-160 w-full flex p-2 justify-between gap-6 overflow-hidden border-b border-dashed border-neutral-800">
+        <div className="flex justify-between w-full gap-6 mt-6 border-dashed h-160">
           {lessons.map((lesson) => (
             <LessonCard
               lesson={lesson}
@@ -58,22 +78,28 @@ export const Lessons = () => {
         </div>
 
         {/* TITLE 2*/}
-        <div className="pl-5 border-b border-dashed border-neutral-800 flex justify-center flex-col h-70">
-          <h1 className="text-5xl font-bold leading-tight tracking-tighter lg:leading-[1.1] text-neutral-50">
-            Bonus I
-          </h1>
-          <p className="max-w-2xl text-base font-light text-foreground sm:text-lg text-neutral-100">
-            These next lessons are optional, they are not required for the
-            course. However, they will help you understand the concepts better.
-            You will learn version control with Git and GitHub, how to use the
-            command line. You will also learn Syntactically Awesome Style Sheets
-            (SASS) and how to use it to style your HTML in a faster / more
-            efficient way. Or you can learn the alternative, Tailwind CSS
-          </p>
+        <div className="flex my-6 border shadow-md r rounded-xl bg-slate-900 border-slate-700 shadow-slate-900 h-70">
+          <div className="flex flex-col min-w-[70%] h-full p-10 border-r border-r-slate-700/40">
+            <h1 className="text-5xl font-bold leading-tight tracking-tighter lg:leading-[1.1] text-neutral-50">
+              Bonus I
+            </h1>
+            <p className="max-w-2xl text-base font-light text-foreground sm:text-lg text-neutral-100">
+              These next lessons are optional, they are not required for the
+              course. However, they will help you understand the concepts
+              better. You will learn version control with Git and GitHub, how to
+              use the command line. You will also learn Syntactically Awesome
+              Style Sheets (SASS) and how to use it to style your HTML in a
+              faster / more efficient way. Or you can learn the alternative,
+              Tailwind CSS
+            </p>
+          </div>
+          <div className="flex items-center justify-center w-full h-full text-7xl border-slate-600 text-slate-300">
+            <CiCirclePlus />
+          </div>
         </div>
 
         {/* CARDS 2*/}
-        <div className="h-160 w-full flex p-2 justify-between gap-6 overflow-hidden border-b border-dashed border-neutral-800">
+        <div className="flex justify-between w-full gap-6 p-2 h-160 ">
           {bonusLessons.map((lesson) => (
             <LessonCard
               lesson={lesson}
@@ -84,24 +110,30 @@ export const Lessons = () => {
         </div>
 
         {/* TITLE 3*/}
-        <div className="h-56 pl-5 border-b border-dashed border-neutral-800 flex justify-center flex-col ">
-          <h1 className="text-5xl font-bold leading-tight tracking-tighter lg:leading-[1.1] text-neutral-50">
-            Projects
-          </h1>
-          <p className="max-w-2xl text-base font-light text-foreground sm:text-lg text-neutral-100">
-            It's time to put your skills to the test. You will be given a series
-            of projects to complete. You will be given a deadline for each
-            project. You will be graded on each project. You will also be given
-            feedback on each project.
-          </p>
+        <div className="flex my-6 border shadow-md r rounded-xl bg-slate-900 border-slate-700 shadow-slate-900 h-70">
+          <div className="flex flex-col justify-center min-w-[70%] h-full p-10 border-r border-r-slate-700/40">
+            <h1 className="text-5xl font-bold leading-tight tracking-tighter lg:leading-[1.1] text-neutral-50">
+              Projects
+            </h1>
+            <p className="max-w-2xl text-base font-light text-foreground sm:text-lg text-neutral-100">
+              It's time to put your skills to the test. You will be given a
+              series of projects to complete. You will be given a deadline for
+              each project. You will be graded on each project. You will also be
+              given feedback on each project.
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center w-full h-full text-7xl text-slate-400">
+            <IoCalendarOutline />
+          </div>
         </div>
 
         {/* Projects Cards */}
         <div className="h-136 w-full flex flex-col justify-center  border-t border-black border-dashed border-b bg-neutral-100 text-neutral-800 gap-[5%]">
           {/* PROGRESS */}
-          <div className="mx-auto flex flex-col">
+          <div className="flex flex-col mx-auto">
             <p className="mx-auto font-[IBM_Plex_Mono] ">3/4 Completed</p>
-            <div className="relative w-100 h-2 rounded-full bg-black overflow-hidden">
+            <div className="relative h-2 overflow-hidden bg-black rounded-full w-100">
               <div className="absolute h-2 w-[75%] bg-red-400"></div>
             </div>
           </div>
@@ -114,14 +146,7 @@ export const Lessons = () => {
         </div>
       </div>
       {/* RIGHT */}
-      <div className="border-l border-dashed border-neutral-800">
-        <div className="w-full mt-14 border-b border-dashed border-neutral-800 h-72"></div>
-        <div className="h-160 w-full border-b border-dashed border-neutral-800 "></div>
-        <div className="h-70 w-full border-b border-dashed border-neutral-800 "></div>
-        <div className="h-160 w-full border-b border-dashed border-neutral-800 "></div>
-        <div className="h-56 w-full border-b border-dashed border-neutral-800 "></div>
-        <div className="h-136 w-full border-b border-dashed border-neutral-800 "></div>
-      </div>
+      <div className="col-span-1"></div>
     </div>
   );
 };
@@ -148,13 +173,13 @@ const LessonCard = ({
       key={lesson.id}
       onClick={() => handleCardClick(lesson.id)}
       className={classNames(
-        "border border-neutral-800 rounded-xl flex flex-col justify-center gap-6 p-10 hover:scale-105 transition-all duration-300 ease-in-out will-change-transform cursor-pointer",
+        "border border-slate-600 bg-slate-700 rounded-xl flex flex-col justify-center gap-6 p-10 hover:scale-105 transition-all duration-300 ease-in-out will-change-transform cursor-pointer hover:shadow-xl hover:shadow-slate-950",
         activeCard === lesson.id ? "w-80" : "w-60 items-center",
         "overflow-hidden"
       )}
     >
       {/* LOGO? */}
-      <div className="w-20 h-20 bg-neutral-900 mx-auto rounded-full grid place-content-center text-white text-5xl hover:scale-x-[-1] transition-transform duration-300">
+      <div className="w-20 min-h-20 bg-neutral-100 mx-auto rounded-full grid place-content-center text-neutral-700 text-5xl hover:scale-x-[-1] transition-transform duration-300 ">
         {lesson.icon === "IoCode" && <IoCode />}
         {lesson.icon === "FaCss3Alt" && <FaCss3Alt />}
         {lesson.icon === "IoLogoJavascript" && <IoLogoJavascript />}
@@ -170,15 +195,15 @@ const LessonCard = ({
       {/* DESCRIPTION */}
       <p
         className={classNames(
-          "text-neutral-400 text-lg",
-          activeCard === lesson.id ? "" : "hidden"
+          "text-neutral-200 text-lg min-w-50 opacity-0 transition-opacity duration-500 ",
+          activeCard === lesson.id ? "opacity-100" : ""
         )}
       >
         {lesson.description}
       </p>
       <p
         className={classNames(
-          "text-neutral-400 my-auto text-5xl",
+          "text-neutral-400 h-full flex items-end mt-auto text-5xl ",
           activeCard !== lesson.id ? "" : "hidden"
         )}
       >
@@ -186,7 +211,7 @@ const LessonCard = ({
       </p>
       {/* Progress */}
       <div className="flex flex-col items-center mt-auto">
-        <div className="bg-black w-[70%] h-2 rounded-full border overflow-hidden relative">
+        <div className="bg-slate-700 w-[70%] h-2 rounded-full border border-neutral-400 overflow-hidden relative">
           <div
             style={{
               width: `${lesson.progress}%`,
@@ -203,7 +228,7 @@ const LessonCard = ({
       {/* BUTTONS? */}
       <div className="flex items-center justify-center">
         <Link to="/lessons/html">
-          <button className="text-neutral-700 hover:text-neutral-200 sborder-neutral-800 font-bold transition-colors">
+          <button className="font-bold transition-colors cursor-pointer text-neutral-400 hover:text-neutral-200">
             Continue
           </button>
         </Link>
@@ -230,10 +255,10 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
       <h1 className="text-4xl font-bold max-w-18==23 h-[250px]">
         {project.title}
       </h1>
-      <div className="w-full h-full flex flex-col ">
+      <div className="flex flex-col w-full h-full ">
         <p className="text-lg text-neutral-700">{project.description}</p>
 
-        <p className=" mt-auto w-30 text-neutral-800 text-md opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+        <p className="mt-auto transition-opacity cursor-pointer w-30 text-neutral-800 text-md opacity-70 hover:opacity-100">
           Start Project
         </p>
       </div>

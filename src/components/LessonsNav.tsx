@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 
-// Define course topics
 const topics = [
   "HTML",
   "CSS",
@@ -13,7 +12,6 @@ const topics = [
   "Next.js",
   "Tailwind CSS",
   "Git",
-  "GraphQL",
   "Redux",
   "Testing",
   "Accessibility",
