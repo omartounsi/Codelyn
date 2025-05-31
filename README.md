@@ -1,76 +1,342 @@
-# Codelyn - Interactive Web Development Learning Platform
+# 🚀 Codelyn - Interactive Web Development Learning Platform
+
+<div align="center">
+
+![Codelyn Logo](https://img.shields.io/badge/Codelyn-Learning%20Platform-blue?style=for-the-badge&logo=react)
+
+**An immersive, full-stack learning platform for aspiring web developers**
+
+[![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=flat&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-Latest-339933?style=flat&logo=node.js)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248?style=flat&logo=mongodb)](https://www.mongodb.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1.7-06B6D4?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
+
+</div>
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [✨ Key Features](#-key-features)
+- [🏗️ Technical Architecture](#️-technical-architecture)
+- [🚀 Getting Started](#-getting-started)
+- [📁 Project Structure](#-project-structure)
+- [🔧 Configuration](#-configuration)
+- [📚 API Documentation](#-api-documentation)
+- [🎯 Admin Dashboard](#-admin-dashboard)
+- [🛡️ Security Features](#️-security-features)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
 
 ## Overview
 
-Codelyn is an immersive platform designed to help aspiring developers master web development through structured lessons, interactive projects, and a real-time coding environment. With a focus on hands-on learning, Codelyn provides a comprehensive path from beginner to proficient web developer.
+Codelyn is a comprehensive, full-stack learning platform designed to help aspiring developers master web development through structured lessons, interactive projects, and real-time coding environments. Built with modern technologies and best practices, it provides a complete educational ecosystem from beginner to advanced levels.
 
-## Key Features
+## ✨ Key Features
 
-### 1. **User Authentication System**
+### 🔐 **Advanced Authentication System**
 
-- Secure registration and login with JWT-based authentication
-- Persistent sessions with localStorage token management
-- Protected routes for authenticated content
-- Form validation with helpful error messages
+- **JWT-based Authentication** with secure token management
+- **Role-based Access Control** (Admin, Student, Viewer)
+- **Persistent Sessions** with localStorage token storage
+- **Protected Routes** for authenticated content
+- **Password Security** with bcrypt hashing
 
-### 2. **Structured Learning Path**
+### 📚 **Comprehensive Learning Path**
 
-- **Core Lessons**: Progressive modules covering HTML, CSS, JavaScript, and DOM manipulation
-- **Bonus Content**: Advanced topics including Git, command-line usage, SASS, and Tailwind CSS
-- **Progress Tracking**: Visual indicators showing completion status across all learning materials
+- **Progressive Curriculum**: HTML, CSS, JavaScript, DOM manipulation
+- **Advanced Topics**: Git, CLI, SASS, Tailwind CSS, React
+- **Interactive Lessons** with hands-on coding exercises
+- **Progress Tracking** with visual completion indicators
+- **Project-based Learning** with real-world applications
 
-### 3. **Interactive Projects**
+### 💻 **Live Coding Environment**
 
-- Hands-on projects that reinforce lesson concepts
-- Real-world applications to build practical skills
-- Project-specific guidance and requirements
+- **Monaco Editor Integration** (VS Code engine)
+- **Real-time Preview** for HTML, CSS, and JavaScript
+- **Custom Dark Theme** optimized for coding
+- **Code Reset & Save** functionality
+- **Multi-language Support** with syntax highlighting
 
-### 4. **Live Coding Environment**
+### 📊 **Admin Dashboard**
 
-- Built-in code editor powered by Monaco Editor (same engine as VS Code)
-- Real-time preview of HTML, CSS, and JavaScript code
-- Custom dark theme for reduced eye strain during extended coding sessions
-- Code reset functionality for experimentation
+- **User Management** with role assignment capabilities
+- **System Health Monitoring** (CPU, Memory, Database)
+- **Real-time Analytics** with interactive charts
+- **User Creation Tools** with password generation
+- **Dashboard Overview** with key metrics
 
-### 5. **Modern UI/UX**
+### 🎨 **Modern UI/UX**
 
-- Responsive design that works across devices
-- Custom grid layouts with Tailwind CSS
-- Subtle animations and transitions for an engaging experience
-- Accessibility-focused interface elements
+- **Responsive Design** across all devices
+- **Tailwind CSS** with custom configurations
+- **Framer Motion** animations and transitions
+- **Nivo Charts** for data visualization
+- **Accessibility-focused** interface design
 
-## Technical Architecture
+## 🏗️ Technical Architecture
 
-### Frontend
+### **Frontend Stack**
 
-- **Framework**: React with TypeScript
-- **Routing**: React Router with protected routes
-- **State Management**: Context API for global state (authentication, user data)
-- **Styling**: Tailwind CSS with custom configurations
-- **Code Editor**: Monaco Editor integration
+```typescript
+React 19.0.0          // UI Framework
+TypeScript 5.0+       // Type Safety
+React Router 7.6.0    // Client-side Routing
+Tailwind CSS 4.1.7    // Utility-first Styling
+Framer Motion 12.9.4  // Animations
+Monaco Editor 4.7.0   // Code Editor
+Nivo Charts 0.99.0    // Data Visualization
+Axios 1.9.0           // HTTP Client
+```
 
-### Backend
+### **Backend Stack**
 
-- **Server**: Node.js with Express
-- **Database**: MongoDB with Mongoose ODM
-- **Authentication**: JWT token generation and verification
-- **API**: RESTful endpoints with proper error handling
+```javascript
+Node.js + Express 5.1.0    // Server Framework
+MongoDB + Mongoose 8.15.0   // Database & ODM
+JWT 9.0.2                   // Authentication
+bcryptjs 3.0.2             // Password Hashing
+CORS 2.8.5                 // Cross-Origin Support
+dotenv 16.5.0              // Environment Variables
+```
 
-### Security Features
+### **Development Tools**
 
-- Password hashing with bcrypt
-- Token-based authentication flow
-- Input validation and sanitization
-- Secure HTTP-only cookies option
+```json
+Vite 5.0+                  // Build Tool
+ESLint                     // Code Linting
+TypeScript Compiler        // Type Checking
+Nodemon 3.1.10            // Development Server
+```
 
-## Getting Started
+## 🚀 Getting Started
 
-1. Clone the repository
-2. Install dependencies with `npm install`
-3. Set up environment variables
-4. Start the development server with `npm run dev`
-5. Visit `http://localhost:5173` in your browser
+### Prerequisites
 
-## License
+- **Node.js** 18.0+ and npm
+- **MongoDB** 6.0+ (local or Atlas)
+- **Git** for version control
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/codelyn.git
+   cd codelyn
+   ```
+
+2. **Install frontend dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Install backend dependencies**
+
+   ```bash
+   cd server
+   npm install
+   cd ..
+   ```
+
+4. **Environment Configuration**
+
+   Create `server/.env`:
+
+   ```env
+   # Database
+   MONGODB_URI=mongodb://localhost:27017/codelyn
+
+   # Authentication
+   JWT_SECRET=your_super_secure_jwt_secret_key_here
+
+   # Server
+   PORT=3000
+   NODE_ENV=development
+   ```
+
+5. **Start the development servers**
+
+   **Backend (Terminal 1):**
+
+   ```bash
+   cd server
+   node index.js
+   ```
+
+   **Frontend (Terminal 2):**
+
+   ```bash
+   npm run dev
+   ```
+
+6. **Access the application**
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:3000/api
+
+## 📁 Project Structure
+
+```
+codelyn/
+├── 📁 public/                    # Static assets
+├── 📁 src/                       # Frontend source code
+│   ├── 📁 components/            # React components
+│   │   ├── 📁 Routes/            # Page components
+│   │   │   ├── 📁 dashboard/     # Admin dashboard
+│   │   │   ├── 📁 HTML Lessons/  # Learning modules
+│   │   │   └── 📄 lessons.tsx    # Lesson catalog
+│   │   └── 📁 tools/             # Utility components
+│   ├── 📁 context/               # React Context providers
+│   ├── 📁 assets/                # Images, icons, fonts
+│   └── 📄 App.tsx                # Main application
+├── 📁 server/                    # Backend source code
+│   ├── 📁 config/                # Database configuration
+│   ├── 📁 middleware/            # Express middleware
+│   ├── 📁 models/                # MongoDB schemas
+│   ├── 📁 routes/                # API route handlers
+│   └── 📄 index.js               # Server entry point
+├── 📄 package.json               # Frontend dependencies
+├── 📄 vite.config.ts             # Vite configuration
+├── 📄 tailwind.config.js         # Tailwind CSS config
+└── 📄 tsconfig.json              # TypeScript config
+```
+
+## 🔧 Configuration
+
+### **Vite Configuration**
+
+```typescript
+// vite.config.ts
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  server: {
+    port: 5173,
+    proxy: {
+      "/api": "http://localhost:3000",
+    },
+  },
+});
+```
+
+### **Tailwind CSS**
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        geist: ["Geist", "sans-serif"],
+      },
+    },
+  },
+};
+```
+
+## 📚 API Documentation
+
+### **Authentication Endpoints**
+
+```
+POST /api/auth/register      # User registration
+POST /api/auth/login         # User login
+GET  /api/auth/verify        # Token verification
+```
+
+### **Admin Endpoints**
+
+```
+GET  /api/admin/dashboard    # Dashboard statistics
+POST /api/admin/create-user  # Create user with role
+GET  /api/admin/users        # List all users
+```
+
+### **Course Endpoints**
+
+```
+GET  /api/courses           # Get all courses
+GET  /api/courses/:id       # Get specific course
+POST /api/courses           # Create new course
+```
+
+## 🎯 Admin Dashboard
+
+The admin dashboard provides comprehensive platform management:
+
+- **📊 System Health**: Real-time CPU, memory, and database metrics
+- **👥 User Management**: Create users with role assignment (Admin/Student/Viewer)
+- **📈 Analytics**: Interactive charts showing user distribution and activity
+- **⚡ Quick Actions**: Platform maintenance and management tools
+- **📋 Recent Activity**: Monitor new user registrations and system events
+
+### Admin Features:
+
+- **User Creation**: Generate secure passwords and assign roles
+- **Role Management**: Control access levels across the platform
+- **System Monitoring**: Track server performance and health
+- **Data Visualization**: Charts powered by Nivo for clear insights
+
+## 🛡️ Security Features
+
+- **🔐 Password Hashing**: bcrypt with salt rounds for secure storage
+- **🎫 JWT Tokens**: Stateless authentication with secure token generation
+- **🛡️ Input Validation**: Server-side validation and sanitization
+- **🚪 Protected Routes**: Role-based access control throughout the app
+- **🔒 CORS Configuration**: Secure cross-origin resource sharing
+- **⚡ Rate Limiting**: API endpoint protection (recommended for production)
+
+## 🚀 Deployment
+
+### **Production Build**
+
+```bash
+# Frontend
+npm run build
+
+# Backend
+cd server
+NODE_ENV=production node index.js
+```
+
+### **Environment Variables (Production)**
+
+```env
+NODE_ENV=production
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/codelyn
+JWT_SECRET=production_jwt_secret_256_bits_minimum
+PORT=3000
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+### Development Guidelines:
+
+- Follow TypeScript best practices
+- Maintain consistent code formatting
+- Write descriptive commit messages
+- Test your changes thoroughly
+- Update documentation as needed
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**Built with ❤️ by the Codelyn Team**
+
+[🌐 Website](https://codelyn.dev) • [📧 Contact](mailto:contact@codelyn.dev) • [🐛 Issues](https://github.com/yourusername/codelyn/issues)
+
+</div>
