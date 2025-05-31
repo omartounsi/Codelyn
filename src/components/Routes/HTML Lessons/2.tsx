@@ -157,8 +157,8 @@ export const HTML2 = () => {
             Emphasize words in a sample paragraph{" "}
           </li>
         </div>
-      </div>
-      <NavButtons />
+      </div>{" "}
+      <NavButtons previous="/lessons/html/1" next="/lessons/html/3" />
     </>
   );
 };

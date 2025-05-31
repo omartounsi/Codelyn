@@ -72,8 +72,8 @@ export const HTML3 = () => {
           and see what happens:
         </p>
         <CodeElement codeString="<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfExcN4DTdnCBDZxauDDs8wBG3oT4KuQiEwg&s' alt='An image of a cat'>" />
-      </div>
-      <NavButtons />
+      </div>{" "}
+      <NavButtons previous="/lessons/html/2" next="/lessons/html/4" />
     </>
   );
 };

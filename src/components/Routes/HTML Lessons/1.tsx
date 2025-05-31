@@ -175,7 +175,7 @@ export const HTML1 = () => {
           Note: you can use the side arrows to navigate betwen the lessons
         </h3>
         {/* NEXT / PREV */}
-        <NavButtons />
+        <NavButtons previous={null} next="/lessons/html/2" />
       </div>
     </>
   );
