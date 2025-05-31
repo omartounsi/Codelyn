@@ -331,7 +331,7 @@ export const Overview = () => {
           Quick Actions:
         </h3>
 
-        <div className="flex flex-col items-center justify-center w-full text-neutral-400">
+        <div className="flex flex-col items-center justify-center w-full gap-1 text-neutral-400 ">
           <button className="px-4 py-2 text-red-400 transition-colors border rounded-full cursor-pointer text-md hover:bg-neutral-100">
             Restart Services
           </button>
