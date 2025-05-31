@@ -29,6 +29,13 @@ type AuthContextType = {
     email: string,
     password: string
   ) => Promise<void>;
+  createUserAsAdmin: (
+    first_name: string,
+    last_name: string,
+    email: string,
+    password: string,
+    role: string
+  ) => Promise<void>;
   logout: () => void;
 };
 
@@ -41,6 +48,9 @@ const AuthContext = createContext<AuthContextType>({
     throw new Error("ERROR");
   },
   register: async () => {
+    throw new Error("ERROR");
+  },
+  createUserAsAdmin: async () => {
     throw new Error("ERROR");
   },
   logout: () => {},
@@ -146,6 +156,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  //CREATE USER AS ADMIN
+  const createUserAsAdmin = async (
+    first_name: string,
+    last_name: string,
+    email: string,
+    password: string,
+    role: string
+  ) => {
+    try {
+      const res = await axios.post("/admin/create-user", {
+        first_name,
+        last_name,
+        email,
+        password,
+        role,
+      });
+      return res.data;
+    } catch (err: any) {
+      const message = err.response?.data?.message || "Failed to create user";
+      throw new Error(message);
+    }
+  };
+
   //   LOGOUT
   const logout = () => {
     localStorage.removeItem("token");
@@ -165,6 +198,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         loading,
         login,
         register,
+        createUserAsAdmin,
         logout,
       }}
     >

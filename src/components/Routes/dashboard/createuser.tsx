@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { LoadingSpinner } from "../../tools/loadingspinner";
 import { useAuth } from "../../../context/AuthContext";
-import axios from "axios";
 
 type CreateUserModalProps = {
   isOpen: boolean;
@@ -14,6 +13,7 @@ export const CreateUserModal = ({
   onClose,
   onUserCreated,
 }: CreateUserModalProps) => {
+  const { createUserAsAdmin } = useAuth();
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -24,7 +24,6 @@ export const CreateUserModal = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const { token } = useAuth();
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -53,13 +52,15 @@ export const CreateUserModal = ({
     setSuccess("");
     setLoading(true);
     try {
-      await axios.post("/admin/create-user", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await createUserAsAdmin(
+        formData.first_name,
+        formData.last_name,
+        formData.email,
+        formData.password,
+        formData.role
+      );
 
-      setSuccess("User created");
+      setSuccess("User created successfully");
       setFormData({
         first_name: "",
         last_name: "",
@@ -77,7 +78,7 @@ export const CreateUserModal = ({
         setSuccess("");
       }, 2000);
     } catch (err: any) {
-      setError(err.response?.data?.message || "Error creating user");
+      setError(err.message || "Error creating user");
     } finally {
       setLoading(false);
     }

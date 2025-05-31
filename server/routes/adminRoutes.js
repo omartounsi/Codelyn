@@ -1,4 +1,5 @@
 import express from "express";
+import bcrypt from "bcryptjs";
 import User from "../models/User.js";
 import Course from "../models/Course.js";
 import Lesson from "../models/Lesson.js";
@@ -94,7 +95,7 @@ router.post("/create-user", async (req, res) => {
     const { first_name, last_name, email, password, role } = req.body;
 
     //VALIDATION
-    if (!(first_name || last_name || email || password)) {
+    if (!(first_name && last_name && email && password)) {
       return res.status(400).json({ message: "missing fields" });
     }
 
@@ -110,12 +111,16 @@ router.post("/create-user", async (req, res) => {
       return res.status(400).json({ message: "invalid role format" });
     }
 
+    //HASH PASS
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     const newUser = new User({
       first_name,
       last_name,
       email,
-      password,
-      role,
+      password: hashedPassword,
+      role: role || "viewer", //defaultd
     });
 
     await newUser.save();
