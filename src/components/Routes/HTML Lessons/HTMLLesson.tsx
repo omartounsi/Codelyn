@@ -6,6 +6,12 @@ import { HTML1 } from "./1";
 import { HTML2 } from "./2";
 import { defaultHtmls } from "../../tools/defaulthtmls";
 import { HTML3 } from "./3";
+import { HTML4 } from "./4";
+import { HTML5 } from "./5";
+import { HTML6 } from "./6";
+import { HTML7 } from "./7";
+import { HTML8 } from "./8";
+import { HTML9 } from "./9";
 
 export const HTMLLesson = () => {
   const id = useParams();
@@ -60,11 +66,11 @@ export const HTMLLesson = () => {
   }
 
   return (
-    <div className="bg-zinc-950 h-screen w-full grid grid-cols-12 text-neutral-300 pt-14 ">
+    <div className="grid w-full h-screen grid-cols-12 bg-zinc-950 text-neutral-300 pt-14 ">
       {/* LEFT */}
-      <div className="col-span-6 grid grid-rows-12">
+      <div className="grid col-span-6 grid-rows-12">
         {/* TABS */}
-        <div className="row-span-1 flex items-center gap-1 pr-4 pl-1">
+        <div className="flex items-center row-span-1 gap-1 pl-1 pr-4">
           <p
             onClick={() => setActiveTab(0)}
             className={`border h-8 px-4 rounded-full flex items-center opacity-40 hover:opacity-100 transition-opacity select-none ${
@@ -88,7 +94,7 @@ export const HTMLLesson = () => {
             Reset
           </p>
         </div>
-        <div className="row-span-11 relative">
+        <div className="relative row-span-11">
           <iframe
             ref={iframeRef}
             sandbox=" allow-scripts"
@@ -216,7 +222,7 @@ export const HTMLLesson = () => {
       {/* RIGHT */}
       <div
         ref={rightPaneRef}
-        className="scrollbar-custom col-span-6 border border-dashed border-neutral-600 h-auto w-full overflow-y-scroll p-14 flex flex-col gap-10 relative focus:outline-0"
+        className="relative flex flex-col w-full h-auto col-span-6 gap-10 overflow-y-scroll border border-dashed scrollbar-custom border-neutral-600 p-14 focus:outline-0"
         style={{
           backgroundColor: "#09090b",
           backgroundImage: `
@@ -232,6 +238,18 @@ export const HTMLLesson = () => {
           <HTML2 />
         ) : id.lessonId === "3" ? (
           <HTML3 />
+        ) : id.lessonId === "4" ? (
+          <HTML4 />
+        ) : id.lessonId === "5" ? (
+          <HTML5 />
+        ) : id.lessonId === "6" ? (
+          <HTML6 />
+        ) : id.lessonId === "7" ? (
+          <HTML7 />
+        ) : id.lessonId === "8" ? (
+          <HTML8 />
+        ) : id.lessonId === "9" ? (
+          <HTML9 />
         ) : (
           <>Not Found</>
         )}
