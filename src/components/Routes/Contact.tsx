@@ -14,11 +14,88 @@ export const Contact = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    //VALIDATION
+    if (!firstName.trim()) {
+      toast.error("First name is required", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
+    if (!lastName.trim()) {
+      toast.error("Last name is required", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
+    if (!email.trim()) {
+      toast.error("Email is required", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
+    //EMAIL
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      toast.error("Please enter a valid email address", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
+    if (!message.trim()) {
+      toast.error("Message is required", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
     emailjs
       .sendForm(serviceId, templateId, formRef.current!, publicKey)
       .then(() => {
@@ -49,19 +126,22 @@ export const Contact = () => {
           progress: undefined,
           theme: "dark",
         });
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   return (
     <div
       style={{
-        backgroundColor: "#09090b",
+        backgroundColor: "",
         backgroundImage: `
       linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)`,
         backgroundSize: "20px 20px",
       }}
-      className="grid w-full h-screen text-white bg-zinc-950 place-content-center"
+      className="grid w-full h-screen text-white bg-zinc-900 place-content-center"
     >
       <div className="absolute w-40 h-40">
         <ToastContainer
@@ -100,29 +180,29 @@ export const Contact = () => {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             name="email"
-            // onKeyDown={(e) => handleKeyDown(e)}
+            disabled={isLoading}
             type="text"
             placeholder="Email Address"
-            className="border border-neutral-800 rounded-lg min-h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all"
+            className="border border-neutral-800 rounded-lg min-h-12 px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           />
           <div className="flex justify-between gap-1">
             <input
               onChange={(e) => setFirstName(e.target.value)}
               value={firstName}
-              // onKeyDown={(e) => handleKeyDown(e)}
+              disabled={isLoading}
               type="text"
               name="name"
               placeholder="First Name"
-              className="border border-neutral-800 rounded-lg h-12 w-full px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all"
+              className="border border-neutral-800 rounded-lg h-12 w-full px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             />
             <input
               onChange={(e) => setLastName(e.target.value)}
               value={lastName}
-              // onKeyDown={(e) => handleKeyDown(e)}
+              disabled={isLoading}
               type="text"
               name="last_name"
               placeholder="Last Name"
-              className="border border-neutral-800 rounded-lg h-12 w-full px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all"
+              className="border border-neutral-800 rounded-lg h-12 w-full px-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 focus:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             />
           </div>
           <div className="relative w-full h-full transition-all focus-within:scale-105">
@@ -130,15 +210,21 @@ export const Contact = () => {
               onChange={(e) => setMessage(e.target.value)}
               value={message}
               name="message"
+              disabled={isLoading}
               id=""
               placeholder="Write your message here..."
-              className="w-full h-full border resize-none overflow-y-scroll border-neutral-800 rounded-lg p-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 "
+              className="w-full h-full border resize-none overflow-y-scroll border-neutral-800 rounded-lg p-2 placeholder:text-neutral-600 focus:outline-1 focus:outline-neutral-500 placeholder:font-[Quicksand] text-neutral-400 disabled:opacity-50 disabled:cursor-not-allowed"
             ></textarea>
             <button
               type="submit"
-              className="absolute flex items-center justify-center w-10 h-10 mt-3 right-4 bottom-4"
+              disabled={isLoading}
+              className="absolute flex items-center justify-center w-10 h-10 mt-3 right-4 bottom-4 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <IoIosSend className="border h-10 w-10 rounded-full text-4xl p-1.5 border-neutral-500 text-neutral-300 opacity-40 hover:scale-110 hover:opacity-100 transition-all will-change-transform" />
+              {isLoading ? (
+                <div className="w-6 h-6 border-2 rounded-full border-neutral-500 border-t-transparent animate-spin"></div>
+              ) : (
+                <IoIosSend className="border h-10 w-10 rounded-full text-4xl p-1.5 border-neutral-500 text-neutral-300 opacity-40 hover:scale-110 hover:opacity-100 transition-all will-change-transform" />
+              )}
             </button>
           </div>
         </form>
