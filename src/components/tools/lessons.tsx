@@ -6,6 +6,7 @@ export const lessons = [
       "Learn HTML basics, general web structure, how different elements work.",
     progress: 29,
     icon: "IoCode",
+    route: "/lessons/html",
   },
   {
     id: 2,
@@ -13,6 +14,7 @@ export const lessons = [
     description: "Learn how to style your HTML index using CSS properties.",
     progress: 79,
     icon: "FaCss3Alt",
+    route: "/lessons/css",
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ export const lessons = [
       "Start with the JavaScript essentials. Basics, Syntax and Data Types.",
     progress: 96,
     icon: "IoLogoJavascript",
+    route: "#",
   },
   {
     id: 4,
@@ -29,6 +32,7 @@ export const lessons = [
       "Learn about the conditional flow, functions/methods, array and object manipulation... ",
     progress: 0,
     icon: "IoLogoJavascript",
+    route: "#",
   },
   {
     id: 5,
@@ -36,6 +40,7 @@ export const lessons = [
     description: "Learn about the Document Object Model (DOM)",
     progress: 0,
     icon: "IoLogoJavascript",
+    route: "#",
   },
 ];
 
@@ -47,6 +52,7 @@ export const bonusLessons = [
       "Learn how to use the command line to navigate your file system.",
     progress: 0,
     icon: "HiCommandLine",
+    route: "#",
   },
   {
     id: 7,
@@ -54,6 +60,7 @@ export const bonusLessons = [
     description: "Learn how to use Git for version control and collaboration.",
     progress: 0,
     icon: "IoIosGitBranch",
+    route: "#",
   },
   {
     id: 8,
@@ -62,6 +69,7 @@ export const bonusLessons = [
       "Learn how to use GitHub for version control and collaboration.",
     progress: 0,
     icon: "FiGithub",
+    route: "#",
   },
 
   {
@@ -70,6 +78,7 @@ export const bonusLessons = [
     description: "Learn how to use Tailwind CSS to style your HTML index.",
     progress: 0,
     icon: "RiTailwindCssFill",
+    route: "#",
   },
   {
     id: 10,
@@ -77,5 +86,6 @@ export const bonusLessons = [
     description: "Learn about ES6 features and how to use them.",
     progress: 0,
     icon: "IoLogoJavascript",
+    route: "#",
   },
 ];

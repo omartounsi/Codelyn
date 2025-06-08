@@ -8,6 +8,8 @@ import { Lessons } from "./components/Routes/lessons";
 import { Curriculum } from "./components/Routes/Curriculum";
 import { MainHTML } from "./components/Routes/HTML Lessons/mainHTML";
 import { HTMLLesson } from "./components/Routes/HTML Lessons/HTMLLesson";
+import { MainCSS } from "./components/Routes/CSS Lessons/mainCSS";
+import { CSSLesson } from "./components/Routes/CSS Lessons/CSSLesson";
 import Home from "./Home";
 import { Register } from "./Register";
 import { Login } from "./Login";
@@ -74,6 +76,23 @@ function App() {
             element={
               <ProtectedRoute>
                 <HTMLLesson />
+              </ProtectedRoute>
+            }
+          />
+          {/* CSS */}
+          <Route
+            path="/lessons/css"
+            element={
+              <ProtectedRoute>
+                <MainCSS />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/lessons/css/:lessonId"
+            element={
+              <ProtectedRoute>
+                <CSSLesson />
               </ProtectedRoute>
             }
           />

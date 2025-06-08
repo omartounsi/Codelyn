@@ -156,6 +156,7 @@ type lessonType = {
   description: string;
   progress: number;
   icon: string;
+  route: string;
 };
 
 type lessonCardProps = {
@@ -227,7 +228,7 @@ const LessonCard = ({
 
       {/* BUTTONS? */}
       <div className="flex items-center justify-center">
-        <Link to="/lessons/html">
+        <Link to={lesson.route}>
           <button className="font-bold transition-colors cursor-pointer text-neutral-400 hover:text-neutral-200">
             Continue
           </button>
