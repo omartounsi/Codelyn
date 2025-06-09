@@ -6,20 +6,25 @@ const progressSchema = mongoose.Schema({
     ref: "User",
     required: true,
   },
-  course: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Course",
+  courseType: {
+    type: String,
     required: true,
+    enum: ["html", "css", "javascript"],
   },
   completedLessons: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Lesson",
+      lessonId: {
+        type: Number,
+        required: true,
+      },
+      completedAt: {
+        type: Date,
+        default: Date.now,
+      },
     },
   ],
   lastAccessedLesson: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Lesson",
+    type: Number,
   },
   startDate: {
     type: Date,
@@ -33,8 +38,9 @@ const progressSchema = mongoose.Schema({
     default: 0,
   },
 });
-// 1 PROGRESS RECORD PER COURSE
-progressSchema.index({ user: 1, course: 1 }, { unique: true });
+
+// 1 PROGRESS RECORD PER COURSE TYPE PER USER
+progressSchema.index({ user: 1, courseType: 1 }, { unique: true });
 
 const Progress = mongoose.model("Progress", progressSchema, "progress");
 
