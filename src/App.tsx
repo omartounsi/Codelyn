@@ -14,6 +14,7 @@ import Home from "./Home";
 import { Register } from "./Register";
 import { Login } from "./Login";
 import { useAuth } from "./context/AuthContext";
+import { ProgressProvider } from "./context/ProgressContext";
 import { ProtectedRoute } from "./components/tools/protectedroute";
 import { LoadingModal } from "./components/tools/loadingmodal";
 import { Contact } from "./components/Routes/Contact";
@@ -32,7 +33,7 @@ function App() {
 
   if (loading) return <LoadingModal />;
   return (
-    <>
+    <ProgressProvider>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
@@ -101,7 +102,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-    </>
+    </ProgressProvider>
   );
 }
 

@@ -4,7 +4,7 @@ export const lessons = [
     title: "HTML",
     description:
       "Learn HTML basics, general web structure, how different elements work.",
-    progress: 29,
+    progress: 0, // This will be overridden by real progress data
     icon: "IoCode",
     route: "/lessons/html",
   },
@@ -12,7 +12,7 @@ export const lessons = [
     id: 2,
     title: "CSS",
     description: "Learn how to style your HTML index using CSS properties.",
-    progress: 79,
+    progress: 0, // This will be overridden by real progress data
     icon: "FaCss3Alt",
     route: "/lessons/css",
   },
@@ -21,7 +21,7 @@ export const lessons = [
     title: "JS I",
     description:
       "Start with the JavaScript essentials. Basics, Syntax and Data Types.",
-    progress: 96,
+    progress: 0, // This will be overridden by real progress data
     icon: "IoLogoJavascript",
     route: "#",
   },

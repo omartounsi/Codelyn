@@ -1,8 +1,11 @@
 import { NavLink } from "react-router";
 import { useAuth } from "../context/AuthContext";
+import { useProgress } from "../context/ProgressContext";
 
 export const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
+  const { state: progressState } = useProgress();
+
   const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     logout();
@@ -84,7 +87,20 @@ export const Navbar = () => {
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-10 text-[14px] ">
+            <div className="flex items-center gap-4 text-[14px] ">
+              {/* Progress Meter */}
+              <div className="flex items-center gap-3">
+                <div className="text-xs text-neutral-500">
+                  Progress: {progressState.overallProgress}%
+                </div>
+                <div className="w-24 h-2 bg-neutral-700 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-blue-500 to-green-500 transition-all duration-700 ease-out"
+                    style={{ width: `${progressState.overallProgress}%` }}
+                  />
+                </div>
+              </div>
+
               <div className="relative inline-block h-full group">
                 <div
                   className={`w-3 h-3 rounded-full ${user?.isSubscribed ? "bg-lime-600" : "bg-yellow-600"} border border-black`}

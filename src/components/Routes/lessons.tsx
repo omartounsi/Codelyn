@@ -12,14 +12,31 @@ import { projects } from "../tools/projects";
 import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useProgress } from "../../context/ProgressContext";
 
 import { CiCirclePlus } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
 
 export const Lessons = () => {
   const [activeCard, setActiveCard] = useState(1);
+  const { getCourseProgress } = useProgress();
+
   const handleCardClick = (index: number) => {
     setActiveCard(index);
+  };
+
+  // Function to get real progress for a lesson
+  const getLessonProgress = (lessonTitle: string): number => {
+    switch (lessonTitle.toLowerCase()) {
+      case "html":
+        return getCourseProgress("html")?.progress || 0;
+      case "css":
+        return getCourseProgress("css")?.progress || 0;
+      case "js i":
+        return getCourseProgress("javascript")?.progress || 0;
+      default:
+        return 0; // For bonus lessons and others that don't have progress tracking yet
+    }
   };
   return (
     <div className="grid w-full h-auto grid-cols-12 pb-6 text-white bg-slate-800 ">
@@ -70,7 +87,8 @@ export const Lessons = () => {
         <div className="flex justify-between w-full gap-6 mt-6 border-dashed h-160">
           {lessons.map((lesson) => (
             <LessonCard
-              lesson={lesson}
+              key={lesson.id}
+              lesson={{ ...lesson, progress: getLessonProgress(lesson.title) }}
               activeCard={activeCard}
               handleCardClick={handleCardClick}
             />
@@ -102,7 +120,8 @@ export const Lessons = () => {
         <div className="flex justify-between w-full gap-6 p-2 h-160 ">
           {bonusLessons.map((lesson) => (
             <LessonCard
-              lesson={lesson}
+              key={lesson.id}
+              lesson={{ ...lesson, progress: 0 }} // Bonus lessons don't have progress tracking yet
               activeCard={activeCard}
               handleCardClick={handleCardClick}
             />

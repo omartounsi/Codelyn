@@ -1,9 +1,13 @@
-import { IoCheckmark } from "react-icons/io5";
+import { IoCheckmarkCircle } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
+import { useProgress } from "../../../context/ProgressContext";
 
 export const MainHTML = () => {
+  const { getCourseProgress, isLessonCompleted } = useProgress();
+  const courseProgress = getCourseProgress("html");
+
   const chapters = [
     { id: 1, title: "Introduction to HTML" },
     { id: 2, title: "Text and Headings" },
@@ -28,30 +32,82 @@ export const MainHTML = () => {
       <div className="flex items-center col-span-10">
         {/* CARD */}
         <div className="max-h-170 w-[50%] border border-neutral-800 mt-10 rounded-xl flex flex-col p-10 overflow-y-scroll scrollbar-hide">
+          {/* COURSE PROGRESS HEADER */}
+          <div className="mb-6 p-4 bg-neutral-800/50 rounded-xl border border-neutral-700">
+            <div className="flex justify-between items-center mb-3">
+              <h2 className="text-lg font-semibold text-neutral-200">
+                HTML Course Progress
+              </h2>
+              <span className="text-sm text-neutral-400 font-mono">
+                {courseProgress?.completedLessons.length || 0} /{" "}
+                {courseProgress?.totalLessons || 9} lessons
+              </span>
+            </div>
+            <div className="w-full h-3 bg-neutral-700 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-orange-500 to-red-400 transition-all duration-700 ease-out"
+                style={{ width: `${courseProgress?.progress || 0}%` }}
+              />
+            </div>
+            <div className="flex justify-between mt-2 text-xs text-neutral-500">
+              <span>Beginner</span>
+              <span className="font-mono">
+                {courseProgress?.progress || 0}%
+              </span>
+              <span>Expert</span>
+            </div>
+          </div>
+
           {/* TITLE */}
           <h1 className="text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1] text-neutral-50 mb-4">
-            Chapters
+            HTML Chapters
           </h1>
           {/* CHAPTERS */}
           <div className="flex flex-col h-full gap-2">
-            {chapters.map((chapter) => (
-              <div
-                onClick={() => navigate(`/lessons/html/${chapter.id}`)}
-                key={chapter.id}
-                className="flex items-center gap-2 px-4 transition-transform duration-300 border cursor-pointer border-neutral-900 min-h-16 rounded-xl hover:scale-105"
-              >
-                <div className="flex items-center justify-center text-black border border-white rounded-full h-7 w-7">
-                  <IoCheckmark />
+            {chapters.map((chapter) => {
+              const isCompleted = isLessonCompleted("html", chapter.id);
+              return (
+                <div
+                  onClick={() => navigate(`/lessons/html/${chapter.id}`)}
+                  key={chapter.id}
+                  className={`flex items-center gap-2 px-4 transition-transform duration-300 border cursor-pointer min-h-16 rounded-xl hover:scale-105 ${
+                    isCompleted
+                      ? "border-green-500/30 bg-green-500/5"
+                      : "border-neutral-900"
+                  }`}
+                >
+                  <div
+                    className={`flex items-center justify-center rounded-full h-7 w-7 ${
+                      isCompleted
+                        ? "bg-green-500 text-white"
+                        : "text-black border border-white bg-white"
+                    }`}
+                  >
+                    {isCompleted ? (
+                      <IoCheckmarkCircle />
+                    ) : (
+                      <span className="text-sm font-semibold">
+                        {chapter.id}
+                      </span>
+                    )}
+                  </div>
+                  <p
+                    className={`max-w-2xl font-light ${
+                      isCompleted ? "text-neutral-200" : "text-neutral-300"
+                    }`}
+                  >
+                    {chapter.title}
+                  </p>
+                  <div className="ml-auto">
+                    <BsThreeDots
+                      className={
+                        isCompleted ? "text-green-400" : "text-neutral-500"
+                      }
+                    />
+                  </div>
                 </div>
-                <p className="max-w-2xl font-light text-foreground text-neutral-300">
-                  {" "}
-                  {chapter.title}
-                </p>
-                <div className="ml-auto">
-                  <BsThreeDots />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
