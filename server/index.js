@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoutes.js";
 import activityRoutes from "./routes/activityRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import progressRoutes from "./routes/progressRoutes.js";
 
 dotenv.config();
 
@@ -21,6 +22,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
 //ACTIVITIES
 app.use("/api/activities", activityRoutes);
+//PROGRESS
+app.use("/api/progress", progressRoutes);
 //FOR ADMIN
 app.use("/api/admin", adminRoutes);
 
