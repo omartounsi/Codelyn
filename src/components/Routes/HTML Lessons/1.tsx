@@ -1,6 +1,6 @@
 import { NavButtons } from "../../tools/navbuttons";
 import { CodeElement } from "../../tools/codeelement";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useProgress } from "../../../context/ProgressContext";
 import { IoCheckmarkCircle } from "react-icons/io5";
 
@@ -181,9 +181,9 @@ export const HTML1 = () => {
         <Quiz />
 
         {/* MARK AS COMPLETE BUTTON */}
-        <div className="flex items-center gap-4 p-4 bg-neutral-800/50 rounded-xl border border-neutral-700 mt-6">
+        <div className="flex items-center gap-4 p-4 mt-6 border bg-neutral-800/50 rounded-xl border-neutral-700">
           <div className="flex-1">
-            <h4 className="text-lg font-semibold text-neutral-200 mb-1">
+            <h4 className="mb-1 text-lg font-semibold text-neutral-200">
               Lesson Progress
             </h4>
             <p className="text-sm text-neutral-400">
@@ -215,16 +215,58 @@ export const HTML1 = () => {
 };
 
 const Quiz = () => {
-  const [right, setRight] = useState(false);
-  const rightAnswerRef = useRef(null);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [showResult, setShowResult] = useState(false);
 
-  const handleAnswer = (answer: number) => {
-    if (answer === 2) {
-      if (rightAnswerRef.current) {
-        setRight(true);
-      }
-    } else {
-      setRight(false);
+  const answers = [
+    { id: 1, text: "A. Display content" },
+    { id: 2, text: "B. Hold metadata" },
+    { id: 3, text: "C. Create links" },
+    { id: 4, text: "D. Add CSS styles" },
+  ];
+
+  const correctAnswerId = 2;
+
+  const handleAnswer = (answerId: number) => {
+    setSelectedAnswer(answerId);
+    setShowResult(true);
+  };
+
+  const getAnswerStatus = (answerId: number) => {
+    if (!showResult) return "default";
+    if (selectedAnswer === answerId) {
+      return answerId === correctAnswerId ? "correct" : "incorrect";
+    }
+    if (answerId === correctAnswerId) return "reveal-correct";
+    return "default";
+  };
+
+  const getAnswerStyles = (status: string) => {
+    switch (status) {
+      case "correct":
+        return {
+          container: "bg-green-500/20 border-green-500",
+          square: "bg-green-500 border-green-500",
+          icon: "✓",
+        };
+      case "incorrect":
+        return {
+          container: "bg-red-500/20 border-red-500",
+          square: "bg-red-500 border-red-500",
+          icon: "✗",
+        };
+      case "reveal-correct":
+        return {
+          container: "bg-green-500/10 border-green-500/50",
+          square: "bg-green-500 border-green-500",
+          icon: "✓",
+        };
+      default:
+        return {
+          container: "bg-neutral-900/30",
+          square: "bg-neutral-900 border-neutral-700",
+          icon: "",
+        };
     }
   };
 
@@ -238,59 +280,53 @@ const Quiz = () => {
           Question: What's the purpose of the head section in HTML?
         </p>
         <div className="flex flex-col w-full h-auto gap-2 rounded-lg">
-          {/* ANSWER1 */}
-          <div
-            onClick={() => handleAnswer(1)}
-            className="flex items-center gap-3 px-2 transition-transform duration-300 ease-in-out border rounded-lg cursor-pointer border-neutral-700 h-14 bg-neutral-900/30 hover:scale-105 will-change-transform "
-          >
-            {/* SQUARE */}
-            <div className="w-10 h-10 border bg-neutral-900 border-neutral-700 rounded-xl"></div>
-            {/* ANSWER */}
-            <p className="max-w-2xl text-lg font-light text-foreground text-neutral-100">
-              A. Display content
-            </p>
-          </div>
+          {answers.map((answer) => {
+            const status = getAnswerStatus(answer.id);
+            const styles = getAnswerStyles(status);
 
-          {/* ANSWER2 */}
-          <div
-            ref={rightAnswerRef}
-            onClick={() => handleAnswer(2)}
-            className={`flex items-center gap-3 px-2 transition-transform duration-300 ease-in-out border rounded-lg cursor-pointer border-neutral-700 h-14  hover:scale-105 will-change-transform ${right ? "bg-neutral-800" : "bg-neutral-900/30"}`}
-          >
-            {/* SQUARE */}
-            <div className="w-10 h-10 border bg-neutral-900 border-neutral-700 rounded-xl"></div>
-            {/* ANSWER */}
-            <p className="max-w-2xl text-lg font-light text-foreground text-neutral-100">
-              B. Hold metadata
-            </p>
-          </div>
-
-          {/* ANSWER3 */}
-          <div
-            onClick={() => handleAnswer(3)}
-            className="flex items-center gap-3 px-2 transition-transform duration-300 ease-in-out border rounded-lg cursor-pointer border-neutral-700 h-14 bg-neutral-900/30 hover:scale-105 will-change-transform "
-          >
-            {/* SQUARE */}
-            <div className="w-10 h-10 border bg-neutral-900 border-neutral-700 rounded-xl"></div>
-            {/* ANSWER */}
-            <p className="max-w-2xl text-lg font-light text-foreground text-neutral-100">
-              C. Create links
-            </p>
-          </div>
-
-          {/* ANSWER4 */}
-          <div
-            onClick={() => handleAnswer(4)}
-            className="flex items-center gap-3 px-2 transition-transform duration-300 ease-in-out border rounded-lg cursor-pointer border-neutral-700 h-14 bg-neutral-900/30 hover:scale-105 will-change-transform "
-          >
-            {/* SQUARE */}
-            <div className="w-10 h-10 border bg-neutral-900 border-neutral-700 rounded-xl"></div>
-            {/* ANSWER */}
-            <p className="max-w-2xl text-lg font-light text-foreground text-neutral-100">
-              D. Add CSS styles
-            </p>
-          </div>
+            return (
+              <div
+                key={answer.id}
+                onClick={() => handleAnswer(answer.id)}
+                className={`flex items-center gap-3 px-2 transition-transform duration-300 ease-in-out border rounded-lg cursor-pointer border-neutral-700 h-14 hover:scale-105 will-change-transform ${styles.container}`}
+              >
+                <div
+                  className={`w-10 h-10 border rounded-xl flex items-center justify-center ${styles.square}`}
+                >
+                  {(selectedAnswer === answer.id ||
+                    status === "reveal-correct") &&
+                    styles.icon}
+                </div>
+                <p className="max-w-2xl text-lg font-light text-foreground text-neutral-100">
+                  {answer.text}
+                </p>
+              </div>
+            );
+          })}
         </div>
+
+        {/* Result feedback */}
+        {showResult && (
+          <div
+            className={`mt-4 p-4 rounded-lg border ${
+              selectedAnswer === correctAnswerId
+                ? "bg-green-500/10 border-green-500/30"
+                : "bg-red-500/10 border-red-500/30"
+            }`}
+          >
+            <p
+              className={`text-lg font-medium ${
+                selectedAnswer === correctAnswerId
+                  ? "text-green-400"
+                  : "text-red-400"
+              }`}
+            >
+              {selectedAnswer === correctAnswerId
+                ? "✓ Correct! The head section holds metadata for the page."
+                : "✗ Incorrect. The head section holds metadata, not visible content."}
+            </p>
+          </div>
+        )}
       </div>
     </>
   );
