@@ -90,12 +90,12 @@ export const Navbar = () => {
             <div className="flex items-center gap-4 text-[14px] ">
               {/* Progress Meter */}
               <div className="flex items-center gap-3">
-                <div className="text-xs text-neutral-500">
+                <div className="text-xs text-neutral-400">
                   Progress: {progressState.overallProgress}%
                 </div>
-                <div className="w-24 h-2 bg-neutral-700 rounded-full overflow-hidden">
+                <div className="w-24 h-2 overflow-hidden rounded-full bg-neutral-700">
                   <div
-                    className="h-full bg-gradient-to-r from-blue-500 to-green-500 transition-all duration-700 ease-out"
+                    className="h-full transition-all duration-700 ease-out bg-gradient-to-r from-blue-500 to-green-500"
                     style={{ width: `${progressState.overallProgress}%` }}
                   />
                 </div>
