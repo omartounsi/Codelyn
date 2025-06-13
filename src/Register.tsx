@@ -31,7 +31,7 @@ export const Register = () => {
 
     try {
       await register(first_name, last_name, email, password);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err: any) {
       setError(err.message);
     } finally {
