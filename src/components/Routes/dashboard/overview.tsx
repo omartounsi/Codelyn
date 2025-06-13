@@ -225,31 +225,64 @@ export const Overview = () => {
           <MyPie data={data} />
         </div>
       </div>
-      <div className="row-span-1 p-6 border rounded-xl border-neutral-800 bg-neutral-700/20">
-        <h3 className="text-3xl font-[Geist] font-bold leading-tight tracking-tighter text-neutral-200 mb-3">
-          Course Stats:
+      <div
+        style={{
+          backdropFilter: "blur(2px)",
+        }}
+        className="flex flex-col row-span-1 p-6 border shadow-md shadow-neutral-900 rounded-xl border-neutral-800 bg-neutral-700/20"
+      >
+        <h3 className="text-3xl font-[Geist] font-bold leading-tight tracking-tighter text-neutral-200 mb-4">
+          Course Stats
         </h3>
-        <div className="flex flex-col gap-2 text-sm">
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Total Courses:</span>
-            <span className="text-neutral-200">
-              {dashboardData?.stats.courseCount}
+
+        {/* Stats Pills */}
+        <div className="flex flex-col gap-3 mb-4">
+          <div className="flex items-center gap-2 px-4 py-2 border rounded-full border-neutral-700/40 bg-neutral-800/50">
+            <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+            <span className="text-sm text-neutral-300">Total Courses:</span>
+            <span className="ml-auto font-bold text-neutral-50">
+              {dashboardData?.stats.courseCount || 0}
             </span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Total Lessons:</span>
-            <span className="text-neutral-200">
-              {dashboardData?.stats.lessonsCount}
+
+          <div className="flex items-center gap-2 px-4 py-2 border rounded-full border-neutral-700/40 bg-neutral-800/50">
+            <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+            <span className="text-sm text-neutral-300">Total Lessons:</span>
+            <span className="ml-auto font-bold text-neutral-50">
+              {dashboardData?.stats.lessonsCount || 0}
             </span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Avg. Lessons/Course:</span>
-            <span className="text-neutral-200">
+
+          <div className="flex items-center gap-2 px-4 py-2 border rounded-full border-neutral-700/40 bg-neutral-800/50">
+            <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
+            <span className="text-sm text-neutral-300">Avg. per Course:</span>
+            <span className="ml-auto font-bold text-neutral-50">
               {Math.round(
                 (dashboardData?.stats.lessonsCount || 0) /
                   (dashboardData?.stats.courseCount || 1)
               )}
             </span>
+          </div>
+        </div>
+
+        {/* Progress Indicator */}
+        <div className="mt-auto">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs text-neutral-400">Content Library</span>
+            <span className="text-xs text-neutral-400">
+              {(((dashboardData?.stats.lessonsCount || 0) / 50) * 100).toFixed(
+                0
+              )}
+              %
+            </span>
+          </div>
+          <div className="w-full h-2 overflow-hidden rounded-full bg-neutral-700">
+            <div
+              className="h-full transition-all duration-700 ease-out bg-gradient-to-r from-blue-500 to-green-500"
+              style={{
+                width: `${Math.min(((dashboardData?.stats.lessonsCount || 0) / 50) * 100, 100)}%`,
+              }}
+            />
           </div>
         </div>
       </div>
