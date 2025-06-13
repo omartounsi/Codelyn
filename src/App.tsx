@@ -10,7 +10,7 @@ import { MainHTML } from "./components/Routes/HTML Lessons/mainHTML";
 import { HTMLLesson } from "./components/Routes/HTML Lessons/HTMLLesson";
 import { MainCSS } from "./components/Routes/CSS Lessons/mainCSS";
 import { CSSLesson } from "./components/Routes/CSS Lessons/CSSLesson";
-import Home from "./Home";
+import Home from "./context/Home";
 import { Register } from "./Register";
 import { Login } from "./Login";
 import { useAuth } from "./context/AuthContext";
