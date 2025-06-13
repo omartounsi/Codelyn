@@ -152,4 +152,144 @@ const getDatabaseResponseTime = async () => {
   return Date.now() - start;
 };
 
+// GET ALL USERS
+router.get("/users", async (req, res) => {
+  try {
+    const users = await User.find().select("-password").sort({ createdAt: -1 });
+
+    // Calculate overall progress for each user
+    const usersWithProgress = await Promise.all(
+      users.map(async (user) => {
+        try {
+          // Import Progress model dynamically to avoid circular dependency
+          const { default: Progress } = await import("../models/Progress.js");
+
+          // Get all progress records for this user
+          const progressRecords = await Progress.find({ user: user._id });
+
+          // Calculate overall progress using the same method as frontend
+          // Total completed lessons across all courses / total possible lessons
+          let overallProgress = 0;
+          if (progressRecords.length > 0) {
+            const totalCompletedLessons = progressRecords.reduce(
+              (sum, record) => sum + (record.completedLessons?.length || 0),
+              0
+            );
+
+            // Total possible lessons across all courses (HTML: 9, CSS: 9, JavaScript: 9)
+            const totalPossibleLessons = 27; // 3 courses × 9 lessons each
+
+            overallProgress = Math.round(
+              (totalCompletedLessons / totalPossibleLessons) * 100
+            );
+          }
+
+          return {
+            ...user.toObject(),
+            overallProgress,
+          };
+        } catch (progressErr) {
+          console.error(
+            `Error calculating progress for user ${user._id}:`,
+            progressErr
+          );
+          return {
+            ...user.toObject(),
+            overallProgress: 0,
+          };
+        }
+      })
+    );
+
+    res.json(usersWithProgress);
+  } catch (err) {
+    console.error("Error fetching users:", err);
+    res.status(500).json({ message: "Failed to fetch users" });
+  }
+});
+
+// DELETE USER
+router.delete("/users/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    // Don't allow deletion of the current admin
+    if (userId === req.user.id) {
+      return res
+        .status(400)
+        .json({ message: "Cannot delete your own account" });
+    }
+
+    const user = await User.findByIdAndDelete(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "User deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting user:", err);
+    res.status(500).json({ message: "Failed to delete user" });
+  }
+});
+
+// UPDATE USER SUBSCRIPTION
+router.patch("/users/:userId/subscription", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { isSubscribed } = req.body;
+
+    const updateData = {
+      isSubscribed,
+      ...(isSubscribed && { subscriptionDate: new Date() }),
+    };
+
+    const user = await User.findByIdAndUpdate(userId, updateData, {
+      new: true,
+    }).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "Subscription updated successfully", user });
+  } catch (err) {
+    console.error("Error updating subscription:", err);
+    res.status(500).json({ message: "Failed to update subscription" });
+  }
+});
+
+// UPDATE USER ROLE
+router.patch("/users/:userId/role", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { role } = req.body;
+
+    // Validate role
+    const validRoles = ["viewer", "student", "admin"];
+    if (!validRoles.includes(role)) {
+      return res.status(400).json({ message: "Invalid role" });
+    }
+
+    // Don't allow changing own role
+    if (userId === req.user.id) {
+      return res.status(400).json({ message: "Cannot change your own role" });
+    }
+
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { role },
+      { new: true }
+    ).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "Role updated successfully", user });
+  } catch (err) {
+    console.error("Error updating role:", err);
+    res.status(500).json({ message: "Failed to update role" });
+  }
+});
+
 export default router;
