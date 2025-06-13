@@ -1,11 +1,11 @@
-import { Hero } from "./components/Hero";
-import { LessonPreview } from "./components/LessonPreview";
-import { LessonsNav } from "./components/LessonsNav";
-import { ProgressPreview } from "./components/ProgressPreview";
-import { FAQ } from "./components/FAQ";
-import { Call } from "./components/Call";
-import { Footer } from "./components/Footer";
-import { EditorPreview } from "./components/EditorPreview";
+import { Hero } from "../components/Hero";
+import { LessonPreview } from "../components/LessonPreview";
+import { LessonsNav } from "../components/LessonsNav";
+import { ProgressPreview } from "../components/ProgressPreview";
+import { FAQ } from "../components/FAQ";
+import { Call } from "../components/Call";
+import { Footer } from "../components/Footer";
+import { EditorPreview } from "../components/EditorPreview";
 
 const Home = () => {
   return (
