@@ -103,7 +103,7 @@ export const Navbar = () => {
 
               <div className="relative inline-block h-full group">
                 <div
-                  className={`w-3 h-3 rounded-full ${user?.isSubscribed ? "bg-lime-600" : "bg-yellow-600"} border border-black`}
+                  className={`w-3 h-3 rounded-full ${user?.isSubscribed ? "bg-lime-600" : "bg-yellow-600"} `}
                 ></div>
                 <div className="absolute w-auto px-4 py-1 mt-3 transform -translate-x-1/2 border rounded-full opacity-0 group-hover:opacity-100 left-1/2 whitespace-nowrap bg-neutral-200 text-neutral-800">
                   {user?.isSubscribed ? (
