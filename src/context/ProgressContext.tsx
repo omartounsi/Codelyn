@@ -79,7 +79,15 @@ const initialState: ProgressState = {
       courseName: "JavaScript Fundamentals",
       progress: 0,
       completedLessons: [],
-      totalLessons: 9,
+      totalLessons: 12,
+      lastAccessedLesson: 1,
+    },
+    {
+      courseId: "cli",
+      courseName: "Command Line Interface",
+      progress: 0,
+      completedLessons: [],
+      totalLessons: 5,
       lastAccessedLesson: 1,
     },
   ],
@@ -209,6 +217,7 @@ interface ProgressContextType {
   markLessonComplete: (courseId: string, lessonId: number) => Promise<void>;
   updateLastAccessedLesson: (courseId: string, lessonId: number) => void;
   getCourseProgress: (courseId: string) => CourseProgress | undefined;
+  getAllProgress: () => Record<string, CourseProgress>;
   getLessonProgress: (
     courseId: string,
     lessonId: number
@@ -249,6 +258,14 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
   const isLessonCompleted = (courseId: string, lessonId: number): boolean => {
     const course = getCourseProgress(courseId);
     return course?.completedLessons.includes(lessonId) || false;
+  };
+
+  const getAllProgress = (): Record<string, CourseProgress> => {
+    const progressMap: Record<string, CourseProgress> = {};
+    state.courses.forEach((course) => {
+      progressMap[course.courseId] = course;
+    });
+    return progressMap;
   };
 
   // Helper function to get auth token
@@ -395,6 +412,7 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
     markLessonComplete,
     updateLastAccessedLesson,
     getCourseProgress,
+    getAllProgress,
     getLessonProgress,
     isLessonCompleted,
     refreshProgress,

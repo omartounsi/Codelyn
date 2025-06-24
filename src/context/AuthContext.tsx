@@ -15,6 +15,7 @@ type User = {
   email: string;
   role: string;
   isSubscribed: boolean;
+  profilePicture?: string | null;
 };
 
 type AuthContextType = {
@@ -36,6 +37,7 @@ type AuthContextType = {
     password: string,
     role: string
   ) => Promise<void>;
+  updateUser: (updatedUser: User) => void;
   logout: () => void;
 };
 
@@ -51,6 +53,9 @@ const AuthContext = createContext<AuthContextType>({
     throw new Error("ERROR");
   },
   createUserAsAdmin: async () => {
+    throw new Error("ERROR");
+  },
+  updateUser: () => {
     throw new Error("ERROR");
   },
   logout: () => {},
@@ -179,6 +184,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  //   UPDATE USER
+  const updateUser = (updatedUser: User) => {
+    setUser(updatedUser);
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  };
+
   //   LOGOUT
   const logout = () => {
     localStorage.removeItem("token");
@@ -199,6 +210,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         login,
         register,
         createUserAsAdmin,
+        updateUser,
         logout,
       }}
     >
