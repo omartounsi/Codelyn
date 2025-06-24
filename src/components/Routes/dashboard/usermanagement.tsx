@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { LoadingSpinner } from "../../tools/loadingspinner";
 import { CreateUserModal } from "./createuser";
+import { API_BASE_URL, UPLOADS_BASE_URL } from "../../../config/api";
 import {
   IoSearch,
   IoEllipsisVertical,
@@ -45,7 +46,7 @@ export const UserManagement = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:3000/api/admin/users",
+          `${API_BASE_URL}/admin/users`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -139,7 +140,7 @@ export const UserManagement = () => {
   const handleDeleteUser = async (userId: string) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        await axios.delete(`http://localhost:3000/api/admin/users/${userId}`, {
+        await axios.delete(`${API_BASE_URL}/admin/users/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(users.filter((user) => user._id !== userId));
@@ -156,7 +157,7 @@ export const UserManagement = () => {
   ) => {
     try {
       await axios.patch(
-        `http://localhost:3000/api/admin/users/${userId}/subscription`,
+        `${API_BASE_URL}/admin/users/${userId}/subscription`,
         { isSubscribed: !currentStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -185,7 +186,7 @@ export const UserManagement = () => {
   ) => {
     try {
       await axios.patch(
-        `http://localhost:3000/api/admin/users/${userId}/role`,
+        `${API_BASE_URL}/admin/users/${userId}/role`,
         { role: newRole },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -222,7 +223,7 @@ export const UserManagement = () => {
   const refreshUsers = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/admin/users",
+        `${API_BASE_URL}/admin/users`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -395,7 +396,7 @@ export const UserManagement = () => {
                   <div className="flex items-center col-span-3 gap-3">
                     {user.profilePicture ? (
                       <img
-                        src={`http://localhost:3000${user.profilePicture}`}
+                        src={`${UPLOADS_BASE_URL}${user.profilePicture}`}
                         alt={`${user.first_name} ${user.last_name}`}
                         className="object-cover w-10 h-10 rounded-full border-2 border-neutral-600"
                       />

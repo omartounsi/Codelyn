@@ -32,13 +32,13 @@ export const ProfilePictureUpload = ({
     if (file) {
       // Validate file type
       if (!file.type.startsWith("image/")) {
-        alert("Please select an image file");
+        alert("Please choose an image file");
         return;
       }
 
       // Validate file size (5MB limit)
       if (file.size > 5 * 1024 * 1024) {
-        alert("File size must be less than 5MB");
+        alert("Image too large. Please choose a smaller file");
         return;
       }
 
