@@ -23,6 +23,7 @@ type User = {
   isSubscribed: boolean;
   subscriptionDate?: string;
   createdAt: string;
+  profilePicture?: string | null;
   overallProgress?: number; // Overall completion percentage across all courses
 };
 
@@ -392,10 +393,18 @@ export const UserManagement = () => {
                 >
                   {/* User Info */}
                   <div className="flex items-center col-span-3 gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 text-sm font-bold text-white rounded-full bg-gradient-to-r from-orange-500 to-red-400">
-                      {user.first_name[0]}
-                      {user.last_name[0]}
-                    </div>
+                    {user.profilePicture ? (
+                      <img
+                        src={`http://localhost:3000${user.profilePicture}`}
+                        alt={`${user.first_name} ${user.last_name}`}
+                        className="object-cover w-10 h-10 rounded-full border-2 border-neutral-600"
+                      />
+                    ) : (
+                      <div className="flex items-center justify-center w-10 h-10 text-sm font-bold text-white rounded-full bg-gradient-to-r from-orange-500 to-red-400">
+                        {user.first_name[0]}
+                        {user.last_name[0]}
+                      </div>
+                    )}
                     <div>
                       <p className="font-medium text-neutral-200">
                         {user.first_name} {user.last_name}
