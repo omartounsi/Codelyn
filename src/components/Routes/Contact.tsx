@@ -166,7 +166,7 @@ export const Contact = () => {
         style={{
           backdropFilter: "blur(2px)",
         }}
-        className="flex flex-col p-8 border h-140 w-140 border-neutral-800 rounded-xl"
+        className="flex flex-col p-8 border h-140 w-140 border-neutral-800 rounded-xl bg-neutral-800/40"
       >
         <h1 className="text-5xl font-bold leading-tight tracking-tighter text-neutral-50">
           Contact
