@@ -10,6 +10,11 @@ import { MainHTML } from "./components/Routes/HTML Lessons/mainHTML";
 import { HTMLLesson } from "./components/Routes/HTML Lessons/HTMLLesson";
 import { MainCSS } from "./components/Routes/CSS Lessons/mainCSS";
 import { CSSLesson } from "./components/Routes/CSS Lessons/CSSLesson";
+import { MainCLI } from "./components/Routes/CLI Lessons/mainCLI";
+import { CLILesson } from "./components/Routes/CLI Lessons/CLILesson";
+import { MainJS } from "./components/Routes/JS Lessons/mainJS";
+import { JSLesson } from "./components/Routes/JS Lessons/JSLesson";
+import { Profile } from "./components/Routes/Profile";
 import Home from "./context/Home";
 import { Register } from "./Register";
 import { Login } from "./Login";
@@ -44,6 +49,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
               </ProtectedRoute>
             }
           />
@@ -94,6 +107,39 @@ function App() {
             element={
               <ProtectedRoute>
                 <CSSLesson />
+              </ProtectedRoute>
+            }
+          />
+          {/* CLI */}
+          <Route
+            path="/lessons/cli"
+            element={
+              <ProtectedRoute>
+                <MainCLI />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/lessons/cli/:lessonId"
+            element={
+              <ProtectedRoute>
+                <CLILesson />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/lessons/js"
+            element={
+              <ProtectedRoute>
+                <MainJS />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/lessons/js/:lessonId"
+            element={
+              <ProtectedRoute>
+                <JSLesson />
               </ProtectedRoute>
             }
           />
