@@ -1,10 +1,11 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import { useProgress } from "../context/ProgressContext";
 
 export const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
   const { state: progressState } = useProgress();
+  const navigate = useNavigate();
 
   const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -51,7 +52,7 @@ export const Navbar = () => {
                   <NavLink to="/dashboard">Dashboard</NavLink>
                 </li>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
-                  <a>Profile</a>
+                  <NavLink to="/profile">Profile</NavLink>
                 </li>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
                   <a>Help</a>
@@ -69,7 +70,7 @@ export const Navbar = () => {
                   <NavLink to="/sandbox">Mini Sandbox</NavLink>
                 </li>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
-                  <a>Profile</a>
+                  <NavLink to="/profile">Profile</NavLink>
                 </li>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
                   <NavLink to="/contact">Contact</NavLink>
@@ -113,12 +114,26 @@ export const Navbar = () => {
                   )}
                 </div>
               </div>
-              <p>
-                Hello,{" "}
-                <span className="text-neutral-200">
-                  {user?.first_name}
-                </span>{" "}
-              </p>
+
+              {/* User Profile Picture */}
+              <div className="flex items-center gap-3">
+                {user?.profilePicture ? (
+                  <img
+                    src={`http://localhost:3000${user.profilePicture}`}
+                    alt="Profile"
+                    className="object-cover w-8 h-8 border-2 rounded-full cursor-pointer border-neutral-600"
+                    onClick={() => navigate("/profile")}
+                  />
+                ) : (
+                  <></>
+                )}
+                <p>
+                  Hello,{" "}
+                  <span className="text-neutral-200">
+                    {user?.first_name}
+                  </span>{" "}
+                </p>
+              </div>
               <button
                 className="h-8 px-4 py-1 rounded-full cursor-pointer bg-neutral-100 text-neutral-700"
                 onClick={(e) => handleLogout(e)}
