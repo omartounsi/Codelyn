@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 
 interface BackToCourseProps {
-  courseType: "html" | "css";
+  courseType: "html" | "css" | "cli" | "js" | "javascript";
   courseName: string;
 }
 
