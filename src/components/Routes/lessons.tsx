@@ -1,6 +1,8 @@
 import { IoCode } from "react-icons/io5";
 import { FaCss3Alt } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
+import { FaReact } from "react-icons/fa";
+import { FaNodeJs } from "react-icons/fa";
 import { PiBookOpenText } from "react-icons/pi";
 import { HiCommandLine } from "react-icons/hi2";
 import { IoIosGitBranch } from "react-icons/io";
@@ -32,8 +34,10 @@ export const Lessons = () => {
         return getCourseProgress("html")?.progress || 0;
       case "css":
         return getCourseProgress("css")?.progress || 0;
-      case "js i":
+      case "javascript":
         return getCourseProgress("javascript")?.progress || 0;
+      case "cli":
+        return getCourseProgress("cli")?.progress || 0;
       default:
         return 0; // For bonus lessons and others that don't have progress tracking yet
     }
@@ -121,7 +125,7 @@ export const Lessons = () => {
           {bonusLessons.map((lesson) => (
             <LessonCard
               key={lesson.id}
-              lesson={{ ...lesson, progress: 0 }} // Bonus lessons don't have progress tracking yet
+              lesson={{ ...lesson, progress: getLessonProgress(lesson.title) }}
               activeCard={activeCard}
               handleCardClick={handleCardClick}
             />
@@ -176,6 +180,7 @@ type lessonType = {
   progress: number;
   icon: string;
   route: string;
+  locked?: boolean;
 };
 
 type lessonCardProps = {
@@ -188,21 +193,34 @@ const LessonCard = ({
   activeCard,
   handleCardClick,
 }: lessonCardProps) => {
+  const isLocked = lesson.locked;
+
   return (
     <div
       key={lesson.id}
-      onClick={() => handleCardClick(lesson.id)}
+      onClick={() => !isLocked && handleCardClick(lesson.id)}
       className={classNames(
-        "border border-slate-600 bg-slate-700 rounded-xl flex flex-col justify-center gap-6 p-10 hover:scale-105 transition-all duration-300 ease-in-out will-change-transform cursor-pointer hover:shadow-xl hover:shadow-slate-950",
+        "border rounded-xl flex flex-col justify-center gap-6 p-10 transition-all duration-300 ease-in-out will-change-transform overflow-hidden",
         activeCard === lesson.id ? "w-80" : "w-60 items-center",
-        "overflow-hidden"
+        isLocked
+          ? "border-slate-700 bg-slate-800/50 opacity-60 cursor-not-allowed"
+          : "border-slate-600 bg-slate-700 hover:scale-105 cursor-pointer hover:shadow-xl hover:shadow-slate-950"
       )}
     >
       {/* LOGO? */}
-      <div className="w-20 min-h-20 bg-neutral-100 mx-auto rounded-full grid place-content-center text-neutral-700 text-5xl hover:scale-x-[-1] transition-transform duration-300 ">
+      <div
+        className={classNames(
+          "w-20 min-h-20 mx-auto rounded-full grid place-content-center text-5xl transition-transform duration-300",
+          isLocked
+            ? "bg-neutral-600 text-neutral-400"
+            : "bg-neutral-100 text-neutral-700 hover:scale-x-[-1]"
+        )}
+      >
         {lesson.icon === "IoCode" && <IoCode />}
         {lesson.icon === "FaCss3Alt" && <FaCss3Alt />}
         {lesson.icon === "IoLogoJavascript" && <IoLogoJavascript />}
+        {lesson.icon === "FaReact" && <FaReact />}
+        {lesson.icon === "FaNodeJs" && <FaNodeJs />}
         {lesson.icon === "HiCommandLine" && <HiCommandLine />}
         {lesson.icon === "IoIosGitBranch" && <IoIosGitBranch />}
         {lesson.icon === "FiGithub" && <FiGithub />}
@@ -247,11 +265,17 @@ const LessonCard = ({
 
       {/* BUTTONS? */}
       <div className="flex items-center justify-center">
-        <Link to={lesson.route}>
-          <button className="font-bold transition-colors cursor-pointer text-neutral-400 hover:text-neutral-200">
-            Continue
+        {isLocked ? (
+          <button className="font-bold text-neutral-500 cursor-not-allowed">
+            Coming Soon
           </button>
-        </Link>
+        ) : (
+          <Link to={lesson.route}>
+            <button className="font-bold transition-colors cursor-pointer text-neutral-400 hover:text-neutral-200">
+              Continue
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
