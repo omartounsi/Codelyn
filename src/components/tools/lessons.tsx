@@ -18,29 +18,32 @@ export const lessons = [
   },
   {
     id: 3,
-    title: "JS I",
+    title: "JavaScript",
     description:
-      "Start with the JavaScript essentials. Basics, Syntax and Data Types.",
+      "Master JavaScript programming from basics to advanced DOM manipulation. Build interactive web applications.",
     progress: 0, // This will be overridden by real progress data
     icon: "IoLogoJavascript",
-    route: "#",
+    route: "/lessons/js",
   },
   {
     id: 4,
-    title: "JS II",
+    title: "React",
     description:
-      "Learn about the conditional flow, functions/methods, array and object manipulation... ",
+      "Build dynamic user interfaces with React. Learn components, state management, and modern React patterns.",
     progress: 0,
-    icon: "IoLogoJavascript",
+    icon: "FaReact",
     route: "#",
+    locked: true,
   },
   {
     id: 5,
-    title: "The DOM",
-    description: "Learn about the Document Object Model (DOM)",
+    title: "Node.js",
+    description:
+      "Build server-side applications with Node.js. Learn APIs, databases, and backend development.",
     progress: 0,
-    icon: "IoLogoJavascript",
+    icon: "FaNodeJs",
     route: "#",
+    locked: true,
   },
 ];
 
@@ -52,7 +55,7 @@ export const bonusLessons = [
       "Learn how to use the command line to navigate your file system.",
     progress: 0,
     icon: "HiCommandLine",
-    route: "#",
+    route: "/lessons/cli",
   },
   {
     id: 7,
@@ -61,6 +64,7 @@ export const bonusLessons = [
     progress: 0,
     icon: "IoIosGitBranch",
     route: "#",
+    locked: true,
   },
   {
     id: 8,
@@ -70,6 +74,7 @@ export const bonusLessons = [
     progress: 0,
     icon: "FiGithub",
     route: "#",
+    locked: true,
   },
 
   {
@@ -79,6 +84,7 @@ export const bonusLessons = [
     progress: 0,
     icon: "RiTailwindCssFill",
     route: "#",
+    locked: true,
   },
   {
     id: 10,
@@ -87,5 +93,6 @@ export const bonusLessons = [
     progress: 0,
     icon: "IoLogoJavascript",
     route: "#",
+    locked: true,
   },
 ];
