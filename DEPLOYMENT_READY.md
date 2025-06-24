@@ -55,11 +55,13 @@ In `server/index.js`, update the corsOptions with your actual Netlify URL:
 ```javascript
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-netlify-site.netlify.app']
+    ? ['https://codelyn.netlify.app']
     : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true
 };
 ```
+
+**✅ ALREADY UPDATED** with your URLs!
 
 ---
 
@@ -68,8 +70,10 @@ const corsOptions = {
 ### 1. Update Environment Variables
 Create `.env.production` with your Render backend URL:
 ```
-VITE_API_URL=https://your-render-backend-url.onrender.com/api
+VITE_API_URL=https://codelyn.onrender.com/api
 ```
+
+**✅ ALREADY UPDATED** with your backend URL!
 
 ### 2. Build and Deploy
 ```bash
@@ -82,7 +86,7 @@ npm run build
 3. If using GitHub:
    - **Build Command**: `npm run build`
    - **Publish Directory**: `dist`
-   - **Environment Variables**: Add `VITE_API_URL=https://your-render-url.onrender.com/api`
+   - **Environment Variables**: Add `VITE_API_URL=https://codelyn.onrender.com/api`
 
 ---
 

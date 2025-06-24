@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 5000;
 const corsOptions = {
   origin:
     process.env.NODE_ENV === "production"
-      ? ["https://your-netlify-site.netlify.app", "https://www.your-domain.com"]
+      ? ["https://codelyn.netlify.app", "https://www.codelyn.netlify.app"]
       : ["http://localhost:5173", "http://localhost:3000"],
   credentials: true,
 };
