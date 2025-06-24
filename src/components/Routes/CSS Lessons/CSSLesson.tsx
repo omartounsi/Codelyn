@@ -1,6 +1,6 @@
 import { Editor } from "@monaco-editor/react";
 import type * as monaco from "monaco-editor";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { useEffect, useRef, useState } from "react";
 import { CSS1 } from "./1";
 import { CSS2 } from "./2";
@@ -12,11 +12,19 @@ import { CSS7 } from "./7";
 import { CSS8 } from "./8";
 import { CSS9 } from "./9";
 import { defaultCSSs } from "../../tools/defaultcsss";
-import { BackToCourse } from "../../tools/backtocourse";
+import {
+  IoMenu,
+  IoArrowBack,
+  IoFlag,
+  IoHelpCircle,
+  IoCode,
+} from "react-icons/io5";
 
 export const CSSLesson = () => {
   const id = useParams();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<number>(0);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   //
   const lessonIndex = id.lessonId ? Number(id.lessonId) - 1 : 0;
@@ -25,6 +33,7 @@ export const CSSLesson = () => {
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const rightPaneRef = useRef<HTMLDivElement>(null);
 
@@ -38,6 +47,23 @@ export const CSSLesson = () => {
     rightPaneRef.current?.scrollTo({ top: 0, behavior: "auto" });
     rightPaneRef.current?.focus();
   }, [id.lessonId]);
+
+  // CLOSE MENU WHEN CLICKING OUTSIDE
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
 
   // UPDATE EDITOR ON ROUTING CHANGE
   useEffect(() => {
@@ -66,9 +92,59 @@ export const CSSLesson = () => {
     editorRef.current?.setValue(defaultCSSs[lessonIndex]);
   }
 
+  const menuItems = [
+    {
+      icon: IoArrowBack,
+      label: "Back to Course",
+      action: () => navigate("/lessons/css"),
+    },
+    {
+      icon: IoFlag,
+      label: "Report Course",
+      action: () => console.log("Report course"), // Placeholder
+    },
+    {
+      icon: IoHelpCircle,
+      label: "Ask AI for Help",
+      action: () => console.log("Ask AI for help"), // Placeholder
+    },
+    {
+      icon: IoCode,
+      label: "Go to Projects",
+      action: () => console.log("Go to projects"), // Placeholder
+    },
+  ];
+
   return (
     <>
-      <BackToCourse courseType="css" courseName="CSS Course" />
+      {/* Burger Menu */}
+      <div ref={menuRef} className="fixed z-50 bottom-4 left-4">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex items-center justify-center w-10 h-10 text-3xl transition-all duration-200 border rounded-full shadow-lg bg-neutral-800/90 opacity-40 hover:opacity-100 backdrop-blur-sm border-neutral-600 text-neutral-200 hover:text-white hover:bg-neutral-700/90 hover:scale-105"
+        >
+          <IoMenu className="w-4 h-4" />
+        </button>
+
+        {/* Menu Pill */}
+        {menuOpen && (
+          <div className="absolute bottom-12 left-0 bg-neutral-800/95 backdrop-blur-sm border border-neutral-600 rounded-2xl shadow-xl py-2 px-1 min-w-[200px]">
+            {menuItems.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  item.action();
+                  setMenuOpen(false);
+                }}
+                className="flex items-center w-full gap-3 px-4 py-3 text-sm font-medium transition-all duration-200 text-neutral-200 hover:text-white hover:bg-neutral-700/50 rounded-xl group"
+              >
+                <item.icon className="w-4 h-4 text-neutral-400 group-hover:text-white" />
+                <span>{item.label}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
       <div className="grid w-full h-screen grid-cols-12 bg-zinc-950 text-neutral-300 pt-14 ">
         {/* LEFT */}
         <div className="grid col-span-6 grid-rows-12">
