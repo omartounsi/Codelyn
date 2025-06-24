@@ -15,7 +15,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 //MIDDLEWARE
-app.use(cors());
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV === "production"
+      ? ["https://your-netlify-site.netlify.app", "https://www.your-domain.com"]
+      : ["http://localhost:5173", "http://localhost:3000"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Serve static files (profile pictures)

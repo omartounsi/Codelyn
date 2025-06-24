@@ -3,7 +3,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { useProgress } from "../../../context/ProgressContext";
-import { IoTerminal, IoGlobe, IoRocket, IoLayers } from "react-icons/io5";
+import { IoGlobe, IoRocket, IoLayers } from "react-icons/io5";
 
 export const MainCLI = () => {
   const { getCourseProgress, isLessonCompleted, markLessonComplete } =

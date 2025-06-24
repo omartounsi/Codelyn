@@ -15,6 +15,7 @@ export const Login = () => {
   const { login } = useAuth();
 
   if (loading) return <LoadingModal />;
+  if (error) return <p>Error</p>;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {

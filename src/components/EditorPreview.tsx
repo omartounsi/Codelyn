@@ -78,7 +78,7 @@ export const EditorPreview = () => {
                 formatOnType: true,
                 tabCompletion: "on",
               }}
-              onMount={(editor, monaco) => {
+              onMount={(_, monaco) => {
                 monaco.editor.defineTheme("customDarkTheme", {
                   base: "vs-dark",
                   inherit: true,

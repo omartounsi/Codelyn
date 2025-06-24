@@ -6,7 +6,7 @@ interface BackToCourseProps {
   courseName: string;
 }
 
-export const BackToCourse = ({ courseType, courseName }: BackToCourseProps) => {
+export const BackToCourse = ({ courseType }: BackToCourseProps) => {
   return (
     <Link
       to={`/lessons/${courseType}`}

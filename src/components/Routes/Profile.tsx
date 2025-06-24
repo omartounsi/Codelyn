@@ -1,9 +1,9 @@
 import { useAuth } from "../../context/AuthContext";
 import { useProgress } from "../../context/ProgressContext";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 import { LoadingSpinner } from "../tools/loadingspinner";
 import { ProfilePictureUpload } from "../tools/ProfilePictureUpload";
+import { UPLOADS_BASE_URL } from "../../config/api";
 import {
   IoCheckmarkCircle,
   IoClose,
@@ -28,7 +28,6 @@ type UserStats = {
 export const Profile = () => {
   const { user, isAuthenticated } = useAuth();
   const { state: progressState, getAllProgress } = useProgress();
-  const navigate = useNavigate();
   const [userStats, setUserStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
@@ -163,7 +162,7 @@ export const Profile = () => {
               <div className="relative mb-6 group">
                 {currentProfilePicture ? (
                   <img
-                    src={`http://localhost:3000${currentProfilePicture}`}
+                    src={`${UPLOADS_BASE_URL}${currentProfilePicture}`}
                     alt="Profile"
                     className="object-cover transition-all duration-300 rounded-full shadow-2xl w-28 h-28 ring-4 ring-blue-500/20 shadow-blue-500/20 group-hover:ring-blue-500/40"
                   />

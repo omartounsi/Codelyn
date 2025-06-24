@@ -5,7 +5,6 @@ import { ProgressPreview } from "../components/ProgressPreview";
 import { FAQ } from "../components/FAQ";
 import { Call } from "../components/Call";
 import { Footer } from "../components/Footer";
-import { EditorPreview } from "../components/EditorPreview";
 
 const Home = () => {
   return (

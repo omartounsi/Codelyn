@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useProgress } from "../../../context/ProgressContext";
-import { IoCheckmarkCircle, IoTerminal } from "react-icons/io5";
+import { IoCheckmarkCircle } from "react-icons/io5";
 import { NavButtons } from "../../tools/navbuttons";
 
 interface CLI1Props {

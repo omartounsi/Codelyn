@@ -84,7 +84,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   //AXIOS SETUP
   //default url
-  axios.defaults.baseURL = "http://localhost:3000/api";
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+  axios.defaults.baseURL = apiUrl;
 
   //set auth token for all requests if available / formatting the headers or removing them
   useEffect(() => {

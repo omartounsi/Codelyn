@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { API_BASE_URL, UPLOADS_BASE_URL } from "../../config/api";
 import axios from "axios";
 import {
   IoCamera,
@@ -61,7 +62,7 @@ export const ProfilePictureUpload = ({
       formData.append("profilePicture", selectedFile);
 
       const response = await axios.post(
-        "http://localhost:3000/api/profile/upload",
+        `${API_BASE_URL}/profile/upload`,
         formData,
         {
           headers: {
@@ -105,7 +106,7 @@ export const ProfilePictureUpload = ({
     setUploading(true);
     try {
       const response = await axios.delete(
-        "http://localhost:3000/api/profile/delete",
+        `${API_BASE_URL}/profile/delete`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -177,7 +178,7 @@ export const ProfilePictureUpload = ({
               />
             ) : user?.profilePicture ? (
               <img
-                src={`http://localhost:3000${user.profilePicture}`}
+                src={`${UPLOADS_BASE_URL}${user.profilePicture}`}
                 alt="Current profile"
                 className="object-cover w-24 h-24 rounded-full"
               />

@@ -1,10 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import {
-  IoTerminal,
-  IoFolder,
-  IoDocument,
-  IoArrowForward,
-} from "react-icons/io5";
+import { IoTerminal, IoArrowForward } from "react-icons/io5";
 
 interface TerminalProps {
   onCommandExecute?: (command: string, output: string) => void;

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useProgress } from "../../../context/ProgressContext";
-import { IoCheckmarkCircle, IoTerminal, IoFolder } from "react-icons/io5";
+import { IoCheckmarkCircle, IoTerminal } from "react-icons/io5";
 import { NavButtons } from "../../tools/navbuttons";
 
 interface CLI2Props {
@@ -23,7 +23,7 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
   return (
     <>
       <h1 className="text-5xl font-bold leading-tight tracking-tighter lg:leading-[1.1] text-neutral-100">
-        <span className="text-neutral-500 font-light">Chapter 2:</span>{" "}
+        <span className="font-light text-neutral-500">Chapter 2:</span>{" "}
         Navigation and Directory Structure
       </h1>
 
@@ -39,11 +39,11 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
           of it like a filing cabinet with folders inside folders.
         </p>
 
-        <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
-          <h4 className="text-lg font-semibold text-neutral-200 mb-3">
+        <div className="p-4 border rounded-lg bg-neutral-800/50 border-neutral-700">
+          <h4 className="mb-3 text-lg font-semibold text-neutral-200">
             📁 Directory Tree Example
           </h4>
-          <div className="font-mono text-sm text-neutral-300 space-y-1">
+          <div className="space-y-1 font-mono text-sm text-neutral-300">
             <div>📁 root/</div>
             <div className="ml-4">📁 Documents/</div>
             <div className="ml-8">📄 resume.txt</div>
@@ -66,15 +66,15 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
         </p>
 
         <div className="space-y-4">
-          <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
+          <div className="p-4 border rounded-lg bg-neutral-800/50 border-neutral-700">
             <div className="flex items-center gap-2 mb-2">
               <IoTerminal className="w-4 h-4 text-green-400" />
-              <code className="text-green-400 font-mono">cd [directory]</code>
+              <code className="font-mono text-green-400">cd [directory]</code>
             </div>
-            <p className="text-sm text-neutral-400 mb-2">
+            <p className="mb-2 text-sm text-neutral-400">
               <strong>Change Directory</strong> - Move into a different folder.
             </p>
-            <div className="bg-black rounded-md p-2 font-mono text-xs">
+            <div className="p-2 font-mono text-xs bg-black rounded-md">
               <div className="text-neutral-400"># Examples:</div>
               <div className="text-blue-400">cd Documents</div>
               <div className="text-neutral-400">
@@ -83,25 +83,25 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
             </div>
           </div>
 
-          <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
+          <div className="p-4 border rounded-lg bg-neutral-800/50 border-neutral-700">
             <div className="flex items-center gap-2 mb-2">
               <IoTerminal className="w-4 h-4 text-green-400" />
-              <code className="text-green-400 font-mono">cd ..</code>
+              <code className="font-mono text-green-400">cd ..</code>
             </div>
-            <p className="text-sm text-neutral-400 mb-2">
+            <p className="mb-2 text-sm text-neutral-400">
               Move up one level to the parent directory. The <code>..</code>{" "}
               means "parent directory".
             </p>
-            <div className="bg-black rounded-md p-2 font-mono text-xs">
+            <div className="p-2 font-mono text-xs bg-black rounded-md">
               <div className="text-blue-400">cd ..</div>
               <div className="text-neutral-400"># Go back to parent folder</div>
             </div>
           </div>
 
-          <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
+          <div className="p-4 border rounded-lg bg-neutral-800/50 border-neutral-700">
             <div className="flex items-center gap-2 mb-2">
               <IoTerminal className="w-4 h-4 text-green-400" />
-              <code className="text-green-400 font-mono">cd</code> (no
+              <code className="font-mono text-green-400">cd</code> (no
               arguments)
             </div>
             <p className="text-sm text-neutral-400">
@@ -115,42 +115,42 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
           <span className="font-light">2.3:</span> Special Directory Symbols
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
-            <code className="text-blue-400 text-lg">~</code>
-            <h4 className="text-sm font-semibold text-neutral-200 mt-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="p-4 border rounded-lg bg-neutral-800/50 border-neutral-700">
+            <code className="text-lg text-blue-400">~</code>
+            <h4 className="mt-2 text-sm font-semibold text-neutral-200">
               Home Directory
             </h4>
-            <p className="text-xs text-neutral-400 mt-1">
+            <p className="mt-1 text-xs text-neutral-400">
               Your personal folder
             </p>
           </div>
-          <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
-            <code className="text-blue-400 text-lg">.</code>
-            <h4 className="text-sm font-semibold text-neutral-200 mt-2">
+          <div className="p-4 border rounded-lg bg-neutral-800/50 border-neutral-700">
+            <code className="text-lg text-blue-400">.</code>
+            <h4 className="mt-2 text-sm font-semibold text-neutral-200">
               Current Directory
             </h4>
-            <p className="text-xs text-neutral-400 mt-1">Where you are now</p>
+            <p className="mt-1 text-xs text-neutral-400">Where you are now</p>
           </div>
-          <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
-            <code className="text-blue-400 text-lg">..</code>
-            <h4 className="text-sm font-semibold text-neutral-200 mt-2">
+          <div className="p-4 border rounded-lg bg-neutral-800/50 border-neutral-700">
+            <code className="text-lg text-blue-400">..</code>
+            <h4 className="mt-2 text-sm font-semibold text-neutral-200">
               Parent Directory
             </h4>
-            <p className="text-xs text-neutral-400 mt-1">One level up</p>
+            <p className="mt-1 text-xs text-neutral-400">One level up</p>
           </div>
         </div>
 
         {/* INTERACTIVE EXERCISE */}
-        <div className="p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-xl border border-green-500/30">
-          <h4 className="text-lg font-semibold text-neutral-200 mb-3">
+        <div className="p-6 border bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-xl border-green-500/30">
+          <h4 className="mb-3 text-lg font-semibold text-neutral-200">
             🎯 Navigation Practice
           </h4>
-          <p className="text-neutral-300 mb-4">
+          <p className="mb-4 text-neutral-300">
             Let's practice navigating the file system. Follow these steps in
             order:
           </p>
-          <ol className="list-decimal list-inside space-y-2 text-sm text-neutral-400">
+          <ol className="space-y-2 text-sm list-decimal list-inside text-neutral-400">
             <li>
               Type <code className="text-green-400">ls</code> to see what's in
               your current directory
@@ -172,7 +172,7 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
               the parent directory
             </li>
           </ol>
-          <p className="text-xs text-neutral-500 mt-3">
+          <p className="mt-3 text-xs text-neutral-500">
             💡 Watch how the prompt changes as you navigate through directories!
           </p>
         </div>
@@ -182,9 +182,9 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
           <span className="font-light">2.4:</span> Navigation Tips
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
-            <h4 className="text-lg font-semibold text-neutral-200 mb-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="p-4 border rounded-lg bg-neutral-800/50 border-neutral-700">
+            <h4 className="mb-2 text-lg font-semibold text-neutral-200">
               💡 Case Sensitivity
             </h4>
             <p className="text-sm text-neutral-400">
@@ -192,8 +192,8 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
               <code>documents</code> are different!
             </p>
           </div>
-          <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
-            <h4 className="text-lg font-semibold text-neutral-200 mb-2">
+          <div className="p-4 border rounded-lg bg-neutral-800/50 border-neutral-700">
+            <h4 className="mb-2 text-lg font-semibold text-neutral-200">
               📍 Tab Completion
             </h4>
             <p className="text-sm text-neutral-400">
@@ -204,8 +204,8 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
         </div>
 
         {/* COMMON MISTAKES */}
-        <div className="p-4 bg-red-500/10 rounded-lg border border-red-500/30">
-          <h4 className="text-lg font-semibold text-red-200 mb-3">
+        <div className="p-4 border rounded-lg bg-red-500/10 border-red-500/30">
+          <h4 className="mb-3 text-lg font-semibold text-red-200">
             ⚠️ Common Mistakes to Avoid
           </h4>
           <ul className="space-y-2 text-sm text-red-100">
@@ -239,9 +239,9 @@ export const CLI2 = ({ onCommandsChange }: CLI2Props) => {
         </p>
 
         {/* Progress Tracking */}
-        <div className="flex items-center justify-between p-6 bg-neutral-800/50 border border-neutral-700 rounded-lg mt-8">
+        <div className="flex items-center justify-between p-6 mt-8 border rounded-lg bg-neutral-800/50 border-neutral-700">
           <div>
-            <h4 className="text-lg font-semibold text-neutral-200 mb-1">
+            <h4 className="mb-1 text-lg font-semibold text-neutral-200">
               Lesson Progress
             </h4>
             <p className="text-sm text-neutral-400">

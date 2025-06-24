@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import { useProgress } from "../context/ProgressContext";
+import { UPLOADS_BASE_URL } from "../config/api";
 
 export const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -119,7 +120,7 @@ export const Navbar = () => {
               <div className="flex items-center gap-3">
                 {user?.profilePicture ? (
                   <img
-                    src={`http://localhost:3000${user.profilePicture}`}
+                    src={`${UPLOADS_BASE_URL}${user.profilePicture}`}
                     alt="Profile"
                     className="object-cover w-8 h-8 border-2 rounded-full cursor-pointer border-neutral-600"
                     onClick={() => navigate("/profile")}
