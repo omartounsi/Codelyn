@@ -87,9 +87,6 @@ const lessonSchema = mongoose.Schema({
 // Create compound index for course and order to ensure ordering within a course
 lessonSchema.index({ course: 1, order: 1 }, { unique: true });
 
-// Create index on slug for faster lookups
-lessonSchema.index({ slug: 1 }, { unique: true });
-
 // Pre-save hook to update the updatedAt field
 lessonSchema.pre("save", function (next) {
   if (this.isModified() && !this.isNew) {

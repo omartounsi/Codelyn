@@ -49,6 +49,9 @@ router.post("/register", async (req, res) => {
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email,
+        role: user.role || "viewer",
+        isSubscribed: user.isSubscribed || false,
+        profilePicture: user.profilePicture || null,
       },
     });
   } catch (err) {
@@ -87,6 +90,9 @@ router.post("/login", async (req, res) => {
         email: user.email,
         first_name: user.first_name,
         last_name: user.last_name,
+        role: user.role || "viewer",
+        isSubscribed: user.isSubscribed || false,
+        profilePicture: user.profilePicture || null,
       },
     });
   } catch (err) {
@@ -113,6 +119,7 @@ router.get("/verify", auth, async (req, res) => {
         email: user.email,
         role: user.role || "viewer",
         isSubscribed: user.isSubscribed || false,
+        profilePicture: user.profilePicture || null,
       },
     });
   } catch (err) {

@@ -42,7 +42,7 @@ router.get("/:courseType", auth, async (req, res) => {
     const userId = req.user._id;
     const { courseType } = req.params;
 
-    if (!["html", "css", "javascript"].includes(courseType)) {
+    if (!["html", "css", "javascript", "cli"].includes(courseType)) {
       return res
         .status(400)
         .json({ success: false, message: "Invalid course type" });
@@ -91,7 +91,7 @@ router.post("/complete", auth, async (req, res) => {
     console.log("Complete endpoint - courseType:", courseType);
     console.log("Complete endpoint - lessonId:", lessonId);
 
-    if (!["html", "css", "javascript"].includes(courseType)) {
+    if (!["html", "css", "javascript", "cli"].includes(courseType)) {
       return res
         .status(400)
         .json({ success: false, message: "Invalid course type" });
@@ -172,7 +172,7 @@ router.delete("/:courseType", auth, async (req, res) => {
     const userId = req.user._id;
     const { courseType } = req.params;
 
-    if (!["html", "css", "javascript"].includes(courseType)) {
+    if (!["html", "css", "javascript", "cli"].includes(courseType)) {
       return res
         .status(400)
         .json({ success: false, message: "Invalid course type" });
@@ -192,7 +192,8 @@ function getTotalLessonsForCourse(courseType) {
   const courseLessons = {
     html: 9,
     css: 9,
-    javascript: 9, // Will be updated when JS lessons are added
+    javascript: 12, // 12 comprehensive JavaScript lessons
+    cli: 5,
   };
   return courseLessons[courseType] || 9;
 }

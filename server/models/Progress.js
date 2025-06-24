@@ -9,7 +9,7 @@ const progressSchema = mongoose.Schema({
   courseType: {
     type: String,
     required: true,
-    enum: ["html", "css", "javascript"],
+    enum: ["html", "css", "javascript", "cli"],
   },
   completedLessons: [
     {

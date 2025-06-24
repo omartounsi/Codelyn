@@ -30,6 +30,10 @@ const userSchema = mongoose.Schema({
   subscriptionDate: {
     type: Date,
   },
+  profilePicture: {
+    type: String,
+    default: null, // URL to the profile picture
+  },
   createdAt: {
     type: Date,
     default: Date.now,
