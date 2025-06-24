@@ -6,7 +6,22 @@ Your app is now ready for deployment! Here's your complete deployment guide:
 
 ---
 
-## 🎯 BACKEND DEPLOYMENT (Render)
+## 🚨 RENDER DEPLOYMENT FIX
+
+**The issue:** Render was looking for a "build" script in server/package.json
+
+**✅ FIXED:** Added build script to server/package.json
+
+### Updated Render Configuration:
+1. **Root Directory**: `server`
+2. **Build Command**: `npm install` 
+3. **Start Command**: `npm start`
+4. **Auto-Deploy**: Yes
+
+### Alternative: Use render.yaml (Recommended)
+I've created a `render.yaml` file in your project root. This will automatically configure your deployment.
+
+---
 
 ### 1. Push to GitHub
 ```bash
@@ -23,11 +38,13 @@ git push origin main
    - **Root Directory**: `server`
    - **Build Command**: `npm install`
    - **Start Command**: `npm start`
+   - **Node Version**: `18` (in Environment Variables)
 
 ### 3. Environment Variables (Render)
 Add these in Render dashboard:
 ```
 NODE_ENV=production
+NODE_VERSION=18
 PORT=10000
 MONGO_URI=mongodb+srv://admin:kz2tvnyneLztSTbZ@cluster0.oppcb.mongodb.net/Codelyn
 JWT_SECRET=your_super_secure_production_jwt_secret_here_minimum_256_bits
