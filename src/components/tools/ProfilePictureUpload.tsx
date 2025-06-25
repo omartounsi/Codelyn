@@ -30,13 +30,13 @@ export const ProfilePictureUpload = ({
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      // Validate file type
+      // VALIDATE FILE TYPE
       if (!file.type.startsWith("image/")) {
         alert("Please choose an image file");
         return;
       }
 
-      // Validate file size (5MB limit)
+      // VALIDATE FILE SIZE
       if (file.size > 5 * 1024 * 1024) {
         alert("Image too large. Please choose a smaller file");
         return;
@@ -44,7 +44,7 @@ export const ProfilePictureUpload = ({
 
       setSelectedFile(file);
 
-      // Create preview
+      // CREATE PREVIEW
       const reader = new FileReader();
       reader.onload = (e) => {
         setPreview(e.target?.result as string);
@@ -75,7 +75,7 @@ export const ProfilePictureUpload = ({
       const result = response.data;
 
       if (result.success) {
-        // Update the user context with new profile picture
+        // UPDATE USER CONTEXT
         if (user) {
           const updatedUser = {
             ...user,
@@ -83,9 +83,7 @@ export const ProfilePictureUpload = ({
           };
           updateUser(updatedUser);
         }
-        onPictureUpdate(result.profilePictureUrl);
-
-        // Reset state and close modal
+        onPictureUpdate(result.profilePictureUrl); // RESET AND CLOSE
         setSelectedFile(null);
         setPreview(null);
         onClose();
@@ -114,7 +112,7 @@ export const ProfilePictureUpload = ({
       const result = response.data;
 
       if (result.success) {
-        // Update the user context
+        // UPDATE USER CONTEXT
         if (user) {
           const updatedUser = {
             ...user,
@@ -151,7 +149,7 @@ export const ProfilePictureUpload = ({
         style={{ backdropFilter: "blur(2px)" }}
         className="w-full max-w-md p-6 border rounded-xl border-neutral-700 bg-neutral-800"
       >
-        {/* Header */}
+        {/* HEADER */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-bold text-neutral-200">
             Profile Picture
@@ -164,7 +162,7 @@ export const ProfilePictureUpload = ({
           </button>
         </div>
 
-        {/* Current/Preview Image */}
+        {/* IMAGE PREVIEW */}
         <div className="flex flex-col items-center mb-6">
           <div className="relative mb-4">
             {preview ? (
@@ -197,7 +195,7 @@ export const ProfilePictureUpload = ({
           )}
         </div>
 
-        {/* File Input */}
+        {/* FILE INPUT */}
         <input
           ref={fileInputRef}
           type="file"
@@ -206,7 +204,7 @@ export const ProfilePictureUpload = ({
           className="hidden"
         />
 
-        {/* Action Buttons */}
+        {/* BUTTONS */}
         <div className="space-y-3">
           {!selectedFile ? (
             <>
@@ -261,7 +259,7 @@ export const ProfilePictureUpload = ({
           )}
         </div>
 
-        {/* Help Text */}
+        {/* HELP TEXT */}
         <div className="mt-4 text-xs text-center text-neutral-400">
           <p>Supported formats: JPG, PNG, GIF</p>
           <p>Maximum size: 5MB</p>
