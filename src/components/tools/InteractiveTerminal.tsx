@@ -15,7 +15,7 @@ interface FileSystemItem {
   children?: FileSystemItem[];
 }
 
-// Simulated file system
+//FS
 const initialFileSystem: FileSystemItem = {
   name: "root",
   type: "directory",
@@ -273,7 +273,7 @@ export const InteractiveTerminal = ({
           </div>
         ))}
 
-        {/* Current Input Line */}
+        {/* inputline*/}
         {!readOnly && (
           <form onSubmit={handleSubmit} className="flex items-center">
             <span className="mr-2 text-blue-400">{getPrompt()}</span>
@@ -290,7 +290,7 @@ export const InteractiveTerminal = ({
         )}
       </div>
 
-      {/* Expected Command Hint */}
+      {/* hint*/}
       {expectedCommands.length > 0 && currentStep < expectedCommands.length && (
         <div className="px-4 py-2 border-t rounded-b-lg bg-neutral-900 border-neutral-700">
           <div className="flex items-center gap-2 text-xs text-neutral-400">
