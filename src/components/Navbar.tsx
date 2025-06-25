@@ -20,7 +20,7 @@ export const Navbar = () => {
         backdropFilter: "blur(5px)",
         backgroundColor: "rgb(255, 255, 255, 0.02)",
       }}
-      className="col-span-10 w-full h-14 border-b fixed border-dashed border-neutral-800 grid grid-cols-12 font-[Geist] z-20"
+      className="col-span-10 w-full h-14 border-b fixed border-dashed border-neutral-800 grid grid-cols-12 font-[Geist] z-200"
     >
       <div className="col-span-1 border-r border-dashed border-slate-800"></div>
       {/* Main */}
