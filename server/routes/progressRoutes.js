@@ -4,7 +4,7 @@ import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-// Get progress for all courses for a user
+// GET ALL COURSE PROGRESS
 router.get("/", auth, async (req, res) => {
   try {
     const userId = req.user._id;
@@ -36,7 +36,7 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// Get progress for a specific course
+// GET SPECIFIC COURSE PROGRESS
 router.get("/:courseType", auth, async (req, res) => {
   try {
     const userId = req.user._id;
@@ -51,7 +51,7 @@ router.get("/:courseType", auth, async (req, res) => {
     let progress = await Progress.findOne({ user: userId, courseType });
 
     if (!progress) {
-      // Create new progress record if doesn't exist
+      // CREATE NEW PROGRESS IF NONE EXISTS
       progress = new Progress({
         user: userId,
         courseType,
@@ -80,7 +80,7 @@ router.get("/:courseType", auth, async (req, res) => {
   }
 });
 
-// Mark lesson as completed
+// MARK LESSON AS COMPLETED
 router.post("/complete", auth, async (req, res) => {
   try {
     const userId = req.user._id;
@@ -120,7 +120,7 @@ router.post("/complete", auth, async (req, res) => {
       );
     }
 
-    // Check if lesson is already completed
+    // CHECK IF LESSON ALREADY COMPLETED
     const isAlreadyCompleted = progress.completedLessons.some(
       (lesson) => lesson.lessonId === lessonId
     );
@@ -131,16 +131,16 @@ router.post("/complete", auth, async (req, res) => {
         completedAt: new Date(),
       });
 
-      // Update completion percentage
+      // UPDATE COMPLETION PERCENTAGE
       const totalLessons = getTotalLessonsForCourse(courseType);
       progress.completionPercentage = Math.round(
         (progress.completedLessons.length / totalLessons) * 100
       );
 
-      // Update last accessed lesson
+      // UPDATE LAST ACCESSED LESSON
       progress.lastAccessedLesson = lessonId;
 
-      // Set completion date if all lessons are completed
+      // SET COMPLETION DATE IF ALL LESSONS DONE
       if (progress.completedLessons.length === totalLessons) {
         progress.completionDate = new Date();
       }
@@ -166,7 +166,7 @@ router.post("/complete", auth, async (req, res) => {
   }
 });
 
-// Reset progress for a course
+// RESET COURSE PROGRESS
 router.delete("/:courseType", auth, async (req, res) => {
   try {
     const userId = req.user._id;
@@ -187,12 +187,12 @@ router.delete("/:courseType", auth, async (req, res) => {
   }
 });
 
-// Helper function to get total lessons for each course
+// HELPER FUNCTION - GET TOTAL LESSONS PER COURSE
 function getTotalLessonsForCourse(courseType) {
   const courseLessons = {
     html: 9,
     css: 9,
-    javascript: 12, // 12 comprehensive JavaScript lessons
+    javascript: 12, // 12 COMPREHENSIVE JAVASCRIPT LESSONS
     cli: 5,
   };
   return courseLessons[courseType] || 9;

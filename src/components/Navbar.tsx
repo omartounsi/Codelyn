@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import { useProgress } from "../context/ProgressContext";
 import { UPLOADS_BASE_URL } from "../config/api";
+import { IoLockClosed } from "react-icons/io5";
 
 export const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -43,8 +44,9 @@ export const Navbar = () => {
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
                   <NavLink to="/lessons">Lessons</NavLink>
                 </li>
-                <li className="transition-colors cursor-pointer hover:text-neutral-200">
-                  <a>Projects</a>
+                <li className="flex items-center gap-2 cursor-not-allowed text-neutral-600 opacity-60">
+                  <span>Projects</span>
+                  <IoLockClosed className="w-3 h-3" />
                 </li>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
                   <NavLink to="/sandbox">Mini Sandbox</NavLink>
@@ -56,7 +58,7 @@ export const Navbar = () => {
                   <NavLink to="/profile">Profile</NavLink>
                 </li>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
-                  <a>Help</a>
+                  <NavLink to="/curriculum">Curriculum</NavLink>
                 </li>
               </>
             ) : (
@@ -64,8 +66,9 @@ export const Navbar = () => {
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
                   <NavLink to="/lessons">Lessons</NavLink>
                 </li>
-                <li className="transition-colors cursor-pointer hover:text-neutral-200">
-                  <a>Projects</a>
+                <li className="flex items-center gap-2 cursor-not-allowed text-neutral-600 opacity-60">
+                  <span>Projects</span>
+                  <IoLockClosed className="w-3 h-3" />
                 </li>
                 <li className="transition-colors cursor-pointer hover:text-neutral-200">
                   <NavLink to="/sandbox">Mini Sandbox</NavLink>

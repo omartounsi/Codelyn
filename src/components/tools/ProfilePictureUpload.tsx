@@ -105,14 +105,11 @@ export const ProfilePictureUpload = ({
 
     setUploading(true);
     try {
-      const response = await axios.delete(
-        `${API_BASE_URL}/profile/delete`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.delete(`${API_BASE_URL}/profile/delete`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       const result = response.data;
 

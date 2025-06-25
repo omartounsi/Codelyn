@@ -9,10 +9,10 @@ const adminTabs = [
   { id: 4, name: "Lesson Management", enabled: false },
   { id: 5, name: "Project Management", enabled: false },
   { id: 6, name: "Code Environment", enabled: false },
-  { id: 7, name: "Platform Settings", enabled: true },
-  { id: 8, name: "Feedback & Reports", enabled: true },
-  { id: 9, name: "Security Tools", enabled: true },
-  { id: 10, name: "Content Moderation", enabled: true },
+  { id: 7, name: "Platform Settings", enabled: false },
+  { id: 8, name: "Feedback & Reports", enabled: false },
+  { id: 9, name: "Security Tools", enabled: false },
+  { id: 10, name: "Content Moderation", enabled: false },
 ];
 
 export const Dashboard = () => {

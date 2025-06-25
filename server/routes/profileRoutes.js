@@ -7,31 +7,31 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
-// Ensure uploads directory exists
+// ENSURE UPLOADS DIRECTORY EXISTS
 const uploadsDir = path.join(process.cwd(), "uploads", "profile-pictures");
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
-// Configure multer for file uploads
+// CONFIGURE MULTER FOR FILE UPLOADS
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadsDir);
   },
   filename: (req, file, cb) => {
-    // Create unique filename with user ID and timestamp
+    // CREATE UNIQUE FILENAME WITH USER ID AND TIMESTAMP
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const extension = path.extname(file.originalname);
     cb(null, `${req.user.id}-${uniqueSuffix}${extension}`);
   },
 });
 
-// File filter to only allow images
+// FILE FILTER
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image/")) {
     cb(null, true);
   } else {
-    cb(new Error("Only image files are allowed!"), false);
+    cb(new Error("image only"), false);
   }
 };
 
@@ -39,11 +39,11 @@ const upload = multer({
   storage: storage,
   fileFilter: fileFilter,
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB limit
+    fileSize: 5 * 1024 * 1024, // 5MB LIMIT
   },
 });
 
-// Upload profile picture
+// UPLOAD PROFILE PICTURE
 router.post(
   "/upload",
   auth,
@@ -57,7 +57,7 @@ router.post(
         });
       }
 
-      // Get the user
+      // GET THE USER
       const user = await User.findById(req.user.id);
       if (!user) {
         return res.status(404).json({
@@ -66,7 +66,7 @@ router.post(
         });
       }
 
-      // Delete old profile picture if it exists
+      // DELETE OLD PROFILE PICTURE IF EXISTS
       if (user.profilePicture) {
         const oldImagePath = path.join(process.cwd(), user.profilePicture);
         if (fs.existsSync(oldImagePath)) {
@@ -74,7 +74,7 @@ router.post(
         }
       }
 
-      // Update user with new profile picture URL
+      // UPDATE USER WITH NEW PROFILE PICTURE URL
       const profilePictureUrl = `/uploads/profile-pictures/${req.file.filename}`;
       user.profilePicture = profilePictureUrl;
       await user.save();
@@ -87,7 +87,7 @@ router.post(
     } catch (error) {
       console.error("Error uploading profile picture:", error);
 
-      // Delete the uploaded file if there was an error
+      // DELETE UPLOADED FILE IF ERROR OCCURRED
       if (req.file) {
         const filePath = path.join(uploadsDir, req.file.filename);
         if (fs.existsSync(filePath)) {
@@ -104,7 +104,7 @@ router.post(
   }
 );
 
-// Delete profile picture
+// DELETE PROFILE PICTURE
 router.delete("/delete", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -115,7 +115,7 @@ router.delete("/delete", auth, async (req, res) => {
       });
     }
 
-    // Delete the file if it exists
+    // DELETE FILE IF EXISTS
     if (user.profilePicture) {
       const imagePath = path.join(process.cwd(), user.profilePicture);
       if (fs.existsSync(imagePath)) {
@@ -123,7 +123,7 @@ router.delete("/delete", auth, async (req, res) => {
       }
     }
 
-    // Remove profile picture from user
+    // REMOVE PROFILE PICTURE FROM USER
     user.profilePicture = null;
     await user.save();
 
@@ -141,7 +141,7 @@ router.delete("/delete", auth, async (req, res) => {
   }
 });
 
-// Get profile picture
+// GET PROFILE PICTURE
 router.get("/:filename", (req, res) => {
   const filename = req.params.filename;
   const imagePath = path.join(uploadsDir, filename);

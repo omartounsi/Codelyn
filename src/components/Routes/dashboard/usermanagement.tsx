@@ -45,12 +45,9 @@ export const UserManagement = () => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `${API_BASE_URL}/admin/users`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        const response = await axios.get(`${API_BASE_URL}/admin/users`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setUsers(response.data);
         setFilteredUsers(response.data);
       } catch (err: any) {
@@ -222,12 +219,9 @@ export const UserManagement = () => {
 
   const refreshUsers = async () => {
     try {
-      const response = await axios.get(
-        `${API_BASE_URL}/admin/users`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await axios.get(`${API_BASE_URL}/admin/users`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setUsers(response.data);
     } catch (err) {
       console.error("Failed to refresh users");
