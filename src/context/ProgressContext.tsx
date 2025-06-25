@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { useAuth } from "./AuthContext";
 
-// Types
+// TYPES
 export interface CourseProgress {
   courseId: string;
   courseName: string;
@@ -35,11 +35,11 @@ export interface ProgressState {
   error: string | null;
 }
 
-// API base URL
+// API URL
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:3000/api";
 
-// Actions
+// ACTIONS
 type ProgressAction =
   | { type: "SET_LOADING"; payload: boolean }
   | { type: "SET_ERROR"; payload: string | null }
@@ -55,7 +55,7 @@ type ProgressAction =
   | { type: "UPDATE_OVERALL_PROGRESS"; payload: number }
   | { type: "SYNC_FROM_SERVER"; payload: any };
 
-// Initial state
+// INITIAL STATE
 const initialState: ProgressState = {
   overallProgress: 0,
   courses: [
@@ -97,7 +97,7 @@ const initialState: ProgressState = {
   error: null,
 };
 
-// Reducer
+// REDUCER
 const progressReducer = (
   state: ProgressState,
   action: ProgressAction
@@ -120,14 +120,14 @@ const progressReducer = (
     case "MARK_LESSON_COMPLETE": {
       const { courseId, lessonId } = action.payload;
 
-      // Update lessons array
+      // UPDATE LESSONS
       const updatedLessons = state.lessons.map((lesson) =>
         lesson.courseId === courseId && lesson.lessonId === lessonId
           ? { ...lesson, isCompleted: true, completedAt: new Date() }
           : lesson
       );
 
-      // If lesson doesn't exist, add it
+      // CHECK EXISTENCE
       const lessonExists = state.lessons.some(
         (lesson) => lesson.courseId === courseId && lesson.lessonId === lessonId
       );
@@ -143,7 +143,7 @@ const progressReducer = (
         });
       }
 
-      // Update courses array
+      // UPDATE COURSES
       const updatedCourses = state.courses.map((course) => {
         if (course.courseId === courseId) {
           const newCompletedLessons = course.completedLessons.includes(lessonId)
@@ -164,7 +164,7 @@ const progressReducer = (
         return course;
       });
 
-      // Calculate new overall progress
+      // CALCULATE OVERALL PROGRESS
       const totalLessons = updatedCourses.reduce(
         (sum, course) => sum + course.totalLessons,
         0
@@ -212,7 +212,7 @@ const progressReducer = (
   }
 };
 
-// Context
+// CONTEXT
 interface ProgressContextType {
   state: ProgressState;
   markLessonComplete: (courseId: string, lessonId: number) => Promise<void>;
@@ -231,7 +231,7 @@ const ProgressContext = createContext<ProgressContextType | undefined>(
   undefined
 );
 
-// Provider
+// PROVIDER
 interface ProgressProviderProps {
   children: ReactNode;
 }
@@ -242,7 +242,7 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
   const [state, dispatch] = useReducer(progressReducer, initialState);
   const { user } = useAuth();
 
-  // Utility functions
+  // UTILITY FUNCTIONS
   const getCourseProgress = (courseId: string): CourseProgress | undefined => {
     return state.courses.find((course) => course.courseId === courseId);
   };
@@ -269,7 +269,7 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
     return progressMap;
   };
 
-  // Helper function to get auth token
+  // AUTH HEADERS
   const getAuthHeaders = () => {
     const token = localStorage.getItem("token");
     return {
@@ -278,7 +278,7 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
     };
   };
 
-  // API functions
+  // API FUNCTIONS
   const fetchProgressFromServer = async (): Promise<void> => {
     if (!user) return;
 
@@ -298,7 +298,7 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
       if (result.success && result.data) {
         const serverData = result.data;
 
-        // Transform server data to match our state structure
+        // TRANSFORM SERVER DATA
         const updatedCourses = initialState.courses.map((course) => {
           const serverCourse = serverData[course.courseId];
           if (serverCourse) {
@@ -315,7 +315,7 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
           return course;
         });
 
-        // Calculate overall progress
+        // CALCULATE PROGRESS
         const totalLessons = updatedCourses.reduce(
           (sum, course) => sum + course.totalLessons,
           0
@@ -350,13 +350,13 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
     if (!user) return;
 
     try {
-      // Optimistic update first
+      // OPTIMISTIC UPDATE
       dispatch({
         type: "MARK_LESSON_COMPLETE",
         payload: { courseId, lessonId },
       });
 
-      // Then sync with server
+      // SYNC WITH SERVER
       const response = await fetch(`${API_BASE_URL}/progress/complete`, {
         method: "POST",
         headers: getAuthHeaders(),
@@ -367,11 +367,11 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
         throw new Error("Failed to update progress");
       }
 
-      // Refresh progress from server to ensure consistency
+      // REFRESH FROM SERVER
       await fetchProgressFromServer();
     } catch (error) {
       console.error("Error marking lesson complete:", error);
-      // Refresh progress to rollback optimistic update
+      // ROLLBACK UPDATE
       await fetchProgressFromServer();
     }
   };
@@ -391,12 +391,12 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
     await fetchProgressFromServer();
   };
 
-  // Load progress on mount and when user changes
+  // INITIALIZE PROGRESS
   useEffect(() => {
     if (user) {
       fetchProgressFromServer();
     } else {
-      // Reset to initial state when user logs out
+      // RESET ON LOGOUT
       dispatch({
         type: "SET_PROGRESS",
         payload: {
@@ -426,7 +426,7 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({
   );
 };
 
-// Hook
+// HOOK
 export const useProgress = (): ProgressContextType => {
   const context = useContext(ProgressContext);
   if (!context) {
