@@ -24,8 +24,6 @@ import { ProtectedRoute } from "./components/tools/protectedroute";
 import { LoadingModal } from "./components/tools/loadingmodal";
 import { Contact } from "./components/Routes/Contact";
 
-import Lenis from "lenis";
-
 function MainLayout() {
   return (
     <>
@@ -37,13 +35,6 @@ function MainLayout() {
 
 function App() {
   const { loading } = useAuth();
-
-  // Initialize Lenis
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
-
-  console.log(lenis);
 
   if (loading) return <LoadingModal />;
   return (
