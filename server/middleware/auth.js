@@ -14,6 +14,9 @@ const auth = async (req, res, next) => {
       return res.status(401).json({ message: "No token" });
     }
 
+    // Log token for debugging (remove in production)
+    console.log("Received token:", token.substring(0, 20) + "...");
+
     //verification - returns object that's been signed at token creation
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
